@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- This theme will inherit from the theme Theme.DeviceDefault.Light, only the title bar will be a different color -->
+<resources>
+  <style name="Light.BlueTitle" parent="android:Theme.DeviceDefault.Light">
+    <item name="android:windowTitleBackgroundStyle">@style/TBS</item>
+    <item name="android:windowNoTitle">false</item>
+    <item name="android:windowBackground">@style/TBS</item>
+  </style>
+</resources>

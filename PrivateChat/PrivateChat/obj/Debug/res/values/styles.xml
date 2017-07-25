@@ -1,0 +1,1 @@
+<resources><!-- Base application theme goes here --><!-- Theme for the splashActivity --><style name="SplashTheme" parent="@android:style/Theme.Light.NoTitleBar"><item name="android:windowBackground">@drawable/icon</item></style><style name="TBS"><item name="android:background">@color/blue</item></style></resources>

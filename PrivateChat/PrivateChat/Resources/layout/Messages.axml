@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:minWidth="25px"
+    android:minHeight="25px"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/relativeLayout1">
+    <TextView
+        android:text="To:"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/toTv" />
+<!--  This EditText will contain the phone number(s) of the other party. It will be disabled to once the first message has been sent out. -->
+    <EditText
+        android:text=""
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/toTv"
+        android:id="@+id/sendToEt" />
+<!--  Add a EditText and a Button side by side on the bottom of the layout-->
+    <Button
+        android:text="send"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:id="@+id/sendBtn" />
+    <EditText
+        android:text="Type Message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@id/sendBtn"
+        android:id="@+id/messageEt" />
+<!--  This ListView will contain all of the messages in the chat. The outgoing messages will be in on the right side with a light blue background
+          and all of the incoming messages will be on the left side with light green background.
+    -->
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toTv"
+        android:layout_above="@id/messageEt"
+        android:id="@+id/messagesList" />
+</RelativeLayout>

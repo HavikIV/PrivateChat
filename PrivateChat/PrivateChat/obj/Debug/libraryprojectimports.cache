@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Paths>
+  <Jars></Jars>
+  <ResolvedResourceDirectories>
+    <ResolvedResourceDirectory>e:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\obj\Debug\__library_projects__\Refractored.FloatingActionButton\library_project_imports\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>e:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\obj\Debug\__library_projects__\SQLitePCL.raw\library_project_imports\res</ResolvedResourceDirectory>
+  </ResolvedResourceDirectories>
+  <ResolvedAssetDirectories>
+    <ResolvedAssetDirectory>obj\Debug\__library_projects__\Refractored.FloatingActionButton\library_project_imports\assets</ResolvedAssetDirectory>
+    <ResolvedAssetDirectory>obj\Debug\__library_projects__\SQLitePCL.raw\library_project_imports\assets</ResolvedAssetDirectory>
+  </ResolvedAssetDirectories>
+  <ResolvedEnvironmentFiles />
+  <ResolvedResourceDirectoryStamps>
+    <ResolvedResourceDirectoryStamp>e:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\obj\Debug\__library_projects__\Refractored.FloatingActionButton.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>e:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\obj\Debug\__library_projects__\SQLitePCL.raw.stamp</ResolvedResourceDirectoryStamp>
+  </ResolvedResourceDirectoryStamps>
+</Paths>

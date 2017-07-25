@@ -1,0 +1,1 @@
+<!-- This will be used to create the title bar for the custom theme that the app will use. --><TextView android:id="@+id/Title" android:text="PrivateChat" android:layout_width="fill_parent" android:layout_height="fill_parent" android:textColor="#FFFF00" xmlns:android="http://shemas.android.com/apk/res/android" />
