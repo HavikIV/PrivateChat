@@ -34,9 +34,12 @@ namespace PrivateChat
             // Set our view from the conversation layout resource
             SetContentView(Resource.Layout.Conversation);
 
-            // Get the ServerID that was padded to the Intent when this activity was started
+            // Get the ServerID that was passed to the Intent when this activity was started
             // and store it in the class's ServerId property for later use.
             ServerID = Intent.GetIntExtra("ServerID", 0);
+
+            // Set the Title of the Activity using the passed ServerName
+            this.Title = Intent.GetStringExtra("ServerName") + " Conversations";
 
             // Create a path to the Database
             var docFolder = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
@@ -53,10 +56,22 @@ namespace PrivateChat
             // Add a LongClickListener for the items in the ListView
             list.LongClickable = true;
             list.ItemLongClick += ListItemLongClick;
+            list.ItemClick += ListItemClick;
 
             // Create an event for when the FAB is clicked
             var fab = FindViewById<FloatingActionButton>(Resource.Id.cfab);
             fab.Click += FabClick;
+        }
+
+        private void ListItemClick(object sender, AdapterView.ItemClickEventArgs e)
+        {
+            var intent = new Intent(this, typeof(MessageActivity));
+            intent.PutExtra("ServerID", ServerID);
+            intent.PutExtra("ConversationID", adapter.conversations.ElementAt(e.Position).ID);
+            intent.PutExtra("PhoneNumber", adapter.conversations.ElementAt(e.Position).GroupName);
+
+            // Start the MessageActivity
+            StartActivity(intent);
         }
 
         private void ListItemLongClick(object sender, AdapterView.ItemLongClickEventArgs e)
@@ -85,16 +100,25 @@ namespace PrivateChat
         {
             if (deletePosition != -1)
             {
+                // Delete from the database
+                var convo = adapter.conversations.ElementAt(deletePosition);
+                var query = connection.Table<Conversation>().Where(v => v.GroupName.Equals(convo.GroupName));
+
+                // Since the Conversation is deleted, also need to delete all of the Messages in the Conversation from the Database
+                var messageQuery = connection.Table<Messages>().Where(v => v.ServerID.Equals(ServerID) && v.ConversationID.Equals(convo.ID));
+
+                // Don't need to wait for these calls to finish, let them happen in the background
+                query.FirstAsync().ContinueWith(t => { connection.DeleteAsync(t.Result); });
+                messageQuery.ToListAsync().ContinueWith(t => {
+                    foreach (var m in t.Result)
+                    {
+                        connection.DeleteAsync(m);
+                    }
+                });
+
                 // Delete from the adapter
                 adapter.conversations.RemoveAt(deletePosition);
                 adapter.NotifyDataSetChanged();
-
-                // Delete from the database
-                deletePosition += 1;
-                var query = connection.Table<Conversation>().Where(v => v.ID.Equals(deletePosition));
-                // Don't need to wait for this call to finish, let it happen in the background
-                query.FirstAsync().ContinueWith(t => { connection.DeleteAsync(t.Result); });
-                //connection.DeleteAsync(conv);
 
                 // Reset the deletePosition variable
                 deletePosition = -1;
@@ -146,6 +170,20 @@ namespace PrivateChat
                 // Something went wrong trying to connect to the database and need to let the user know
                 Toast.MakeText(this, "Something went wrong will trying to connect to the database. The exception is " + ex, ToastLength.Long).Show();
             }
+        }
+
+        // Overriding the OnRestart function so that it will create a new adapter that will be attached to the ListView when the User goes back to the ConversationActivity
+        // as it's easier to just create a new adapter and add the conversations from the Database instead of checking which Conversation was added or modified and replicating
+        // that change in the adapter too.
+        protected override void OnRestart()
+        {
+            // Call the base OnRestart
+            base.OnRestart();
+
+            adapter = new ConversationAdapter(this, connection, ServerID);
+
+            var list = FindViewById<ListView>(Resource.Id.conversationList);
+            list.Adapter = adapter;
         }
     }
 }

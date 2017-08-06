@@ -9,15 +9,20 @@
   <TextView
     android:text=""
     android:textAppearance="?android:attr/textAppearanceLarge"
+    android:maxLines="1"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_marginRight="10dp"
+    android:maxWidth="200dp"
     android:id="@+id/GroupName" />
   <!-- Add a TextView for displaying the last message in the conversation -->
   <TextView
     android:text=""
     android:textAppearance="?android:attr/textAppearanceSmall"
+    android:maxLines="1"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:maxWidth="300dp"
     android:layout_below="@id/GroupName"
     android:id="@+id/LastMessage" />
   <!-- Add A TextView for total number of messages with in the conversation -->

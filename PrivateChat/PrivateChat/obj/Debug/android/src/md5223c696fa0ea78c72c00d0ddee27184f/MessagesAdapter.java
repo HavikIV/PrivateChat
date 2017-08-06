@@ -1,7 +1,7 @@
-package md5f6d19a6d9ec8c76f172868ae36a36ee5;
+package md5223c696fa0ea78c72c00d0ddee27184f;
 
 
-public class ConversationAdapter
+public class MessagesAdapter
 	extends android.widget.BaseAdapter
 	implements
 		mono.android.IGCUserPeer
@@ -10,29 +10,21 @@ public class ConversationAdapter
 	public static final String __md_methods;
 	static {
 		__md_methods = 
-			"n_getCount:()I:GetGetCountHandler\n" +
 			"n_getItem:(I)Ljava/lang/Object;:GetGetItem_IHandler\n" +
 			"n_getItemId:(I)J:GetGetItemId_IHandler\n" +
 			"n_getView:(ILandroid/view/View;Landroid/view/ViewGroup;)Landroid/view/View;:GetGetView_ILandroid_view_View_Landroid_view_ViewGroup_Handler\n" +
+			"n_getCount:()I:GetGetCountHandler\n" +
 			"";
-		mono.android.Runtime.register ("PrivateChat.Classes.ConversationAdapter, PrivateChat, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", ConversationAdapter.class, __md_methods);
+		mono.android.Runtime.register ("PrivateChat.Adapters.MessagesAdapter, PrivateChat, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", MessagesAdapter.class, __md_methods);
 	}
 
 
-	public ConversationAdapter () throws java.lang.Throwable
+	public MessagesAdapter () throws java.lang.Throwable
 	{
 		super ();
-		if (getClass () == ConversationAdapter.class)
-			mono.android.TypeManager.Activate ("PrivateChat.Classes.ConversationAdapter, PrivateChat, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "", this, new java.lang.Object[] {  });
+		if (getClass () == MessagesAdapter.class)
+			mono.android.TypeManager.Activate ("PrivateChat.Adapters.MessagesAdapter, PrivateChat, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "", this, new java.lang.Object[] {  });
 	}
-
-
-	public int getCount ()
-	{
-		return n_getCount ();
-	}
-
-	private native int n_getCount ();
 
 
 	public java.lang.Object getItem (int p0)
@@ -57,6 +49,14 @@ public class ConversationAdapter
 	}
 
 	private native android.view.View n_getView (int p0, android.view.View p1, android.view.ViewGroup p2);
+
+
+	public int getCount ()
+	{
+		return n_getCount ();
+	}
+
+	private native int n_getCount ();
 
 	private java.util.ArrayList refList;
 	public void monodroidAddReference (java.lang.Object obj)

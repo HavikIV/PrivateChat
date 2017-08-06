@@ -5,18 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/relativeLayout1">
-    <TextView
+  <!--TextView
         android:text="To:"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/toTv" />
+        android:id="@+id/toTv" / -->
 <!--  This EditText will contain the phone number(s) of the other party. It will be disabled to once the first message has been sent out. -->
     <EditText
-        android:text=""
+        android:text="To"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/toTv"
         android:id="@+id/sendToEt" />
 <!--  Add a EditText and a Button side by side on the bottom of the layout-->
     <Button
@@ -39,7 +38,12 @@
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/toTv"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:padding="16dp"
+        android:clipToPadding="false"
+        android:clickable="false"
+        android:layout_below="@id/sendToEt"
         android:layout_above="@id/messageEt"
         android:id="@+id/messagesList" />
 </RelativeLayout>

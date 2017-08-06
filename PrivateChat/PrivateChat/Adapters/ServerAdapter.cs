@@ -29,14 +29,14 @@ namespace PrivateChat.Adapters
 
     public class ServerAdapter : BaseAdapter
     {
-        public List<server> servers;
+        public List<Server> servers;
         Activity activity;
         SQLiteAsyncConnection conn;
 
         public ServerAdapter (Activity a, SQLiteAsyncConnection c)
         {
             activity = a;
-            servers = new List<server>();
+            servers = new List<Server>();
             conn = c;
             LoadServers();
         }
@@ -49,10 +49,10 @@ namespace PrivateChat.Adapters
             query.ToListAsync().ContinueWith(t => {
                 foreach (var ser in t.Result)
                 {
-                    server s = new server();
-                    s.name = ser.Name;
-                    s.ipAddress = ser.IPAddress;
-                    s.port = ser.Port;
+                    Server s = new Server();
+                    s.Name = ser.Name;
+                    s.IPAddress = ser.IPAddress;
+                    s.Port = ser.Port;
                     s.ID = ser.ID;
                     servers.Add(s);
                     //NotifyDataSetChanged();
@@ -96,7 +96,7 @@ namespace PrivateChat.Adapters
         public override void NotifyDataSetChanged()
         {
             base.NotifyDataSetChanged();
-            SaveServers();
+            //SaveServers();
         }
 
         public override Java.Lang.Object GetItem(int position)
@@ -118,9 +118,9 @@ namespace PrivateChat.Adapters
             var serverName = view.FindViewById<TextView>(Resource.Id.itemServerName);
             var serverIP = view.FindViewById<TextView>(Resource.Id.itemIPAddress);
             var serverPort = view.FindViewById<TextView>(Resource.Id.itemPortNumber);
-            serverName.Text = servers[position].name;
-            serverIP.Text = servers[position].ipAddress;
-            serverPort.Text = servers[position].port.ToString();
+            serverName.Text = servers[position].Name;
+            serverIP.Text = servers[position].IPAddress;
+            serverPort.Text = servers[position].Port.ToString();
             
             return view;
         }

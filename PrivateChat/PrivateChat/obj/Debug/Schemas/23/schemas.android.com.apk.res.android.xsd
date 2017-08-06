@@ -2,7 +2,7 @@
 <xs:schema xmlns:android="http://schemas.android.com/apk/res/android" attributeFormDefault="qualified" targetNamespace="http://schemas.android.com/apk/res/android" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:annotation>
     <xs:documentation>v23</xs:documentation>
-    <xs:documentation>7/23/2017 12:31:43 PM</xs:documentation>
+    <xs:documentation>8/4/2017 5:31:47 PM</xs:documentation>
   </xs:annotation>
   <xs:attribute name="accessibilityLiveRegion">
     <xs:annotation>
@@ -458,6 +458,7 @@
             <xs:enumeration value="@drawable/icon" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
+            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -3351,259 +3352,28 @@
       </xs:union>
     </xs:simpleType>
   </xs:attribute>
-  <xs:attribute name="layout_above">
+  <xs:attribute name="layout_gravity">
     <xs:annotation>
-      <xs:documentation>Positions the bottom edge of this view above the given anchor view ID. Accommodates bottom margin of this view and top margin of anchor view.</xs:documentation>
-    </xs:annotation>
-    <xs:simpleType>
-      <xs:union memberTypes="xs:string">
-        <xs:simpleType>
-          <xs:restriction base="xs:string" />
-        </xs:simpleType>
-      </xs:union>
-    </xs:simpleType>
-  </xs:attribute>
-  <xs:attribute name="layout_alignBaseline">
-    <xs:annotation>
-      <xs:documentation>Positions the baseline of this view on the baseline of the given anchor view ID.</xs:documentation>
-    </xs:annotation>
-    <xs:simpleType>
-      <xs:union memberTypes="xs:string">
-        <xs:simpleType>
-          <xs:restriction base="xs:string" />
-        </xs:simpleType>
-      </xs:union>
-    </xs:simpleType>
-  </xs:attribute>
-  <xs:attribute name="layout_alignBottom">
-    <xs:annotation>
-      <xs:documentation>Makes the bottom edge of this view match the bottom edge of the given anchor view ID. Accommodates bottom margin.</xs:documentation>
-    </xs:annotation>
-    <xs:simpleType>
-      <xs:union memberTypes="xs:string">
-        <xs:simpleType>
-          <xs:restriction base="xs:string" />
-        </xs:simpleType>
-      </xs:union>
-    </xs:simpleType>
-  </xs:attribute>
-  <xs:attribute name="layout_alignEnd">
-    <xs:annotation>
-      <xs:documentation>Makes the end edge of this view match the end edge of the given anchor view ID. Accommodates end margin.</xs:documentation>
-    </xs:annotation>
-    <xs:simpleType>
-      <xs:union memberTypes="xs:string">
-        <xs:simpleType>
-          <xs:restriction base="xs:string" />
-        </xs:simpleType>
-      </xs:union>
-    </xs:simpleType>
-  </xs:attribute>
-  <xs:attribute name="layout_alignLeft">
-    <xs:annotation>
-      <xs:documentation>Makes the left edge of this view match the left edge of the given anchor view ID. Accommodates left margin.</xs:documentation>
-    </xs:annotation>
-    <xs:simpleType>
-      <xs:union memberTypes="xs:string">
-        <xs:simpleType>
-          <xs:restriction base="xs:string" />
-        </xs:simpleType>
-      </xs:union>
-    </xs:simpleType>
-  </xs:attribute>
-  <xs:attribute name="layout_alignParentBottom">
-    <xs:annotation>
-      <xs:documentation>If true, makes the bottom edge of this view match the bottom edge of the parent. Accommodates bottom margin.</xs:documentation>
+      <xs:documentation></xs:documentation>
     </xs:annotation>
     <xs:simpleType>
       <xs:union memberTypes="xs:string">
         <xs:simpleType>
           <xs:restriction base="xs:string">
-            <xs:enumeration value="false" />
-            <xs:enumeration value="true" />
-          </xs:restriction>
-        </xs:simpleType>
-      </xs:union>
-    </xs:simpleType>
-  </xs:attribute>
-  <xs:attribute name="layout_alignParentEnd">
-    <xs:annotation>
-      <xs:documentation>If true, makes the end edge of this view match the end edge of the parent. Accommodates end margin.</xs:documentation>
-    </xs:annotation>
-    <xs:simpleType>
-      <xs:union memberTypes="xs:string">
-        <xs:simpleType>
-          <xs:restriction base="xs:string">
-            <xs:enumeration value="false" />
-            <xs:enumeration value="true" />
-          </xs:restriction>
-        </xs:simpleType>
-      </xs:union>
-    </xs:simpleType>
-  </xs:attribute>
-  <xs:attribute name="layout_alignParentLeft">
-    <xs:annotation>
-      <xs:documentation>If true, makes the left edge of this view match the left edge of the parent. Accommodates left margin.</xs:documentation>
-    </xs:annotation>
-    <xs:simpleType>
-      <xs:union memberTypes="xs:string">
-        <xs:simpleType>
-          <xs:restriction base="xs:string">
-            <xs:enumeration value="false" />
-            <xs:enumeration value="true" />
-          </xs:restriction>
-        </xs:simpleType>
-      </xs:union>
-    </xs:simpleType>
-  </xs:attribute>
-  <xs:attribute name="layout_alignParentRight">
-    <xs:annotation>
-      <xs:documentation>If true, makes the right edge of this view match the right edge of the parent. Accommodates right margin.</xs:documentation>
-    </xs:annotation>
-    <xs:simpleType>
-      <xs:union memberTypes="xs:string">
-        <xs:simpleType>
-          <xs:restriction base="xs:string">
-            <xs:enumeration value="false" />
-            <xs:enumeration value="true" />
-          </xs:restriction>
-        </xs:simpleType>
-      </xs:union>
-    </xs:simpleType>
-  </xs:attribute>
-  <xs:attribute name="layout_alignParentStart">
-    <xs:annotation>
-      <xs:documentation>If true, makes the start edge of this view match the start edge of the parent. Accommodates start margin.</xs:documentation>
-    </xs:annotation>
-    <xs:simpleType>
-      <xs:union memberTypes="xs:string">
-        <xs:simpleType>
-          <xs:restriction base="xs:string">
-            <xs:enumeration value="false" />
-            <xs:enumeration value="true" />
-          </xs:restriction>
-        </xs:simpleType>
-      </xs:union>
-    </xs:simpleType>
-  </xs:attribute>
-  <xs:attribute name="layout_alignParentTop">
-    <xs:annotation>
-      <xs:documentation>If true, makes the top edge of this view match the top edge of the parent. Accommodates top margin.</xs:documentation>
-    </xs:annotation>
-    <xs:simpleType>
-      <xs:union memberTypes="xs:string">
-        <xs:simpleType>
-          <xs:restriction base="xs:string">
-            <xs:enumeration value="false" />
-            <xs:enumeration value="true" />
-          </xs:restriction>
-        </xs:simpleType>
-      </xs:union>
-    </xs:simpleType>
-  </xs:attribute>
-  <xs:attribute name="layout_alignRight">
-    <xs:annotation>
-      <xs:documentation>Makes the right edge of this view match the right edge of the given anchor view ID. Accommodates right margin.</xs:documentation>
-    </xs:annotation>
-    <xs:simpleType>
-      <xs:union memberTypes="xs:string">
-        <xs:simpleType>
-          <xs:restriction base="xs:string" />
-        </xs:simpleType>
-      </xs:union>
-    </xs:simpleType>
-  </xs:attribute>
-  <xs:attribute name="layout_alignStart">
-    <xs:annotation>
-      <xs:documentation>Makes the start edge of this view match the start edge of the given anchor view ID. Accommodates start margin.</xs:documentation>
-    </xs:annotation>
-    <xs:simpleType>
-      <xs:union memberTypes="xs:string">
-        <xs:simpleType>
-          <xs:restriction base="xs:string" />
-        </xs:simpleType>
-      </xs:union>
-    </xs:simpleType>
-  </xs:attribute>
-  <xs:attribute name="layout_alignTop">
-    <xs:annotation>
-      <xs:documentation>Makes the top edge of this view match the top edge of the given anchor view ID. Accommodates top margin.</xs:documentation>
-    </xs:annotation>
-    <xs:simpleType>
-      <xs:union memberTypes="xs:string">
-        <xs:simpleType>
-          <xs:restriction base="xs:string" />
-        </xs:simpleType>
-      </xs:union>
-    </xs:simpleType>
-  </xs:attribute>
-  <xs:attribute name="layout_alignWithParentIfMissing">
-    <xs:annotation>
-      <xs:documentation>If set to true, the parent will be used as the anchor when the anchor cannot be be found for layout_toLeftOf, layout_toRightOf, etc.</xs:documentation>
-    </xs:annotation>
-    <xs:simpleType>
-      <xs:union memberTypes="xs:string">
-        <xs:simpleType>
-          <xs:restriction base="xs:string">
-            <xs:enumeration value="false" />
-            <xs:enumeration value="true" />
-          </xs:restriction>
-        </xs:simpleType>
-      </xs:union>
-    </xs:simpleType>
-  </xs:attribute>
-  <xs:attribute name="layout_below">
-    <xs:annotation>
-      <xs:documentation>Positions the top edge of this view below the given anchor view ID. Accommodates top margin of this view and bottom margin of anchor view.</xs:documentation>
-    </xs:annotation>
-    <xs:simpleType>
-      <xs:union memberTypes="xs:string">
-        <xs:simpleType>
-          <xs:restriction base="xs:string" />
-        </xs:simpleType>
-      </xs:union>
-    </xs:simpleType>
-  </xs:attribute>
-  <xs:attribute name="layout_centerHorizontal">
-    <xs:annotation>
-      <xs:documentation>If true, centers this child horizontally within its parent.</xs:documentation>
-    </xs:annotation>
-    <xs:simpleType>
-      <xs:union memberTypes="xs:string">
-        <xs:simpleType>
-          <xs:restriction base="xs:string">
-            <xs:enumeration value="false" />
-            <xs:enumeration value="true" />
-          </xs:restriction>
-        </xs:simpleType>
-      </xs:union>
-    </xs:simpleType>
-  </xs:attribute>
-  <xs:attribute name="layout_centerInParent">
-    <xs:annotation>
-      <xs:documentation>If true, centers this child horizontally and vertically within its parent.</xs:documentation>
-    </xs:annotation>
-    <xs:simpleType>
-      <xs:union memberTypes="xs:string">
-        <xs:simpleType>
-          <xs:restriction base="xs:string">
-            <xs:enumeration value="false" />
-            <xs:enumeration value="true" />
-          </xs:restriction>
-        </xs:simpleType>
-      </xs:union>
-    </xs:simpleType>
-  </xs:attribute>
-  <xs:attribute name="layout_centerVertical">
-    <xs:annotation>
-      <xs:documentation>If true, centers this child vertically within its parent.</xs:documentation>
-    </xs:annotation>
-    <xs:simpleType>
-      <xs:union memberTypes="xs:string">
-        <xs:simpleType>
-          <xs:restriction base="xs:string">
-            <xs:enumeration value="false" />
-            <xs:enumeration value="true" />
+            <xs:enumeration value="bottom" />
+            <xs:enumeration value="center" />
+            <xs:enumeration value="center_horizontal" />
+            <xs:enumeration value="center_vertical" />
+            <xs:enumeration value="clip_horizontal" />
+            <xs:enumeration value="clip_vertical" />
+            <xs:enumeration value="end" />
+            <xs:enumeration value="fill" />
+            <xs:enumeration value="fill_horizontal" />
+            <xs:enumeration value="fill_vertical" />
+            <xs:enumeration value="left" />
+            <xs:enumeration value="right" />
+            <xs:enumeration value="start" />
+            <xs:enumeration value="top" />
           </xs:restriction>
         </xs:simpleType>
       </xs:union>
@@ -3708,45 +3478,9 @@
       </xs:union>
     </xs:simpleType>
   </xs:attribute>
-  <xs:attribute name="layout_toEndOf">
+  <xs:attribute name="layout_weight">
     <xs:annotation>
-      <xs:documentation>Positions the start edge of this view to the end of the given anchor view ID. Accommodates start margin of this view and end margin of anchor view.</xs:documentation>
-    </xs:annotation>
-    <xs:simpleType>
-      <xs:union memberTypes="xs:string">
-        <xs:simpleType>
-          <xs:restriction base="xs:string" />
-        </xs:simpleType>
-      </xs:union>
-    </xs:simpleType>
-  </xs:attribute>
-  <xs:attribute name="layout_toLeftOf">
-    <xs:annotation>
-      <xs:documentation>Positions the right edge of this view to the left of the given anchor view ID. Accommodates right margin of this view and left margin of anchor view.</xs:documentation>
-    </xs:annotation>
-    <xs:simpleType>
-      <xs:union memberTypes="xs:string">
-        <xs:simpleType>
-          <xs:restriction base="xs:string" />
-        </xs:simpleType>
-      </xs:union>
-    </xs:simpleType>
-  </xs:attribute>
-  <xs:attribute name="layout_toRightOf">
-    <xs:annotation>
-      <xs:documentation>Positions the left edge of this view to the right of the given anchor view ID. Accommodates left margin of this view and right margin of anchor view.</xs:documentation>
-    </xs:annotation>
-    <xs:simpleType>
-      <xs:union memberTypes="xs:string">
-        <xs:simpleType>
-          <xs:restriction base="xs:string" />
-        </xs:simpleType>
-      </xs:union>
-    </xs:simpleType>
-  </xs:attribute>
-  <xs:attribute name="layout_toStartOf">
-    <xs:annotation>
-      <xs:documentation>Positions the end edge of this view to the start of the given anchor view ID. Accommodates end margin of this view and start margin of anchor view.</xs:documentation>
+      <xs:documentation></xs:documentation>
     </xs:annotation>
     <xs:simpleType>
       <xs:union memberTypes="xs:string">
@@ -6014,6 +5748,35 @@
             <xs:enumeration value="@drawable/icon" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
+            <xs:enumeration value="@drawable/textbubble" />
+            <xs:enumeration value="@android:color/background_dark" />
+            <xs:enumeration value="@android:color/background_light" />
+            <xs:enumeration value="@android:color/black" />
+            <xs:enumeration value="@android:color/darker_gray" />
+            <xs:enumeration value="@android:color/holo_blue_bright" />
+            <xs:enumeration value="@android:color/holo_blue_dark" />
+            <xs:enumeration value="@android:color/holo_blue_light" />
+            <xs:enumeration value="@android:color/holo_green_dark" />
+            <xs:enumeration value="@android:color/holo_green_light" />
+            <xs:enumeration value="@android:color/holo_orange_dark" />
+            <xs:enumeration value="@android:color/holo_orange_light" />
+            <xs:enumeration value="@android:color/holo_purple" />
+            <xs:enumeration value="@android:color/holo_red_dark" />
+            <xs:enumeration value="@android:color/holo_red_light" />
+            <xs:enumeration value="@android:color/primary_text_dark" />
+            <xs:enumeration value="@android:color/primary_text_dark_nodisable" />
+            <xs:enumeration value="@android:color/primary_text_light" />
+            <xs:enumeration value="@android:color/primary_text_light_nodisable" />
+            <xs:enumeration value="@android:color/secondary_text_dark" />
+            <xs:enumeration value="@android:color/secondary_text_dark_nodisable" />
+            <xs:enumeration value="@android:color/secondary_text_light" />
+            <xs:enumeration value="@android:color/secondary_text_light_nodisable" />
+            <xs:enumeration value="@android:color/tab_indicator_text" />
+            <xs:enumeration value="@android:color/tertiary_text_dark" />
+            <xs:enumeration value="@android:color/tertiary_text_light" />
+            <xs:enumeration value="@android:color/transparent" />
+            <xs:enumeration value="@android:color/white" />
+            <xs:enumeration value="@android:color/widget_edittext_dark" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -6191,6 +5954,7 @@
             <xs:enumeration value="?android:attr/accessibilityFocusedDrawable" />
             <xs:enumeration value="?android:attr/actionBarDivider" />
             <xs:enumeration value="?android:attr/actionBarItemBackground" />
+            <xs:enumeration value="?android:attr/actionMenuTextColor" />
             <xs:enumeration value="?android:attr/actionModeBackground" />
             <xs:enumeration value="?android:attr/actionModeCloseDrawable" />
             <xs:enumeration value="?android:attr/actionModeCopyDrawable" />
@@ -6203,17 +5967,40 @@
             <xs:enumeration value="?android:attr/actionModeWebSearchDrawable" />
             <xs:enumeration value="?android:attr/activatedBackgroundIndicator" />
             <xs:enumeration value="?android:attr/alertDialogIcon" />
+            <xs:enumeration value="?android:attr/colorAccent" />
+            <xs:enumeration value="?android:attr/colorActivatedHighlight" />
+            <xs:enumeration value="?android:attr/colorBackground" />
+            <xs:enumeration value="?android:attr/colorBackgroundCacheHint" />
+            <xs:enumeration value="?android:attr/colorBackgroundFloating" />
+            <xs:enumeration value="?android:attr/colorButtonNormal" />
+            <xs:enumeration value="?android:attr/colorControlActivated" />
+            <xs:enumeration value="?android:attr/colorControlHighlight" />
+            <xs:enumeration value="?android:attr/colorControlNormal" />
+            <xs:enumeration value="?android:attr/colorEdgeEffect" />
+            <xs:enumeration value="?android:attr/colorFocusedHighlight" />
+            <xs:enumeration value="?android:attr/colorForeground" />
+            <xs:enumeration value="?android:attr/colorForegroundInverse" />
+            <xs:enumeration value="?android:attr/colorLongPressedHighlight" />
+            <xs:enumeration value="?android:attr/colorMultiSelectHighlight" />
+            <xs:enumeration value="?android:attr/colorPressedHighlight" />
+            <xs:enumeration value="?android:attr/colorPrimary" />
+            <xs:enumeration value="?android:attr/colorPrimaryDark" />
+            <xs:enumeration value="?android:attr/colorSwitchThumbNormal" />
+            <xs:enumeration value="?android:attr/detailsElementBackground" />
             <xs:enumeration value="?android:attr/dividerHorizontal" />
             <xs:enumeration value="?android:attr/dividerVertical" />
             <xs:enumeration value="?android:attr/editTextBackground" />
+            <xs:enumeration value="?android:attr/editTextColor" />
             <xs:enumeration value="?android:attr/errorMessageAboveBackground" />
             <xs:enumeration value="?android:attr/errorMessageBackground" />
             <xs:enumeration value="?android:attr/fastScrollPreviewBackgroundLeft" />
             <xs:enumeration value="?android:attr/fastScrollPreviewBackgroundRight" />
+            <xs:enumeration value="?android:attr/fastScrollTextColor" />
             <xs:enumeration value="?android:attr/fastScrollThumbDrawable" />
             <xs:enumeration value="?android:attr/fastScrollTrackDrawable" />
             <xs:enumeration value="?android:attr/fingerprintAuthDrawable" />
             <xs:enumeration value="?android:attr/floatingToolbarCloseDrawable" />
+            <xs:enumeration value="?android:attr/floatingToolbarForegroundColor" />
             <xs:enumeration value="?android:attr/floatingToolbarItemBackgroundBorderlessDrawable" />
             <xs:enumeration value="?android:attr/floatingToolbarItemBackgroundDrawable" />
             <xs:enumeration value="?android:attr/floatingToolbarOpenDrawable" />
@@ -6224,16 +6011,42 @@
             <xs:enumeration value="?android:attr/listChoiceIndicatorMultiple" />
             <xs:enumeration value="?android:attr/listChoiceIndicatorSingle" />
             <xs:enumeration value="?android:attr/listDivider" />
+            <xs:enumeration value="?android:attr/panelBackground" />
+            <xs:enumeration value="?android:attr/panelColorBackground" />
+            <xs:enumeration value="?android:attr/panelColorForeground" />
+            <xs:enumeration value="?android:attr/panelFullBackground" />
             <xs:enumeration value="?android:attr/panelFullBackground" />
             <xs:enumeration value="?android:attr/quickContactBadgeOverlay" />
+            <xs:enumeration value="?android:attr/searchWidgetCorpusItemBackground" />
             <xs:enumeration value="?android:attr/selectableItemBackground" />
             <xs:enumeration value="?android:attr/selectableItemBackgroundBorderless" />
             <xs:enumeration value="?android:attr/textCheckMark" />
             <xs:enumeration value="?android:attr/textCheckMarkInverse" />
+            <xs:enumeration value="?android:attr/textColorAlertDialogListItem" />
+            <xs:enumeration value="?android:attr/textColorHighlightInverse" />
+            <xs:enumeration value="?android:attr/textColorHintInverse" />
+            <xs:enumeration value="?android:attr/textColorLinkInverse" />
+            <xs:enumeration value="?android:attr/textColorPrimary" />
+            <xs:enumeration value="?android:attr/textColorPrimaryActivated" />
+            <xs:enumeration value="?android:attr/textColorPrimaryDisableOnly" />
+            <xs:enumeration value="?android:attr/textColorPrimaryInverse" />
+            <xs:enumeration value="?android:attr/textColorPrimaryInverseDisableOnly" />
+            <xs:enumeration value="?android:attr/textColorPrimaryInverseNoDisable" />
+            <xs:enumeration value="?android:attr/textColorPrimaryNoDisable" />
+            <xs:enumeration value="?android:attr/textColorSecondary" />
+            <xs:enumeration value="?android:attr/textColorSecondaryActivated" />
+            <xs:enumeration value="?android:attr/textColorSecondaryInverse" />
+            <xs:enumeration value="?android:attr/textColorSecondaryInverseNoDisable" />
+            <xs:enumeration value="?android:attr/textColorSecondaryNoDisable" />
+            <xs:enumeration value="?android:attr/textColorTertiary" />
+            <xs:enumeration value="?android:attr/textColorTertiaryInverse" />
             <xs:enumeration value="?android:attr/textSelectHandle" />
             <xs:enumeration value="?android:attr/textSelectHandleLeft" />
             <xs:enumeration value="?android:attr/textSelectHandleRight" />
+            <xs:enumeration value="?android:attr/textUnderlineColor" />
             <xs:enumeration value="?android:attr/toastFrameBackground" />
+            <xs:enumeration value="?android:attr/windowBackground" />
+            <xs:enumeration value="?android:attr/windowBackgroundFallback" />
           </xs:restriction>
         </xs:simpleType>
       </xs:union>

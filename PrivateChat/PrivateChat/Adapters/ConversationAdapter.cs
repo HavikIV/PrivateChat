@@ -74,7 +74,10 @@ namespace PrivateChat.Adapters
 
         public override View GetView(int position, View convertView, ViewGroup parent)
         {
+            // ?? returns convertView if it's not null, otherwise it returns the newly created view
             var view = convertView ?? activity.LayoutInflater.Inflate(Resource.Layout.ConversationListItem, parent, false);
+
+            // Fill in the items of the view
             var groupName = view.FindViewById<TextView>(Resource.Id.GroupName);
             var lastMessage = view.FindViewById<TextView>(Resource.Id.LastMessage);
             var totalMessages = view.FindViewById<TextView>(Resource.Id.TotalMessages);

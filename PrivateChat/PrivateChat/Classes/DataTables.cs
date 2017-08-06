@@ -29,6 +29,7 @@ namespace PrivateChat.Tables
         public string TimeStamp { get; set; } // Set to the current time stamp using GetTimeStamp(DataTime.Now)
         public string Owner { get; set; }
         public string Message { get; set; }
+        public int ServerID { get; set; }
         public int ConversationID { get; set; }
     }
 

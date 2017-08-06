@@ -135,6 +135,9 @@ namespace PrivateChat
             // Pass which server's conversations need to be displayed
             intent.PutExtra("ServerID", adapter.servers.ElementAt(e.Position).ID);
 
+            // Pass the name of the selected server
+            intent.PutExtra("ServerName", adapter.servers.ElementAt(e.Position).Name);
+
             // Start the conversation activity
             StartActivity(intent);
         }
@@ -165,14 +168,37 @@ namespace PrivateChat
         {
             if (deletePosition != -1)
             {
+                // Delete from the database
+                var ser = adapter.servers.ElementAt(deletePosition);
+                var query = connection.Table<Server>().Where(v => v.Name.Equals(ser.Name));
+
+                // Since the Server is being deleted, all of its Conversations and their Messages need to be deleted too
+                var conversationQuery = connection.Table<Conversation>().Where(v => v.ServerID.Equals(ser.ID));
+
+                // Delete should happen in the background after it FirstAsync finishes in the background
+                query.FirstAsync().ContinueWith(t => { connection.DeleteAsync(t.Result); });
+                conversationQuery.ToListAsync().ContinueWith(t => {
+                    foreach (var c in t.Result)
+                    {
+                        // For each of the Conversations, need to delete its Messages
+                        // Grab its Messages for deletion
+                        var messageQuery = connection.Table<Messages>().Where(v => v.ServerID.Equals(c.ServerID) && v.ConversationID.Equals(c.ID));
+                        messageQuery.ToListAsync().ContinueWith(x => {
+                            foreach (var m in x.Result)
+                            {
+                                // Delete the Message from the database
+                                connection.DeleteAsync(m);
+                            }
+                        });
+
+                        // Delete the Conversation from the database
+                        connection.DeleteAsync(c);
+                    }
+                });
+
                 // Delete the server from the adapter
                 adapter.servers.RemoveAt(deletePosition);
                 adapter.NotifyDataSetChanged();
-
-                // Delete from the database
-                var query = connection.Table<Conversation>().Where(v => v.ID.Equals(deletePosition));
-                // Don't need to wait for this call to finish, let it happen in the background
-                query.FirstAsync().ContinueWith(t => { connection.DeleteAsync(t.Result); });
 
                 deletePosition = -1;
             }

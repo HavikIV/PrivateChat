@@ -79,7 +79,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Activities\ConversationActivity.cs" />
-    <Compile Include="Activities\MessageActivity.cs" />
+    <Compile Include="Activities\MessagesActivity.cs" />
+    <Compile Include="Adapters\MessagesAdapter.cs" />
     <Compile Include="Classes\client.cs" />
     <Compile Include="Activities\MainActivity.cs" />
     <Compile Include="Activities\registerActivity.cs" />
@@ -165,6 +166,12 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\menu\ConversationActionBar.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\MessagesListItem.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\TextBubble.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

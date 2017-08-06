@@ -24,7 +24,7 @@ namespace PrivateChat
     {
         private readonly Context _context;
         private ListView _list;
-        private server _server;
+        private Server _server;
         private ServerAdapter _adapter;
         private string mode;
         private SQLiteAsyncConnection connection;
@@ -34,7 +34,7 @@ namespace PrivateChat
         {
             _context = context;
             _list = list;
-            _server = new server();
+            _server = new Server();
             _adapter = ad;
             mode = "Add";
             connection = conn;
@@ -78,13 +78,13 @@ namespace PrivateChat
                 EditText octet4 = (EditText)view.FindViewById(Resource.Id.ipAddress4);
                 EditText port = (EditText)view.FindViewById(Resource.Id.portNumber);
 
-                name.Text = _server.name;
-                string[] octets = _server.ipAddress.Split('.');
+                name.Text = _server.Name;
+                string[] octets = _server.IPAddress.Split('.');
                 octet1.Text = octets[0];
                 octet2.Text = octets[1];
                 octet3.Text = octets[2];
                 octet4.Text = octets[3];
-                port.Text = _server.port.ToString();
+                port.Text = _server.Port.ToString();
 
                 dialog.SetTitle("Edit Server");
                 dialog.SetView(view);
@@ -116,21 +116,26 @@ namespace PrivateChat
                 // Not a valid IP address
                 Toast.MakeText(_context, "The IP address entered isn't a valid IP address. Please check again and try again.", ToastLength.Long).Show();
             }
+            else if (!UniqueServerName(name.Text))
+            {
+                // Not a unique name for the server
+                Toast.MakeText(_context, "The Name entered is already in use. Please try again.", ToastLength.Long).Show();
+            }
             else
             {
                 // All of the entries were entered by the User, i.e. none were left empty
 
                 // Updating the server object
 
-                _server.name = name.Text;
-                _server.ipAddress = octet1.Text + "." + octet2.Text + "." + octet3.Text + "." + octet4.Text;
+                _server.Name = name.Text;
+                _server.IPAddress = octet1.Text + "." + octet2.Text + "." + octet3.Text + "." + octet4.Text;
                 // Try to parse the port number provided, The highest port number that is 65535, and the highest value of unsigned Int16 is 65536,
                 // TryParse will catch the thrown exception if the user enter a port number that's bigger than 65535.
                 short p;
                 if (Int16.TryParse(port.Text, out p))
                 {
                     // TryParse was successful so set the port number
-                    _server.port = p;
+                    _server.Port = p;
                 }
 
                 // Remove the old server from the List and replace it with the new instant of the server
@@ -164,21 +169,26 @@ namespace PrivateChat
                 // Not a valid IP address
                 Toast.MakeText(_context, "The IP address entered isn't a valid IP address. Please check again and try again.", ToastLength.Long).Show();
             }
+            else if (!UniqueServerName(name.Text))
+            {
+                // Not a unique name for the server
+                Toast.MakeText(_context, "The Name entered is already in use. Please try again.", ToastLength.Long).Show();
+            }
             else
             {
                 // All of the entries were entered by the User, i.e. none were left empty
 
                 // Populate the _server object using the input from the user
                 _server.ID = _adapter.servers.Count;    // The ID of the newly added server is the current count of the list of servers.
-                _server.name = name.Text;
-                _server.ipAddress = octet1.Text + "." + octet2.Text + "." + octet3.Text + "." + octet4.Text;
+                _server.Name = name.Text;
+                _server.IPAddress = octet1.Text + "." + octet2.Text + "." + octet3.Text + "." + octet4.Text;
                 // Try to parse the port number provided, The highest port number that is 65535, and the highest value of unsigned Int16 is 65536,
                 // TryParse will catch the thrown exception if the user enter a port number that's bigger than 65535.
                 short p;
                 if (Int16.TryParse(port.Text, out p))
                 {
                     // TryParse was successful so set the port number
-                    _server.port = p;
+                    _server.Port = p;
                 }
 
                 // Add the server to the ListView
@@ -232,6 +242,19 @@ namespace PrivateChat
                 return true;
             }
             return false;
+        }
+
+        // Check to see if the provided server name is unique
+        private bool UniqueServerName(string s)
+        {
+            foreach (var ser in _adapter.servers)
+            {
+                if (ser.Name == s)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }
