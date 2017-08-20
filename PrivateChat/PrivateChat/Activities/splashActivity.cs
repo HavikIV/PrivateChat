@@ -35,6 +35,10 @@ namespace PrivateChat
                 intent = new Intent(this, typeof(registerActivity));
             }
 
+            // Start the SocketService
+            Intent serviceToStart = new Intent(this, typeof(SocketService));
+            StartService(serviceToStart);
+
             // Start the activity
             StartActivity(intent);
         }

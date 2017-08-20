@@ -66,7 +66,6 @@ e:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\Pri
 e:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\obj\Debug\res\layout\messages.xml
 e:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\obj\Debug\res\layout\main.xml
 e:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\obj\Debug\res\values\strings.xml
-e:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\obj\Debug\res\drawable\icon.png
 e:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\obj\Debug\res\values\styles.xml
 e:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\obj\Debug\res\drawable\roundbutton.xml
 e:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\obj\Debug\res\drawable\ic_add.png
@@ -86,3 +85,18 @@ e:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\Pri
 e:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\obj\Debug\android\assets\SQLite-net.dll.mdb
 e:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\obj\Debug\res\layout\messageslistitem.xml
 e:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\obj\Debug\res\drawable\textbubble.png
+E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\obj\Debug\res\drawable-hdpi\icon.png
+E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\obj\Debug\res\drawable-mdpi\icon.png
+E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\obj\Debug\res\drawable-xhdpi\icon.png
+E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\obj\Debug\res\drawable-xxhdpi\icon.png
+E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\obj\Debug\res\drawable-xxxhdpi\icon.png
+E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\obj\Debug\res\drawable-hdpi\ic_delete.png
+E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\obj\Debug\res\drawable-mdpi\ic_delete.png
+E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\obj\Debug\res\drawable-xhdpi\ic_delete.png
+E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\obj\Debug\res\drawable-xxhdpi\ic_delete.png
+E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\obj\Debug\res\drawable-xxxhdpi\ic_delete.png
+E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\obj\Debug\res\drawable-hdpi\ic_edit.png
+E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\obj\Debug\res\drawable-mdpi\ic_edit.png
+E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\obj\Debug\res\drawable-xhdpi\ic_edit.png
+E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\obj\Debug\res\drawable-xxhdpi\ic_edit.png
+E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\obj\Debug\res\drawable-xxxhdpi\ic_edit.png

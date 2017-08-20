@@ -240,12 +240,17 @@ namespace PrivateChat
         {
             base.OnStart();
 
-            //if (serviceConnection == null)
-            //{
-            //    this.serviceConnection = new SocketServiceConnection(this);
-            //}
+            if (serviceConnection == null)
+            {
+                this.serviceConnection = new SocketServiceConnection(this);
+            }
 
+            // Moving the code to start the service to the splash activity, since it is guaranteed to only run once
+            // when the user starts the application, whereas if it started it here, it will be called everytime user comes back
+            // to this activity.
             //Intent serviceToStart = new Intent(this, typeof(SocketService));
+            //StartService(serviceToStart);
+
             //BindService(serviceToStart, this.serviceConnection, Bind.AutoCreate);
         }
 

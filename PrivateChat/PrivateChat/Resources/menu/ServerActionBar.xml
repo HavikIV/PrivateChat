@@ -4,11 +4,11 @@
   <item android:id="@+id/actionEdit"
         android:title="Edit"
         android:showAsAction="always"
-        android:icon="@drawable/Icon" />
+        android:icon="@drawable/ic_Edit" />
   <item android:id="@+id/actionDelete"
         android:title="Delete"
         android:showAsAction="always"
-        android:icon="@drawable/ic_add" />
+        android:icon="@drawable/ic_Delete" />
 </menu>
 
 <!-- Code to implement into Activity:

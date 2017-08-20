@@ -24,6 +24,7 @@ namespace PrivateChat
         private string PhoneNumber;
         private MessagesAdapter adapter;
         private SQLiteAsyncConnection connection;
+        private SocketServiceConnection serviceConnection;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -108,6 +109,11 @@ namespace PrivateChat
 
             var send = FindViewById<Button>(Resource.Id.sendBtn);
             send.Click += SendClick;
+
+            // Bind to the SocketService
+            serviceConnection = new SocketServiceConnection(this);
+            Intent service = new Intent(this, typeof(SocketService));
+            BindService(service, serviceConnection, Bind.AutoCreate);
         }
 
         private void SendClick(object sender, EventArgs e)
@@ -171,6 +177,9 @@ namespace PrivateChat
                     }
                 }).Wait();
 
+                // Let's send out the message before moving on
+                serviceConnection.Binder.Service.SendMessage(message.Text, sendTo.Text, ServerID);
+
                 // Since if a Conversation already exists then it's ID would have been passed within its Intent
                 if (ConversationID != -1)
                 {
@@ -232,6 +241,14 @@ namespace PrivateChat
                 // Clear out the TextView for the next Message from the user.
                 message.Text = "";
             }
+        }
+
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+
+            // Unbind to the Service
+            UnbindService(serviceConnection);
         }
     }
 }

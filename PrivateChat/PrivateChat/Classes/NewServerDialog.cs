@@ -28,6 +28,7 @@ namespace PrivateChat
         private ServerAdapter _adapter;
         private string mode;
         private SQLiteAsyncConnection connection;
+        private SocketServiceConnection serviceConnection;
 
         // constructor
         public NewServerDialog(Context context, ref ListView list, ref ServerAdapter ad, SQLiteAsyncConnection conn)
@@ -38,6 +39,11 @@ namespace PrivateChat
             _adapter = ad;
             mode = "Add";
             connection = conn;
+
+            // Bind to SocketService
+            serviceConnection = new SocketServiceConnection((MainActivity)_context);
+            Intent service = new Intent(_context, typeof(SocketService));
+            _context.BindService(service, serviceConnection, Bind.AutoCreate);
         }
 
         public NewServerDialog(Context context, ref ListView list, ref ServerAdapter ad, string s, int p)
@@ -47,6 +53,11 @@ namespace PrivateChat
             _adapter = ad;
             _server = _adapter.servers.ElementAt(p);
             mode = s;
+
+            // Bind to SocketService
+            serviceConnection = new SocketServiceConnection((MainActivity)_context);
+            Intent service = new Intent(_context, typeof(SocketService));
+            _context.BindService(service, serviceConnection, Bind.AutoCreate);
         }
 
         public override Dialog OnCreateDialog(Bundle savedState)
@@ -138,12 +149,26 @@ namespace PrivateChat
                     _server.Port = p;
                 }
 
-                // Remove the old server from the List and replace it with the new instant of the server
-                _adapter.servers.RemoveAt(_server.ID);
-                _adapter.servers.Insert(_server.ID, _server);
+                // Before the server information is updated, need to make sure that we're able to connect to the server with this new information
+                if (serviceConnection.Binder.Service.ConnectAndAdd(_server))
+                {
+                    // The attempt was successful
+                    // Remove the old server from the List and replace it with the new instant of the server
+                    _adapter.servers.RemoveAt(_server.ID);
+                    _adapter.servers.Insert(_server.ID, _server);
 
-                // Notify the adapter that there were changes made.
-                _adapter.NotifyDataSetChanged();
+                    // Notify the adapter that there were changes made.
+                    _adapter.NotifyDataSetChanged();
+
+                    // Update the entry in the database too
+                    var qeury = connection.Table<Server>().Where(v => v.Name.Equals(_server.Name));
+                    qeury.FirstAsync().ContinueWith(t => { connection.UpdateAsync(t.Result); });
+                }
+                else
+                {
+                    // The attempt failed, so inform the user of the failure
+                    Toast.MakeText(_context, "Failed to connect to the server with the new information. Please check and try again later.", ToastLength.Long).Show();
+                }
             }
         }
 
@@ -191,25 +216,38 @@ namespace PrivateChat
                     _server.Port = p;
                 }
 
-                // Add the server to the ListView
-                _adapter.servers.Add(_server);
-                // Notify the adapter that there were changes made.
-                _adapter.NotifyDataSetChanged();
-
-                // Adding the server to the database
-                Server testServer = new Server();
-                testServer.Name = name.Text;
-                testServer.IPAddress = octet1.Text + "." + octet2.Text + "." + octet3.Text + "." + octet4.Text;
-                testServer.Port = p;
-
-                try
+                // Check to see if we can connect to the server with the provided information
+                if (serviceConnection.Binder.Service.ConnectAndAdd(_server))
                 {
-                    connection.InsertAsync(testServer);
-                    Toast.MakeText(_context, "Added a Server to the database", ToastLength.Long).Show();
+                    // Was able to connect to the server, so continue doing the necessary work
+
+                    // Add the server to the ListView
+                    _adapter.servers.Add(_server);
+                    // Notify the adapter that there were changes made.
+                    _adapter.NotifyDataSetChanged();
+
+                    // UPDATE: don't need the following code anymore as I switch to using Server class completely, instead of the server struct 
+                    //Server testServer = new Server();
+                    //testServer.Name = name.Text;
+                    //testServer.IPAddress = octet1.Text + "." + octet2.Text + "." + octet3.Text + "." + octet4.Text;
+                    //testServer.Port = p;
+
+                    try
+                    {
+                        // Adding the server to the database
+                        connection.InsertAsync(_server);
+                        Toast.MakeText(_context, "Added a Server to the database", ToastLength.Long).Show();
+                    }
+                    catch (SQLiteException ex)
+                    {
+                        Toast.MakeText(_context, "There was an exception " + ex, ToastLength.Long).Show();
+                    }
                 }
-                catch (SQLiteException ex)
+                else
                 {
-                    Toast.MakeText(_context, "There was an exception " + ex, ToastLength.Long).Show();
+                    // Wasn't able to connect to the server, meaning that the provided information isn't correct or the server is down
+                    // Inform the User that attempt was a failure, and they should check and try again later
+                    Toast.MakeText(_context, "Wasn't able to connect to the server with the provided information. Please check information and try again later.", ToastLength.Long).Show();
                 }
             }
         }
@@ -255,6 +293,14 @@ namespace PrivateChat
                 }
             }
             return true;
+        }
+
+        public override void OnDestroy()
+        {
+            base.OnDestroy();
+
+            // Unbind from the service
+            _context.UnbindService(serviceConnection);
         }
     }
 }

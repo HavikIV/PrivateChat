@@ -25,11 +25,11 @@ public class SocketServiceConnection
 			mono.android.TypeManager.Activate ("PrivateChat.SocketServiceConnection, PrivateChat, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "", this, new java.lang.Object[] {  });
 	}
 
-	public SocketServiceConnection (md52520702dc6f751a40a8e5f2fc3ba5c79.MainActivity p0) throws java.lang.Throwable
+	public SocketServiceConnection (android.content.Context p0) throws java.lang.Throwable
 	{
 		super ();
 		if (getClass () == SocketServiceConnection.class)
-			mono.android.TypeManager.Activate ("PrivateChat.SocketServiceConnection, PrivateChat, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "PrivateChat.MainActivity, PrivateChat, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", this, new java.lang.Object[] { p0 });
+			mono.android.TypeManager.Activate ("PrivateChat.SocketServiceConnection, PrivateChat, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "Android.Content.Context, Mono.Android, Version=0.0.0.0, Culture=neutral, PublicKeyToken=84e04ff9cfb79065", this, new java.lang.Object[] { p0 });
 	}
 
 

@@ -16,9 +16,9 @@ namespace PrivateChat
     {
         static readonly string TAF = typeof(SocketServiceConnection).FullName;
 
-        MainActivity mainActivity;
+        Context mainActivity;
         
-        public SocketServiceConnection(MainActivity activity)
+        public SocketServiceConnection(Context activity)
         {
             IsConnected = false;
             Binder = null;
@@ -32,25 +32,12 @@ namespace PrivateChat
         {
             Binder = service as SocketBinder;
             IsConnected = this.Binder != null;
-
-            if (IsConnected)
-            {
-
-            }
-            else
-            {
-
-            }
-
         }
 
         public void OnServiceDisconnected(ComponentName name)
         {
             IsConnected = false;
             Binder = null;
-
         }
-
-
     }
 }

@@ -5,7 +5,7 @@
   <xs:import schemaLocation="schemas.android.com.tools.xsd" namespace="http://schemas.android.com/tools" />
   <xs:annotation>
     <xs:documentation>v23</xs:documentation>
-    <xs:documentation>8/4/2017 5:31:47 PM</xs:documentation>
+    <xs:documentation>8/18/2017 2:28:43 PM</xs:documentation>
   </xs:annotation>
   <xs:group name="any-view">
     <xs:choice>
@@ -319,10 +319,31 @@
     <xs:attribute ref="android:foregroundTintMode" />
     <xs:attribute ref="android:scrollIndicators" />
     <xs:attribute ref="tools:visibility" />
+    <xs:attribute ref="android:layout_toLeftOf" />
+    <xs:attribute ref="android:layout_toRightOf" />
+    <xs:attribute ref="android:layout_above" />
+    <xs:attribute ref="android:layout_below" />
+    <xs:attribute ref="android:layout_alignBaseline" />
+    <xs:attribute ref="android:layout_alignLeft" />
+    <xs:attribute ref="android:layout_alignTop" />
+    <xs:attribute ref="android:layout_alignRight" />
+    <xs:attribute ref="android:layout_alignBottom" />
+    <xs:attribute ref="android:layout_alignParentLeft" />
+    <xs:attribute ref="android:layout_alignParentTop" />
+    <xs:attribute ref="android:layout_alignParentRight" />
+    <xs:attribute ref="android:layout_alignParentBottom" />
+    <xs:attribute ref="android:layout_centerInParent" />
+    <xs:attribute ref="android:layout_centerHorizontal" />
+    <xs:attribute ref="android:layout_centerVertical" />
+    <xs:attribute ref="android:layout_alignWithParentIfMissing" />
+    <xs:attribute ref="android:layout_toStartOf" />
+    <xs:attribute ref="android:layout_toEndOf" />
+    <xs:attribute ref="android:layout_alignStart" />
+    <xs:attribute ref="android:layout_alignEnd" />
+    <xs:attribute ref="android:layout_alignParentStart" />
+    <xs:attribute ref="android:layout_alignParentEnd" />
     <xs:attribute ref="android:layout_width" />
     <xs:attribute ref="android:layout_height" />
-    <xs:attribute ref="android:layout_weight" />
-    <xs:attribute ref="android:layout_gravity" />
     <xs:attribute ref="android:layout_margin" />
     <xs:attribute ref="android:layout_marginLeft" />
     <xs:attribute ref="android:layout_marginTop" />
@@ -1386,10 +1407,31 @@
     <xs:attribute ref="android:fragmentAllowEnterTransitionOverlap" />
     <xs:attribute ref="android:fragmentAllowReturnTransitionOverlap" />
     <xs:attribute ref="tools:layout" />
+    <xs:attribute ref="android:layout_toLeftOf" />
+    <xs:attribute ref="android:layout_toRightOf" />
+    <xs:attribute ref="android:layout_above" />
+    <xs:attribute ref="android:layout_below" />
+    <xs:attribute ref="android:layout_alignBaseline" />
+    <xs:attribute ref="android:layout_alignLeft" />
+    <xs:attribute ref="android:layout_alignTop" />
+    <xs:attribute ref="android:layout_alignRight" />
+    <xs:attribute ref="android:layout_alignBottom" />
+    <xs:attribute ref="android:layout_alignParentLeft" />
+    <xs:attribute ref="android:layout_alignParentTop" />
+    <xs:attribute ref="android:layout_alignParentRight" />
+    <xs:attribute ref="android:layout_alignParentBottom" />
+    <xs:attribute ref="android:layout_centerInParent" />
+    <xs:attribute ref="android:layout_centerHorizontal" />
+    <xs:attribute ref="android:layout_centerVertical" />
+    <xs:attribute ref="android:layout_alignWithParentIfMissing" />
+    <xs:attribute ref="android:layout_toStartOf" />
+    <xs:attribute ref="android:layout_toEndOf" />
+    <xs:attribute ref="android:layout_alignStart" />
+    <xs:attribute ref="android:layout_alignEnd" />
+    <xs:attribute ref="android:layout_alignParentStart" />
+    <xs:attribute ref="android:layout_alignParentEnd" />
     <xs:attribute ref="android:layout_width" />
     <xs:attribute ref="android:layout_height" />
-    <xs:attribute ref="android:layout_weight" />
-    <xs:attribute ref="android:layout_gravity" />
     <xs:attribute ref="android:layout_margin" />
     <xs:attribute ref="android:layout_marginLeft" />
     <xs:attribute ref="android:layout_marginTop" />
@@ -1406,10 +1448,7 @@
   </xs:element>
   <xs:complexType name="com.refractored.fab.ObservableScrollView">
     <xs:complexContent mixed="false">
-      <xs:extension base="ScrollView">
-        <xs:attribute ref="android:pointerIcon" />
-        <xs:attribute ref="android:forceHasOverlappingRendering" />
-      </xs:extension>
+      <xs:extension base="ScrollView" />
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="com.refractored.fab.FloatingActionButton" type="com.refractored.fab.FloatingActionButton">
@@ -1436,10 +1475,7 @@
   </xs:element>
   <xs:complexType name="android.support.v4.widget.SwipeRefreshLayout">
     <xs:complexContent mixed="false">
-      <xs:extension base="ViewGroup">
-        <xs:attribute ref="android:pointerIcon" />
-        <xs:attribute ref="android:forceHasOverlappingRendering" />
-      </xs:extension>
+      <xs:extension base="ViewGroup" />
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="android.support.v4.widget.SlidingPaneLayout" type="android.support.v4.widget.SlidingPaneLayout">
@@ -1449,10 +1485,7 @@
   </xs:element>
   <xs:complexType name="android.support.v4.widget.SlidingPaneLayout">
     <xs:complexContent mixed="false">
-      <xs:extension base="ViewGroup">
-        <xs:attribute ref="android:pointerIcon" />
-        <xs:attribute ref="android:forceHasOverlappingRendering" />
-      </xs:extension>
+      <xs:extension base="ViewGroup" />
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="android.support.v4.widget.DrawerLayout" type="android.support.v4.widget.DrawerLayout">
@@ -1464,8 +1497,6 @@
     <xs:complexContent mixed="false">
       <xs:extension base="ViewGroup">
         <xs:attribute ref="tools:openDrawer" />
-        <xs:attribute ref="android:pointerIcon" />
-        <xs:attribute ref="android:forceHasOverlappingRendering" />
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -1476,10 +1507,7 @@
   </xs:element>
   <xs:complexType name="android.support.v4.widget.ContentLoadingProgressBar">
     <xs:complexContent mixed="false">
-      <xs:extension base="ProgressBar">
-        <xs:attribute ref="android:pointerIcon" />
-        <xs:attribute ref="android:forceHasOverlappingRendering" />
-      </xs:extension>
+      <xs:extension base="ProgressBar" />
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="android.support.v4.view.ViewPager" type="android.support.v4.view.ViewPager">
@@ -1489,10 +1517,7 @@
   </xs:element>
   <xs:complexType name="android.support.v4.view.ViewPager">
     <xs:complexContent mixed="false">
-      <xs:extension base="ViewGroup">
-        <xs:attribute ref="android:pointerIcon" />
-        <xs:attribute ref="android:forceHasOverlappingRendering" />
-      </xs:extension>
+      <xs:extension base="ViewGroup" />
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="android.support.v4.view.PagerTitleStrip" type="android.support.v4.view.PagerTitleStrip">
@@ -1502,10 +1527,7 @@
   </xs:element>
   <xs:complexType name="android.support.v4.view.PagerTitleStrip">
     <xs:complexContent mixed="false">
-      <xs:extension base="ViewGroup">
-        <xs:attribute ref="android:pointerIcon" />
-        <xs:attribute ref="android:forceHasOverlappingRendering" />
-      </xs:extension>
+      <xs:extension base="ViewGroup" />
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="android.support.v4.view.PagerTabStrip" type="android.support.v4.view.PagerTabStrip">
@@ -1515,10 +1537,7 @@
   </xs:element>
   <xs:complexType name="android.support.v4.view.PagerTabStrip">
     <xs:complexContent mixed="false">
-      <xs:extension base="ViewGroup">
-        <xs:attribute ref="android:pointerIcon" />
-        <xs:attribute ref="android:forceHasOverlappingRendering" />
-      </xs:extension>
+      <xs:extension base="ViewGroup" />
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="android.support.v4.app.FragmentTabHost" type="android.support.v4.app.FragmentTabHost">
@@ -1528,10 +1547,7 @@
   </xs:element>
   <xs:complexType name="android.support.v4.app.FragmentTabHost">
     <xs:complexContent mixed="false">
-      <xs:extension base="TabHost">
-        <xs:attribute ref="android:pointerIcon" />
-        <xs:attribute ref="android:forceHasOverlappingRendering" />
-      </xs:extension>
+      <xs:extension base="TabHost" />
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="android.support.v7.widget.RecyclerView" type="android.support.v7.widget.RecyclerView">
@@ -1543,8 +1559,6 @@
     <xs:complexContent mixed="false">
       <xs:extension base="ViewGroup">
         <xs:attribute ref="tools:listitem" />
-        <xs:attribute ref="android:pointerIcon" />
-        <xs:attribute ref="android:forceHasOverlappingRendering" />
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>

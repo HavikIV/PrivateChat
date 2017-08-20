@@ -11,6 +11,7 @@ public class SocketService
 	static {
 		__md_methods = 
 			"n_onCreate:()V:GetOnCreateHandler\n" +
+			"n_onStartCommand:(Landroid/content/Intent;II)I:GetOnStartCommand_Landroid_content_Intent_IIHandler\n" +
 			"n_onBind:(Landroid/content/Intent;)Landroid/os/IBinder;:GetOnBind_Landroid_content_Intent_Handler\n" +
 			"n_onUnbind:(Landroid/content/Intent;)Z:GetOnUnbind_Landroid_content_Intent_Handler\n" +
 			"n_onDestroy:()V:GetOnDestroyHandler\n" +
@@ -33,6 +34,14 @@ public class SocketService
 	}
 
 	private native void n_onCreate ();
+
+
+	public int onStartCommand (android.content.Intent p0, int p1, int p2)
+	{
+		return n_onStartCommand (p0, p1, p2);
+	}
+
+	private native int n_onStartCommand (android.content.Intent p0, int p1, int p2);
 
 
 	public android.os.IBinder onBind (android.content.Intent p0)

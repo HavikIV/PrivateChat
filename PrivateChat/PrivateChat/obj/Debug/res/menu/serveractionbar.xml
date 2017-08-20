@@ -1,4 +1,4 @@
-<!--For all properties see: http://developer.android.com/guide/topics/resources/menu-resource.html--><menu xmlns:android="http://schemas.android.com/apk/res/android"><item android:id="@+id/actionEdit" android:title="Edit" android:showAsAction="always" android:icon="@drawable/icon" /><item android:id="@+id/actionDelete" android:title="Delete" android:showAsAction="always" android:icon="@drawable/ic_add" /></menu><!-- Code to implement into Activity:
+<!--For all properties see: http://developer.android.com/guide/topics/resources/menu-resource.html--><menu xmlns:android="http://schemas.android.com/apk/res/android"><item android:id="@+id/actionEdit" android:title="Edit" android:showAsAction="always" android:icon="@drawable/ic_edit" /><item android:id="@+id/actionDelete" android:title="Delete" android:showAsAction="always" android:icon="@drawable/ic_delete" /></menu><!-- Code to implement into Activity:
 
 Android.Widget.SearchView searchView;
 public override bool OnCreateOptionsMenu(IMenu menu)
