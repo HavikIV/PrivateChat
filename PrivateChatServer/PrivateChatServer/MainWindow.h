@@ -13,9 +13,24 @@
 #include <process.h>
 #include <string>
 #include <list>
+#include <msclr\marshal.h>
+#include "Client.h"
 
 #pragma comment(lib, "wininet")	// Need to let the linker know that the project needs the wininet library
 #pragma comment(lib, "Ws2_32.lib")
+
+#define DEFAULT_BUFLEN 512
+
+//class Client
+//{
+//	SOCKET sock;
+//	std::string name, phoneNo;
+//	char buffer[DEFAULT_BUFLEN];
+//	int recvbuflen;
+//public: Client(SOCKET s, std::string n, std::string p) : sock(s), name(n), phoneNo(p), recvbuflen(0) {}
+//};
+//
+//std::list<std::list<Client>> connections;
 
 namespace PrivateChatServer {
 
@@ -27,13 +42,6 @@ namespace PrivateChatServer {
 	using namespace System::Data;
 	using namespace System::Drawing;
 	using namespace System::Threading;
-
-	public class Client
-	{
-		SOCKET sock;
-		std::string name, phoneNo;
-		Client(SOCKET s, std::string n, std::string p) : sock(s), name(n), phoneNo(p) {}
-	};
 
 	// static unsigned __stdcall ListenThread(void* data)
 	//{
@@ -141,8 +149,12 @@ namespace PrivateChatServer {
 	private: System::Windows::Forms::Label^  lblPIP;
 
 
-	private: System::Windows::Forms::Label^  lblLIP;
+
 	private: System::Windows::Forms::TextBox^  Error;
+	private: System::Windows::Forms::TextBox^  txtIP;
+	private: System::Windows::Forms::Label^  lblPort;
+	private: System::Windows::Forms::TextBox^  txtPort;
+
 
 
 
@@ -165,8 +177,10 @@ namespace PrivateChatServer {
 			this->lblPublic = (gcnew System::Windows::Forms::Label());
 			this->lblLocal = (gcnew System::Windows::Forms::Label());
 			this->lblPIP = (gcnew System::Windows::Forms::Label());
-			this->lblLIP = (gcnew System::Windows::Forms::Label());
 			this->Error = (gcnew System::Windows::Forms::TextBox());
+			this->txtIP = (gcnew System::Windows::Forms::TextBox());
+			this->lblPort = (gcnew System::Windows::Forms::Label());
+			this->txtPort = (gcnew System::Windows::Forms::TextBox());
 			this->SuspendLayout();
 			// 
 			// btnStart
@@ -202,7 +216,7 @@ namespace PrivateChatServer {
 			// lblLocal
 			// 
 			this->lblLocal->AutoSize = true;
-			this->lblLocal->Location = System::Drawing::Point(114, 96);
+			this->lblLocal->Location = System::Drawing::Point(114, 71);
 			this->lblLocal->Name = L"lblLocal";
 			this->lblLocal->Size = System::Drawing::Size(90, 13);
 			this->lblLocal->TabIndex = 3;
@@ -211,20 +225,11 @@ namespace PrivateChatServer {
 			// lblPIP
 			// 
 			this->lblPIP->AutoSize = true;
-			this->lblPIP->Location = System::Drawing::Point(294, 39);
+			this->lblPIP->Location = System::Drawing::Point(294, 40);
 			this->lblPIP->Name = L"lblPIP";
 			this->lblPIP->Size = System::Drawing::Size(35, 13);
 			this->lblPIP->TabIndex = 4;
 			this->lblPIP->Text = L"label3";
-			// 
-			// lblLIP
-			// 
-			this->lblLIP->AutoSize = true;
-			this->lblLIP->Location = System::Drawing::Point(294, 95);
-			this->lblLIP->Name = L"lblLIP";
-			this->lblLIP->Size = System::Drawing::Size(35, 13);
-			this->lblLIP->TabIndex = 5;
-			this->lblLIP->Text = L"label4";
 			// 
 			// Error
 			// 
@@ -236,13 +241,38 @@ namespace PrivateChatServer {
 			this->Error->Size = System::Drawing::Size(488, 150);
 			this->Error->TabIndex = 7;
 			// 
+			// txtIP
+			// 
+			this->txtIP->Location = System::Drawing::Point(297, 68);
+			this->txtIP->Name = L"txtIP";
+			this->txtIP->Size = System::Drawing::Size(100, 20);
+			this->txtIP->TabIndex = 8;
+			// 
+			// lblPort
+			// 
+			this->lblPort->AutoSize = true;
+			this->lblPort->Location = System::Drawing::Point(114, 107);
+			this->lblPort->Name = L"lblPort";
+			this->lblPort->Size = System::Drawing::Size(69, 13);
+			this->lblPort->TabIndex = 9;
+			this->lblPort->Text = L"Port Number:";
+			// 
+			// txtPort
+			// 
+			this->txtPort->Location = System::Drawing::Point(297, 104);
+			this->txtPort->Name = L"txtPort";
+			this->txtPort->Size = System::Drawing::Size(100, 20);
+			this->txtPort->TabIndex = 10;
+			// 
 			// MainWindow
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(512, 339);
+			this->Controls->Add(this->txtPort);
+			this->Controls->Add(this->lblPort);
+			this->Controls->Add(this->txtIP);
 			this->Controls->Add(this->Error);
-			this->Controls->Add(this->lblLIP);
 			this->Controls->Add(this->lblPIP);
 			this->Controls->Add(this->lblLocal);
 			this->Controls->Add(this->lblPublic);
@@ -271,16 +301,29 @@ private: void OutputLog(String ^logMessage)
 
 private: HANDLE hThread;
 
-private: bool shouldStop;
+private: bool shouldStop, shouldWait;
 
-private: List<List<SOCKET>^> connections;
+private: List<List<Client^>^> connections;
 
 private: System::Void StartServer(System::Object^  sender, System::EventArgs^  e)
 {
+	//	Let's make sure the textboxes are filled out before continuing
+	if (txtIP->Text == "" || txtPort->Text == "")
+	{
+		MessageBox::Show("Either the IP Address or Port Number wasn't provided.");
+		OutputLog("Provide the necessary information (Local IP Address and Port Number) before starting the Server.");
+		return;
+	}
+
 	//	Lets disable the Start button as the user should be allowed to clicked it again once the server as started
 	btnStart->Enabled = false;
 
+	//	Disable the textboxes for the Local IP address and Port Number
+	txtIP->Enabled = false;
+	txtPort->Enabled = false;
+
 	shouldStop = false;
+	shouldWait = false;
 
 	////	Lets start the server, meaning lets start listening for connections
 	//OutputLog("Start Server Button clicked");
@@ -415,7 +458,8 @@ private: System::Void StartListening()
 	hints.ai_flags = AI_PASSIVE;		//	AI_PASSIVE flag indicates that the caller intends to use the returned socket address structure in a call to the bind function.
 
 	//	Resolve the local address and port to be used by the server
-	iResult = getaddrinfo("192.168.1.4", "1986", &hints, &result);
+	msclr::interop::marshal_context mc;	//	Using the msclr/marshal library to convert String^ to PCSTR for getaddrinfo()
+	iResult = getaddrinfo(mc.marshal_as<PCSTR>(txtIP->Text), mc.marshal_as<PCSTR>(txtPort->Text), &hints, &result);
 	//	Check for errors
 	if (iResult != 0)
 	{
@@ -496,33 +540,6 @@ private: System::Void StartListening()
 		{
 			OutputLog("Accepted connection from " + gcnew String(inet_ntoa(sinRemote.sin_addr)) + ":" + ntohs(sinRemote.sin_port) + ".");
 
-			//	Lets added the socket to the list of connections
-			if (connections.Count == 0)
-			{
-				//	Create a new list and add the socket to it
-				connections.Add(gcnew List<SOCKET>());
-				connections[0]->Add(client);
-			}
-			else
-			{
-				for each (List<SOCKET>^ list  in connections)
-				{
-					if (list->Count < 64)
-					{
-						list->Add(client);
-						break;	//	Break out of the for each loop
-					}
-
-					//	Checked every list and they are full, so need to create a new one
-					if (connections[connections.Count] == list)
-					{
-						//	Create a new list and add the socket to it
-						connections.Add(gcnew List<SOCKET>());
-						connections[0]->Add(client);
-					}
-				}
-			}
-
 			//	Lets receive the phone number of the newly connected user
 			char buffer[512];
 			memset(buffer, '\0', sizeof(char) * 512);
@@ -544,6 +561,48 @@ private: System::Void StartListening()
 			}
 
 			OutputLog("The client's phone number is: " + gcnew String(buffer));
+			
+			//	Change the socket to be nonblocking
+			ioctlsocket(client, FIONBIO, &iMode);
+
+			//	TODO: BUFFER MANIPLUATION: NEED TO EXTRACT THE PHONE NUMBER AND CLIENT'S NAME SO CAN PASS THEM IN THE CLIENT OBJECT PROPERLY
+			//	USE MEMCPY TO EXTRACT THE NESSECCARY INFORMATION
+			Client^ c = gcnew Client(client, gcnew String(buffer), gcnew String(buffer));
+
+			//	Lets added the socket to the list of connections
+			if (connections.Count == 0)
+			{
+				//	Create a new list and add the socket to it
+				connections.Add(gcnew List<Client^>());
+				connections[0]->Add(c);
+
+				//	Need to start a new worker thread that will handle all of the clients in this list
+				Thread^ thread = gcnew Thread(gcnew ParameterizedThreadStart(this, &MainWindow::HandleClients));
+				thread->Start(connections[0]);
+			}
+			else
+			{
+				for each (List<Client^>^ list  in connections)
+				{
+					if (list->Count < 64)
+					{
+						list->Add(c);
+						break;	//	Break out of the for each loop
+					}
+
+					//	Checked every list and they are full, so need to create a new one
+					if (connections[connections.Count - 1] == list)
+					{
+						//	Create a new list and add the socket to it
+						connections.Add(gcnew List<Client^>());
+						connections[connections.Count - 1]->Add(c);
+
+						//	Need to start a new thread that will handle all of the clients in this list
+						Thread^ thread = gcnew Thread(gcnew ParameterizedThreadStart(this, &MainWindow::HandleClients));
+						thread->Start(connections[connections.Count - 1]);
+					}
+				}
+			}
 		}
 
 		//	TODO:	Recieve the message containing the user's phone and full name, add the accepted connection a list of connections,
@@ -615,6 +674,184 @@ private: System::Void StartListening()
 	OutputLog("Terminated the use of the WinSock 2 DLL and now closing listening thread.");
 }
 
+//	This function will run in a separate thread and use select() on the sockets of the given clients to send and receive messages.
+private: System::Void HandleClients(Object^ obj)
+{
+	List<Client^>^ list = (List<Client^>^)obj;
+	while (!shouldStop)
+	{
+		while (shouldWait)
+		{
+			//	Since one of the other worker threads require the full use of the list of clients this thread should wait till it's done working
+			//	I should try to make this to be randomize instead to prevent any one thread from monopolizing the CPU
+			System::Threading::Thread::Sleep(1000);
+		}
+
+		//	Lets set up the FD_SETS here before continuing
+		//	Create three FD sets that will be used to see if there's any activity on the Listen Socket
+		fd_set readFDs, writeFDs, exceptFDs;
+
+		//	Move the clients in to the appropriate FD_SETS for the select() method
+		SetupFDSets(&readFDs, &writeFDs, &exceptFDs, list);
+
+		//	Need to tell the other threads know that they should wait for this thread to finish it's work first
+		shouldWait = true;
+
+		//	Call the select() method to start handling the work to be done for each of the clients
+		if (select(0, &readFDs, &writeFDs, &exceptFDs, 0) > 0)
+		{
+			//	Iterate through each of the clients to determine what needs to be done for each of them
+			for each (Client^ c in list)
+			{
+				bool ok = true;
+
+				//	Check to see if there's any errors on the socket
+				if (FD_ISSET(c->sock, &writeFDs))
+				{
+					ok = false;
+					OutputLog("Something went wrong on the server");
+
+					//	Remove the socket from the exceptFDs
+					FD_CLR(c->sock, &exceptFDs);
+				}
+				else
+				{
+					//	Check if the client's socket is ready to receive a message
+					if (FD_ISSET(c->sock, &readFDs))
+					{
+						//	Try to receive a message
+						ok = ReadMsg(c);
+
+						//	Remove the socket from the readFDs
+						FD_CLR(c->sock, &readFDs);
+
+						//	TO CONVERT FROM array<wchar_t>^ to char*, use reinterpret_cast<char*>(char*)
+						/*pin_ptr<Char> x = &c->buffer[0];
+						Char* p = x;
+						char* buffer = reinterpret_cast<char*>(p);*/
+					}
+
+					//	Check if the client's socket is ready to send out a message
+					if (FD_ISSET(c->sock, &writeFDs))
+					{
+						//	Send out a message
+						ok = SendMsg(c);
+
+						//	Remove the socket from the writeFDs
+						FD_CLR(c->sock, &writeFDs);
+					}
+				}
+			}
+		}
+		else
+		{
+			OutputLog("select() failed with error code: " + WSAGetLastError());
+		}
+
+		//	Since this thread is finished doing it's work for this iteration of the while loop, inform the other threads that they can continue
+		shouldWait = false;
+
+		//	To prevent this thread from trying to claim the work time for itself again going to have it wait for 1 second before moving on
+		System::Threading::Thread::Sleep(1000);
+	}
+
+	//	Since the server is going offline, need to perform some cleanup
+	//	Close of the client sockets that this thread is in charge of
+	OutputLog("Closing all of the client sockets.");
+	for each (Client^ c in list)
+	{
+		closesocket(c->sock);
+	}
+	OutputLog("Closed all of the client sockets.");
+
+	//	Lets delete the list completely so that it will be repopulated when the server is online again
+	list->Clear();
+	OutputLog("Cleared all of the clients in the list.");
+	connections.Remove(list);
+}
+
+//	This method will move the Client sockets into the appropriate fd_sets for the select() method
+private: System::Void SetupFDSets(fd_set *read, fd_set *write, fd_set *except, List<Client^>^ list)
+{
+	//	FD_ZERO(*set) is a macro used to initialize the given set to NULL
+	FD_ZERO(&read);
+	FD_ZERO(&write);
+	FD_ZERO(&except);
+
+	//	Lets place the client sockets into the proper fd_sets
+	for each (Client^ c in list)
+	{
+		//	Check if there's an space left in the buffer, if there is then pay attention for incoming messages
+		if (c->buffer->Length < DEFAULT_BUFLEN)
+		{
+			//	Place the socket in the read fd_set using FD_SET(s, *set)
+			FD_SET(c->sock, &read);
+		}
+
+		//	Check to see if there's any messages in the buffer that need to be sent out
+		if (c->recvbuflen > 0)
+		{
+			//	Place the socket in the write fd_set using FD_SET(s, *set)
+			FD_SET(c->sock, &write);
+		}
+
+		//	If the client socket isn't either ready to read or send messages, then it goes into the except set
+		FD_SET(c->sock, &except);
+	}
+}
+
+//	This method is called to try to receive any incoming message from the given Client
+//	The method returns false if there errors, but if the error is WSAWOULDBLOCK then it
+//	will return true as if the socket received a message successfully
+private: System::Boolean ReadMsg(Client^ c)
+{
+	//	Read the message
+	char buffer[DEFAULT_BUFLEN];
+	memset(buffer, '\0', sizeof(char)* DEFAULT_BUFLEN);
+	int bytes = recv(c->sock, buffer, DEFAULT_BUFLEN - c->recvbuflen, 0);
+
+	//	Check for errors
+	if (bytes == 0)
+	{
+		//	Connection was closed
+		return false;
+	}
+	else if (bytes == SOCKET_ERROR)
+	{
+		OutputLog("Something went wrong while receiving a message. Error code: " + bytes);
+		int err;
+		int errlen = sizeof(err);
+		getsockopt(c->sock, SOL_SOCKET, SO_ERROR, (char*)&err, &errlen);
+		//	Check to see if the error was WSASHOULDBLOCK
+		return (err == WSAEWOULDBLOCK);
+	}
+
+	OutputLog("Message received.");
+	c->recvbuflen = bytes;
+	//	Convert from char* to array<wchar_t>^
+	System::Runtime::InteropServices::Marshal::Copy(IntPtr(&buffer), c->buffer, 0, bytes);
+	
+	return true;
+}
+
+//	This method is called to try to send out the message that is in the given Client's buffer
+//	The method returns false if there errors, but if the error is WSAWOULDBLOCK then it
+//	will return true as if the socket was able to send a message successfully
+private: System::Boolean SendMsg(Client^ c)
+{
+	//	buffer that will hold the message to send out
+	pin_ptr<Char> x = &c->buffer[0];
+	Char* p = x;
+	char* buffer = reinterpret_cast<char*>(p);
+
+	//	Find out who the message is intended for
+
+	//	Send out the message to the intended recipient(s)
+
+
+	return true;
+}
+
 private: System::Void StopServer(System::Object^  sender, System::EventArgs^  e)
 {
 	//	Disable the Stop button
@@ -630,6 +867,9 @@ private: System::Void StopServer(System::Object^  sender, System::EventArgs^  e)
 
 	//	Enable the Start button
 	btnStart->Enabled = true;
+	//	Enable the textboxes for the Local IP address and Port Number
+	txtIP->Enabled = true;
+	txtPort->Enabled = true;
 }
 };
 }
