@@ -81,6 +81,7 @@
     <Compile Include="Activities\ConversationActivity.cs" />
     <Compile Include="Activities\MessagesActivity.cs" />
     <Compile Include="Adapters\MessagesAdapter.cs" />
+    <Compile Include="Classes\bcReceiver.cs" />
     <Compile Include="Classes\client.cs" />
     <Compile Include="Activities\MainActivity.cs" />
     <Compile Include="Activities\registerActivity.cs" />
@@ -146,7 +147,9 @@
     <AndroidResource Include="Resources\values\colors.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\splash.xml" />
+    <AndroidResource Include="Resources\drawable\splash.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\ServerListItem.xml">
@@ -170,7 +173,9 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\TextBubble.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\splashIcon.png" />
+  </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-hdpi\Icon.png" />
   </ItemGroup>

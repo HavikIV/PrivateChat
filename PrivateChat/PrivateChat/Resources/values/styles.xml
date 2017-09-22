@@ -4,7 +4,7 @@
   
   <!-- Theme for the splashActivity -->
   <style name="SplashTheme" parent="@android:style/Theme.Light.NoTitleBar">
-    <item name="android:windowBackground">@drawable/Icon</item>
+    <item name="android:windowBackground">@drawable/splash</item>
   </style>
   
   <style name="TBS">

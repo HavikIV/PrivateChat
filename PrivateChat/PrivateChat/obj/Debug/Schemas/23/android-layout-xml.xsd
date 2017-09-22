@@ -5,7 +5,7 @@
   <xs:import schemaLocation="schemas.android.com.tools.xsd" namespace="http://schemas.android.com/tools" />
   <xs:annotation>
     <xs:documentation>v23</xs:documentation>
-    <xs:documentation>8/18/2017 2:28:43 PM</xs:documentation>
+    <xs:documentation>9/13/2017 7:01:51 AM</xs:documentation>
   </xs:annotation>
   <xs:group name="any-view">
     <xs:choice>
@@ -1448,7 +1448,10 @@
   </xs:element>
   <xs:complexType name="com.refractored.fab.ObservableScrollView">
     <xs:complexContent mixed="false">
-      <xs:extension base="ScrollView" />
+      <xs:extension base="ScrollView">
+        <xs:attribute ref="android:pointerIcon" />
+        <xs:attribute ref="android:forceHasOverlappingRendering" />
+      </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="com.refractored.fab.FloatingActionButton" type="com.refractored.fab.FloatingActionButton">
@@ -1475,7 +1478,10 @@
   </xs:element>
   <xs:complexType name="android.support.v4.widget.SwipeRefreshLayout">
     <xs:complexContent mixed="false">
-      <xs:extension base="ViewGroup" />
+      <xs:extension base="ViewGroup">
+        <xs:attribute ref="android:pointerIcon" />
+        <xs:attribute ref="android:forceHasOverlappingRendering" />
+      </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="android.support.v4.widget.SlidingPaneLayout" type="android.support.v4.widget.SlidingPaneLayout">
@@ -1485,7 +1491,10 @@
   </xs:element>
   <xs:complexType name="android.support.v4.widget.SlidingPaneLayout">
     <xs:complexContent mixed="false">
-      <xs:extension base="ViewGroup" />
+      <xs:extension base="ViewGroup">
+        <xs:attribute ref="android:pointerIcon" />
+        <xs:attribute ref="android:forceHasOverlappingRendering" />
+      </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="android.support.v4.widget.DrawerLayout" type="android.support.v4.widget.DrawerLayout">
@@ -1497,6 +1506,8 @@
     <xs:complexContent mixed="false">
       <xs:extension base="ViewGroup">
         <xs:attribute ref="tools:openDrawer" />
+        <xs:attribute ref="android:pointerIcon" />
+        <xs:attribute ref="android:forceHasOverlappingRendering" />
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -1507,7 +1518,10 @@
   </xs:element>
   <xs:complexType name="android.support.v4.widget.ContentLoadingProgressBar">
     <xs:complexContent mixed="false">
-      <xs:extension base="ProgressBar" />
+      <xs:extension base="ProgressBar">
+        <xs:attribute ref="android:pointerIcon" />
+        <xs:attribute ref="android:forceHasOverlappingRendering" />
+      </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="android.support.v4.view.ViewPager" type="android.support.v4.view.ViewPager">
@@ -1517,7 +1531,10 @@
   </xs:element>
   <xs:complexType name="android.support.v4.view.ViewPager">
     <xs:complexContent mixed="false">
-      <xs:extension base="ViewGroup" />
+      <xs:extension base="ViewGroup">
+        <xs:attribute ref="android:pointerIcon" />
+        <xs:attribute ref="android:forceHasOverlappingRendering" />
+      </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="android.support.v4.view.PagerTitleStrip" type="android.support.v4.view.PagerTitleStrip">
@@ -1527,7 +1544,10 @@
   </xs:element>
   <xs:complexType name="android.support.v4.view.PagerTitleStrip">
     <xs:complexContent mixed="false">
-      <xs:extension base="ViewGroup" />
+      <xs:extension base="ViewGroup">
+        <xs:attribute ref="android:pointerIcon" />
+        <xs:attribute ref="android:forceHasOverlappingRendering" />
+      </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="android.support.v4.view.PagerTabStrip" type="android.support.v4.view.PagerTabStrip">
@@ -1537,7 +1557,10 @@
   </xs:element>
   <xs:complexType name="android.support.v4.view.PagerTabStrip">
     <xs:complexContent mixed="false">
-      <xs:extension base="ViewGroup" />
+      <xs:extension base="ViewGroup">
+        <xs:attribute ref="android:pointerIcon" />
+        <xs:attribute ref="android:forceHasOverlappingRendering" />
+      </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="android.support.v4.app.FragmentTabHost" type="android.support.v4.app.FragmentTabHost">
@@ -1547,7 +1570,10 @@
   </xs:element>
   <xs:complexType name="android.support.v4.app.FragmentTabHost">
     <xs:complexContent mixed="false">
-      <xs:extension base="TabHost" />
+      <xs:extension base="TabHost">
+        <xs:attribute ref="android:pointerIcon" />
+        <xs:attribute ref="android:forceHasOverlappingRendering" />
+      </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="android.support.v7.widget.RecyclerView" type="android.support.v7.widget.RecyclerView">
@@ -1559,6 +1585,8 @@
     <xs:complexContent mixed="false">
       <xs:extension base="ViewGroup">
         <xs:attribute ref="tools:listitem" />
+        <xs:attribute ref="android:pointerIcon" />
+        <xs:attribute ref="android:forceHasOverlappingRendering" />
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>

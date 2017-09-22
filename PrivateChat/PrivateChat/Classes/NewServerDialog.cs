@@ -75,7 +75,7 @@ namespace PrivateChat
             var dialog = new AlertDialog.Builder(_context);
             if (mode == "Add")
             {
-                dialog.SetTitle("New Server");
+                dialog.SetTitle("Enter New Server's Information");
                 dialog.SetView(view);
                 dialog.SetNegativeButton("Cancel", (s, a) => { });
                 dialog.SetPositiveButton("Connect", (s, a) => Connect(view));
@@ -97,7 +97,7 @@ namespace PrivateChat
                 octet4.Text = octets[3];
                 port.Text = _server.Port.ToString();
 
-                dialog.SetTitle("Edit Server");
+                dialog.SetTitle("Edit The Server's Information");
                 dialog.SetView(view);
                 dialog.SetNegativeButton("Cancel", (s, a) => { });
                 dialog.SetPositiveButton("Update", (s, a) => UpdateServer(view));
@@ -207,6 +207,16 @@ namespace PrivateChat
                 _server.ID = _adapter.servers.Count;    // The ID of the newly added server is the current count of the list of servers.
                 _server.Name = name.Text;
                 _server.IPAddress = octet1.Text + "." + octet2.Text + "." + octet3.Text + "." + octet4.Text;
+
+                // Remove moving on, going to make sure that the server ID doesn't match any of the already added servers
+                foreach (var server in _adapter.servers)
+                {
+                    if (_server.ID == server.ID)
+                    {
+                        // Let's increment the ID by one
+                        _server.ID += 1;
+                    }
+                }
                 // Try to parse the port number provided, The highest port number that is 65535, and the highest value of unsigned Int16 is 65536,
                 // TryParse will catch the thrown exception if the user enter a port number that's bigger than 65535.
                 short p;
@@ -237,6 +247,11 @@ namespace PrivateChat
                         // Adding the server to the database
                         connection.InsertAsync(_server);
                         Toast.MakeText(_context, "Added a Server to the database", ToastLength.Long).Show();
+
+                        // Need to update the Server ID of the server in the connections list so that it matches with it's ID within the database
+                        // Lets grab the server from the database so that we can extract it's ID
+                        var query = connection.Table<Server>().Where(v => v.Name.Equals(_server.Name) && v.IPAddress.Equals(_server.IPAddress)); // Should return only 1 server if found as each name is unique
+                        query.FirstAsync().ContinueWith(t => { serviceConnection.Binder.Service.UpdateServerID(t.Result); }).Wait();
                     }
                     catch (SQLiteException ex)
                     {

@@ -33,7 +33,7 @@ namespace PrivateChat.Adapters
             }
         }
 
-        // All of the previously added messages
+        // Load all of the previously added messages
         private void LoadMessages(SQLiteAsyncConnection connection, int ServerID, int ConversationID)
         {
             // Query the Database for all of the messages for the corresponding ServerID and ConversationID

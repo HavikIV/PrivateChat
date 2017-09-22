@@ -94,6 +94,9 @@ namespace PrivateChat
 			// aapt resource value: 0x7f040002
 			public const int gray = 2130968578;
 			
+			// aapt resource value: 0x7f040003
+			public const int white = 2130968579;
+			
 			static Color()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -160,7 +163,10 @@ namespace PrivateChat
 			public const int splash = 2130837511;
 			
 			// aapt resource value: 0x7f020008
-			public const int TextBubble = 2130837512;
+			public const int splashIcon = 2130837512;
+			
+			// aapt resource value: 0x7f020009
+			public const int TextBubble = 2130837513;
 			
 			static Drawable()
 			{
@@ -187,11 +193,14 @@ namespace PrivateChat
 			// aapt resource value: 0x7f09000f
 			public const int Message = 2131296271;
 			
+			// aapt resource value: 0x7f090022
+			public const int Space = 2131296290;
+			
 			// aapt resource value: 0x7f090010
 			public const int TimeStamp = 2131296272;
 			
-			// aapt resource value: 0x7f090027
-			public const int Title = 2131296295;
+			// aapt resource value: 0x7f09002a
+			public const int Title = 2131296298;
 			
 			// aapt resource value: 0x7f090007
 			public const int TotalMessages = 2131296263;
@@ -205,14 +214,14 @@ namespace PrivateChat
 			// aapt resource value: 0x7f09001b
 			public const int Tv3 = 2131296283;
 			
-			// aapt resource value: 0x7f09002a
-			public const int actionDelete = 2131296298;
+			// aapt resource value: 0x7f09002d
+			public const int actionDelete = 2131296301;
 			
-			// aapt resource value: 0x7f090028
-			public const int actionDeleteConversation = 2131296296;
+			// aapt resource value: 0x7f09002b
+			public const int actionDeleteConversation = 2131296299;
 			
-			// aapt resource value: 0x7f090029
-			public const int actionEdit = 2131296297;
+			// aapt resource value: 0x7f09002c
+			public const int actionEdit = 2131296300;
 			
 			// aapt resource value: 0x7f090004
 			public const int cfab = 2131296260;
@@ -229,6 +238,9 @@ namespace PrivateChat
 			// aapt resource value: 0x7f090020
 			public const int infoTv2 = 2131296288;
 			
+			// aapt resource value: 0x7f090023
+			public const int infoTv3 = 2131296291;
+			
 			// aapt resource value: 0x7f090018
 			public const int ipAddress1 = 2131296280;
 			
@@ -244,17 +256,17 @@ namespace PrivateChat
 			// aapt resource value: 0x7f090012
 			public const int ipAddressTv = 2131296274;
 			
-			// aapt resource value: 0x7f090024
-			public const int itemIPAddress = 2131296292;
+			// aapt resource value: 0x7f090027
+			public const int itemIPAddress = 2131296295;
+			
+			// aapt resource value: 0x7f090029
+			public const int itemPortNumber = 2131296297;
 			
 			// aapt resource value: 0x7f090026
-			public const int itemPortNumber = 2131296294;
+			public const int itemServerName = 2131296294;
 			
-			// aapt resource value: 0x7f090023
-			public const int itemServerName = 2131296291;
-			
-			// aapt resource value: 0x7f090025
-			public const int itemTv = 2131296293;
+			// aapt resource value: 0x7f090028
+			public const int itemTv = 2131296296;
 			
 			// aapt resource value: 0x7f09000d
 			public const int messageEt = 2131296269;
@@ -267,6 +279,9 @@ namespace PrivateChat
 			
 			// aapt resource value: 0x7f090014
 			public const int name = 2131296276;
+			
+			// aapt resource value: 0x7f090024
+			public const int nameEt = 2131296292;
 			
 			// aapt resource value: 0x7f090011
 			public const int nameTv = 2131296273;
@@ -286,8 +301,8 @@ namespace PrivateChat
 			// aapt resource value: 0x7f090002
 			public const int relativeLayout1 = 2131296258;
 			
-			// aapt resource value: 0x7f090022
-			public const int saveBtn = 2131296290;
+			// aapt resource value: 0x7f090025
+			public const int saveBtn = 2131296293;
 			
 			// aapt resource value: 0x7f09000c
 			public const int sendBtn = 2131296268;

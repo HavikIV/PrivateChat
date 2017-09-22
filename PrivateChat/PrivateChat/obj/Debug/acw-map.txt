@@ -6,6 +6,10 @@ PrivateChat.MessageActivity, PrivateChat;md52520702dc6f751a40a8e5f2fc3ba5c79.Mes
 PrivateChat.MessageActivity, PrivateChat, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md52520702dc6f751a40a8e5f2fc3ba5c79.MessageActivity
 PrivateChat.MessageActivity;md52520702dc6f751a40a8e5f2fc3ba5c79.MessageActivity
 privatechat.MessageActivity;md52520702dc6f751a40a8e5f2fc3ba5c79.MessageActivity
+PrivateChat.bcReceiver, PrivateChat;md52520702dc6f751a40a8e5f2fc3ba5c79.bcReceiver
+PrivateChat.bcReceiver, PrivateChat, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md52520702dc6f751a40a8e5f2fc3ba5c79.bcReceiver
+PrivateChat.bcReceiver;md52520702dc6f751a40a8e5f2fc3ba5c79.bcReceiver
+privatechat.bcReceiver;md52520702dc6f751a40a8e5f2fc3ba5c79.bcReceiver
 PrivateChat.MainActivity, PrivateChat;md52520702dc6f751a40a8e5f2fc3ba5c79.MainActivity
 PrivateChat.MainActivity, PrivateChat, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md52520702dc6f751a40a8e5f2fc3ba5c79.MainActivity
 PrivateChat.MainActivity;md52520702dc6f751a40a8e5f2fc3ba5c79.MainActivity

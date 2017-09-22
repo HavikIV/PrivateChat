@@ -39,7 +39,7 @@ namespace PrivateChat
             ServerID = Intent.GetIntExtra("ServerID", 0);
 
             // Set the Title of the Activity using the passed ServerName
-            this.Title = Intent.GetStringExtra("ServerName") + " Conversations";
+            this.Title = Intent.GetStringExtra("ServerName") + "'s Conversations";
 
             // Create a path to the Database
             var docFolder = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);

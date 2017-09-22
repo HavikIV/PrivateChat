@@ -32,6 +32,10 @@ namespace PrivateChat
 
         private List<SocketInfo> connections;
         private SQLiteAsyncConnection connection;
+        private bool shouldWaitForAdd = false;
+        private bool busyReading = false;
+        private bool restarting = false;
+        private Thread thread;
 
         // Wait handle for prevent execution from moving forward before the asynchronous functions finish executing
         private static ManualResetEvent workDone = new ManualResetEvent(false);
@@ -75,6 +79,9 @@ namespace PrivateChat
 
             // Before doing anything create a new List of Sockets
             connections = new List<SocketInfo>();
+
+            read = new List<Socket>();
+            error = new List<Socket>();
 
             /* Code to connect to a server using a socket
              * IPAddress ipa = Dns.GetHostEntry("68.189.4.56").AddressList[0];
@@ -125,89 +132,133 @@ namespace PrivateChat
         public override StartCommandResult OnStartCommand(Intent intent, [GeneratedEnum] StartCommandFlags flags, int startId)
         {
 
-            // Check if the database contains any servers that this service should connect to
+            // Lets make sure that there isn't already a worker thread started
+            if (thread != null)
+            {
+                // Inform the worker thread that the service was restarted so it needs to close
+                restarting = true;
 
+                // Lets give the thread enough time to end
+                Thread.Sleep(1000); // Sleep for 1 second
+
+                // Close the previously started thread
+                thread.Abort();
+
+                restarting = false; // Reset the boolean variable
+            }
+
+            // Check if the database contains any servers that this service should connect to
             // Query the database for all Servers
             var query = connection.Table<Server>();
             // Create a List of the Servers and for each Server create a Socket for it and add it to the list of connections if the Socket can successfully connect
             query.ToListAsync().ContinueWith(t =>
             {
-                // Make sure that the query wasn't empty
-                if (t.Result.Count != 0)
+                try
                 {
-                    foreach (var server in t.Result)
+                    // Make sure that the query wasn't empty
+                    if (t.Result.Count != 0)
                     {
-                        try
+                        foreach (var server in t.Result)
                         {
-                            // Create an IPAddress variable for the Server's IPAddress info.
-                            // Resolve the IP Address into an IPHostEntry container and grab the first IP Address in its AddressList
-                            IPAddress ipAddress = Dns.GetHostEntry(server.IPAddress).AddressList[0];
-                            // Create an IPEndPoint from the Server's information
-                            IPEndPoint ipEndpoint = new IPEndPoint(ipAddress, server.Port);
-
-                            // Is the connection new
-                            bool isNew = true; // by default
-
-                            // Make sure it's wasn't added previously first
-                            if (connections.Count > 0)
+                            try
                             {
-                                foreach (var c in connections)
+                                // Create an IPAddress variable for the Server's IPAddress info.
+                                // Resolve the IP Address into an IPHostEntry container and grab the first IP Address in its AddressList
+                                IPAddress ipAddress = Dns.GetHostEntry(server.IPAddress).AddressList[0];
+                                // Create an IPEndPoint from the Server's information
+                                IPEndPoint ipEndpoint = new IPEndPoint(ipAddress, server.Port);
+
+                                // Is the connection new
+                                bool isNew = true; // by default
+
+                                shouldWaitForAdd = true;
+
+                                // Lets make sure the HandleSocket's Thread isn't busy trying to read at the moment
+                                while (busyReading)
                                 {
-                                    if ((IPEndPoint)c.socket.RemoteEndPoint == ipEndpoint)
+                                    // Wait for a millisecond
+                                    Thread.Sleep(100);
+                                }
+
+                                // Make sure it's wasn't added previously first
+                                if (connections.Count > 0)
+                                {
+                                    foreach (var c in connections)
                                     {
-                                        // Already connected to this server, so no work needs to be done on it
-                                        isNew = false;
-                                        break;
+                                        IPEndPoint ep = (IPEndPoint)c.socket.RemoteEndPoint;
+                                        if (ep.Address.Equals(ipEndpoint.Address) && ep.Port == ipEndpoint.Port)
+                                        {
+                                            // Already connected to this server, so no work needs to be done on it
+                                            isNew = false;
+                                            break;
+                                        }
                                     }
                                 }
+
+                                // If the Server hasn't already been added to the list, add it now
+                                if (isNew)
+                                {
+                                    // Create a Socket and attempt to connect to the Server using it
+                                    Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                                    SocketInfo si = new SocketInfo(socket, server.ID);
+                                    IAsyncResult result = socket.BeginConnect(ipEndpoint, new AsyncCallback(Connect), si);
+
+                                    // Wait for the connection to be made
+                                    workDone.WaitOne();
+
+                                    // Since the connection was successful, need to register the User's phone number on it
+                                    registerUser(si);
+
+                                    // Add the socket to the list of connections
+                                    connections.Add(si);
+                                }
+
+                                shouldWaitForAdd = false;
                             }
-
-                            // If the Server hasn't already been added to the list, add it now
-                            if (isNew)
+                            catch (SocketException ex)
                             {
-                                // Create a Socket and attempt to connect to the Server using it
-                                Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                                SocketInfo si = new SocketInfo(socket, server.ID);
-                                IAsyncResult result = socket.BeginConnect(ipEndpoint, new AsyncCallback(Connect), si);
-
-                                // Wait for the connection to be made
-                                workDone.WaitOne();
-
-                                // Since the connection was successful, need to register the User's phone number on it
-                                registerUser(si);
-
-                                // Add the socket to the list of connections
-                                connections.Add(si);
-                            }
-                        }
-                        catch (SocketException ex)
-                        {
-                            // Create an Notification instead to display the error message
-                            if (ex.ErrorCode == 11001)
-                            {
-                                // The Host wasn't found
-                                //Toast.MakeText(this, "The host wasn't found in the DNS server.", ToastLength.Long).Show();
-                                Notification.Builder builder = new Notification.Builder(this)
-                                    .SetSmallIcon(Resource.Drawable.Icon)
-                                    .SetContentTitle("ATTENTION")
-                                    .SetContentText("The host wasn't found in the DNS server. Server: " + server.Name);
-                                NotificationManager nm = GetSystemService(NotificationService) as NotificationManager;
-                                nm.Notify(9000, builder.Build());
-                            }
-                            else
-                            {
-                                //Toast.MakeText(this, "Error code: " + ex.ErrorCode, ToastLength.Long).Show();
-                                Notification.Builder builder = new Notification.Builder(this)
-                                    .SetSmallIcon(Resource.Drawable.Icon)
-                                    .SetContentTitle("ATTENTION")
-                                    .SetContentText("Error code: " + ex.ErrorCode);
-                                NotificationManager nm = GetSystemService(NotificationService) as NotificationManager;
-                                nm.Notify(9000, builder.Build());
+                                // Create an Notification instead to display the error message
+                                if (ex.ErrorCode == 11001)
+                                {
+                                    // The Host wasn't found
+                                    //Toast.MakeText(this, "The host wasn't found in the DNS server.", ToastLength.Long).Show();
+                                    Notification.Builder builder = new Notification.Builder(this)
+                                        .SetSmallIcon(Resource.Drawable.Icon)
+                                        .SetContentTitle("ATTENTION")
+                                        .SetContentText("The host wasn't found in the DNS server. Server: " + server.Name);
+                                    NotificationManager nm = GetSystemService(NotificationService) as NotificationManager;
+                                    nm.Notify(9000, builder.Build());
+                                }
+                                else
+                                {
+                                    //Toast.MakeText(this, "Error code: " + ex.ErrorCode, ToastLength.Long).Show();
+                                    Notification.Builder builder = new Notification.Builder(this)
+                                        .SetSmallIcon(Resource.Drawable.Icon)
+                                        .SetContentTitle("ATTENTION")
+                                        .SetContentText("Error code: " + ex.ErrorCode);
+                                    NotificationManager nm = GetSystemService(NotificationService) as NotificationManager;
+                                    nm.Notify(9000, builder.Build());
+                                }
                             }
                         }
                     }
                 }
+                catch (Exception ex)
+                {
+                    //Notification.Builder builder = new Notification.Builder(this)
+                    //                    .SetSmallIcon(Resource.Drawable.Icon)
+                    //                    .SetContentTitle("NO SERVER TABLE FOUND")
+                    //                    .SetContentText("Need to create a Table first");
+                    //NotificationManager nm = GetSystemService(NotificationService) as NotificationManager;
+                    //nm.Notify(9000, builder.Build());
+                }
             }).Wait();
+
+            // Start a separate thread handle reading of all incoming messages
+            thread = new Thread(new ThreadStart(HandleSockets));
+
+            // Start the thread
+            thread.Start();
 
             return StartCommandResult.Sticky;
         }
@@ -219,7 +270,8 @@ namespace PrivateChat
             //  Send the server the user's phone number.
             ISharedPreferences prefs = this.GetSharedPreferences("PrivateChat.PrivateChat", FileCreationMode.Private);
             string phoneNumber = prefs.GetString("phone", "default");
-            s.sendBuffer = Encoding.ASCII.GetBytes(phoneNumber);
+            string fullname = prefs.GetString("name", "default");
+            s.sendBuffer = Encoding.ASCII.GetBytes(phoneNumber + " " + fullname);
 
             try
             {
@@ -249,6 +301,17 @@ namespace PrivateChat
         // notified of its connection status (failed or connected)
         public bool ConnectAndAdd(Server server)
         {
+            // Make sure that the thread handling the sockets doesn't try to read from any of the sockets before we finish adding this one
+            shouldWaitForAdd = true;
+
+            //  Check to make sure that the socket reading thread isn't busy reading at the moment, if it is, need to wait for it to finish
+            while (busyReading)
+            {
+                // wait for a millisecond before checking again, the boolean variable shouldWaitForAdd should prevent
+                // the HandleSocket thread from hogging the CPU and allowing this function to finish before it can try reading again
+                Thread.Sleep(100);
+            }
+
             // Create an IPAddress variable
             IPAddress ipAddress = Dns.GetHostEntry(server.IPAddress).AddressList[0];
             // Create an IPEndpoint using the IPAddress and the port number
@@ -271,7 +334,8 @@ namespace PrivateChat
                 // Make sure it isn't already in the list
                 foreach (var c in connections)
                 {
-                    if ((IPEndPoint)c.socket.RemoteEndPoint == ipEndpoint)
+                    IPEndPoint ep = (IPEndPoint)c.socket.RemoteEndPoint;
+                    if (ep.Address.Equals(ipEndpoint.Address) && ep.Port == ipEndpoint.Port)
                     {
                         // Replace the old socket with the new socket
                         c.socket = si.socket;
@@ -282,6 +346,7 @@ namespace PrivateChat
                 // The connection to the list
                 connections.Add(si);
 
+                shouldWaitForAdd = false;
                 // Since the connection was successful need to inform the caller
                 return true;
             }
@@ -334,6 +399,26 @@ namespace PrivateChat
             }
         }
 
+        public static void Read(IAsyncResult result)
+        {
+            try
+            {
+                // Grab the socket from the IAsyncResult variable's AsyncState
+                Socket s = (Socket)result.AsyncState;
+
+                // Need to end the read request
+                int bytes = s.EndReceive(result);
+
+                // Need to signal that everything was read and to resume execution of code
+                workDone.Set();
+            }
+            catch (Exception ex)
+            {
+                // Something went wrong, so let the user know, I think this work (the context part anyways)
+                //Toast.MakeText((Context)result.AsyncState, "Couldn't send out the message, exception: " + ex, ToastLength.Long).Show();
+            }
+        }
+
         // This function will be called whenever the user wants to send a message.
         // It will take the message as a string, the list of strings of the phone numbers,
         // and the ID of the server that the message needs to be sent to.
@@ -346,11 +431,22 @@ namespace PrivateChat
                 {
                     // Found it, lets send out the message
 
-                    // Place the message in the buffer
-                    c.sendBuffer = Encoding.ASCII.GetBytes(contacts + message);
+                    // Lets determine how many recipients to send the message to
+                    string temp = contacts; // copy of the contacts string
+                    temp.Replace(" ", "");  // remove all spaces from the string of contacts
+                    int recipients = temp.Length / 10;  // number of recipients
+
+                    ISharedPreferences prefs = this.GetSharedPreferences("PrivateChat.PrivateChat", FileCreationMode.Private);
+                    string phoneNumber = prefs.GetString("phone", "default");   // The user's phone number
+
+                    // Place the message in the buffer (<recipients> [phoneNumber(s)] message)
+                    c.sendBuffer = Encoding.ASCII.GetBytes(recipients + " " + contacts + " " + phoneNumber + " " + message);
 
                     // Should let just the Select() handle sending out the message
                     IAsyncResult result = c.socket.BeginSend(c.sendBuffer, 0, c.sendBuffer.Length, SocketFlags.None, new AsyncCallback(Send), c);
+
+                    // Wait for the message to finish being sent out
+                    workDone.WaitOne();
                 }
             }
 
@@ -360,37 +456,244 @@ namespace PrivateChat
         // if so, it will do the appropriate work.
         private void HandleSockets()
         {
+            ISharedPreferences prefs = this.GetSharedPreferences("PrivateChat.PrivateChat", FileCreationMode.Private);
+
             // This infinite loop will continue calling the Select() to handle the sockets
-            while (true)
+            while (!restarting)
             {
-                // Add the sockets to the 3 ILists for the Select() method to use
-                foreach (var server in connections)
+                // Lets grab the user's phone number
+                string phoneNumber = prefs.GetString("phone", "default");   // The user's phone number
+
+                if (connections.Count != 0 && !shouldWaitForAdd)
                 {
-                    read.Add(server.socket);
-                    write.Add(server.socket);
-                    error.Add(server.socket);
-                }
+                    busyReading = true;
 
-                Socket.Select(read, write, error, 1000);
-                
-                // Now check the 3 lists to see which sockets are still in them
-                // only the ones that have some work that needs done will remain in the lists
+                    // Add the sockets to the 3 ILists for the Select() method to use
+                    foreach (var server in connections)
+                    {
+                        if (server.socket != null)
+                        {
+                            read.Add(server.socket);
+                            //write.Add(server.socket);
+                            error.Add(server.socket);
+                        }
+                    }
 
-                foreach (var s in read)
-                {
+                    if ( read.Count != 0)
+                    {
+                        try
+                        {
+                            Socket.Select(read, null, error, 10000); // timeout is 10 milliseconds
 
-                }
+                            // Now check the 3 lists to see which sockets are still in them
+                            // only the ones that have some work that needs done will remain in the lists
 
-                foreach (var s in write)
-                {
+                            foreach (var s in error)
+                            {
+                                // Close the connection
+                                s.Close();
+                            }
 
-                }
+                            foreach (var s in read)
+                            {
+                                byte[] buffer = new byte[512]; // empty buffer
 
-                foreach (var s in error)
-                {
+                                // Read the incoming message
+                                IAsyncResult result = s.BeginReceive(buffer, 0, buffer.Length, 0, new AsyncCallback(Read), s);
 
+                                // Wait the message to be finished being read
+                                workDone.WaitOne();
+
+                                // Need to save the message in the database
+                                var server = FindServer(s);
+
+                                int recipients = buffer[0] - 48; // '0' - 48 should give the integer value
+
+                                // Check to make sure we received something
+                                if (recipients > 0)
+                                {
+                                    // We received a message so lets do some work
+
+                                    int arraySize = 10 * (recipients + 1) + recipients;
+                                    byte[] numbers = new byte[arraySize];
+                                    Buffer.BlockCopy(buffer, 2, numbers, 0, numbers.Length);
+
+                                    string groupName = System.Text.Encoding.Default.GetString(numbers); // Convert the array of bytes to a string of phone numbers
+
+                                    groupName.Replace(phoneNumber, ""); // remove the user's phone number, it's possible that it may create a double space so will need to remove it next
+                                    groupName.Replace("  ", " "); // Replace any double space with a single space
+
+                                    Buffer.BlockCopy(buffer, numbers.Length + 2, buffer, 0, buffer.Length - (numbers.Length + 2)); // Remove everything but the message from the buffer
+
+                                    int ConversationID = -1;
+                                    var ts = DateTime.Now;
+
+                                    // Lets try to find the Conversation that corresponds with the message's groupName
+                                    var queryCount = connection.Table<Conversation>().Where(v => v.ServerID.Equals(server.ID) && v.GroupName.Equals(groupName)).CountAsync();
+                                    if (queryCount.Result != 0)
+                                    {
+                                        var query = connection.Table<Conversation>().Where(v => v.ServerID.Equals(server.ID) && v.GroupName.Equals(groupName));
+                                        query.FirstAsync().ContinueWith(t => {
+                                            var conv = t.Result;
+                                            conv.LastMessage = System.Text.Encoding.Default.GetString(buffer);
+                                            conv.LastTimeStamp = ts.ToString();
+                                            conv.TotalMessages += 1;
+                                            connection.UpdateAsync(conv);
+                                            ConversationID = conv.ID;
+                                        }).Wait();
+                                    }
+                                    else
+                                    {
+                                        // It's a new Conversation
+                                        var conversation = new Conversation();
+                                        conversation.ServerID = server.ID;
+                                        conversation.GroupName = groupName;
+                                        conversation.TotalMessages += 1;
+                                        conversation.LastMessage = System.Text.Encoding.Default.GetString(buffer);
+                                        conversation.LastTimeStamp = ts.ToString();
+
+                                        // Add Conversation to the database an update the ConversationID to the newly added Conversation
+                                        connection.InsertAsync(conversation).ContinueWith(t => {
+                                            var query = connection.Table<Conversation>().Where(v => v.ServerID.Equals(server.ID) && v.GroupName.Equals(conversation.GroupName));
+                                            query.FirstAsync().ContinueWith(b => { ConversationID = b.Result.ID; }).Wait(); // wait for the COnversationID to be updated
+                                        }).Wait(); // Need to for these operations to finish before moving on as the do need the ConversationID in the step
+                                    }
+
+                                    // Lets add the message the Messages Table
+                                    var mes = new Messages();
+                                    mes.Message = System.Text.Encoding.Default.GetString(buffer);
+                                    mes.Owner = groupName;
+                                    mes.TimeStamp = ts.ToString();
+                                    mes.ServerID = server.ID;
+                                    mes.ConversationID = ConversationID; // Get this from the work above
+
+                                    // Add the new Message to the database
+                                    connection.InsertAsync(mes);
+
+                                    // Let's send a broadcast to tell the MessageActivity (if it's open) to reload the adapter as a new message was added
+                                    Intent intent = new Intent("PrivateChat.PrivateChat");
+                                    intent.SetAction(MessageActivity.ReloadAdapter); // Set the action to reload the messages into the adapter
+                                    SendBroadcast(intent);  // Send the broadcast
+
+
+                                    // *** THE FOLLOWING CODE TO OPEN AN ACTIVITY FROM AN NOTIFICATION WAS PROVIDED BY LUISRODRIGUEZ92 FROM XAMARIN FORUMS ***
+
+                                    // Intent to open the MessageActivity when the notification is clicked
+                                    Intent sIntent = new Intent(this, typeof(MessageActivity));
+                                    // Pass the necessary information for the activity load the appropriate messages
+                                    sIntent.PutExtra("ServerID", mes.ServerID);
+                                    sIntent.PutExtra("ConversationID", mes.ConversationID);
+                                    sIntent.PutExtra("PhoneNumber", groupName);
+
+                                    // Create a Task Stack builder to handle the back stack
+                                    TaskStackBuilder stackBuilder = TaskStackBuilder.Create(this);
+
+                                    // Add all parents of MessageActivity to the stack
+                                    stackBuilder.AddParentStack(Java.Lang.Class.FromType(typeof(MessageActivity)));
+
+                                    // Push the intent that starts the MessageActivity onto the stack
+                                    stackBuilder.AddNextIntent(sIntent);
+
+                                    // Obtain the PendingIntent for launching the task constructed by stack builder. The pending intent can be used only once.
+                                    const int pendingIntentId = 0;
+                                    PendingIntent pendingIntent = stackBuilder.GetPendingIntent(pendingIntentId, PendingIntentFlags.OneShot);
+
+                                    // Instantiate the builder and set notification elements, including the pending intent
+                                    
+                                    // Send a notification that a new message was received
+                                    Notification.Builder builder = new Notification.Builder(this)
+                                                    .SetSmallIcon(Resource.Drawable.Icon)
+                                                    .SetContentIntent(pendingIntent)
+                                                    .SetContentTitle(groupName)
+                                                    .SetContentText(mes.Message);
+                                    NotificationManager nm = GetSystemService(NotificationService) as NotificationManager;
+                                    nm.Notify(9000, builder.Build());
+
+                                }
+                            }
+                        }
+                        catch (ArgumentNullException ex)
+                        {
+                            if (read.Count == 0 && error.Count == 0)
+                            {
+                                // Then this exception makes sense as it means that Select was given three null or empty lists
+                                // Otherwise this exception was thrown for a reason that I do not know.
+                                Notification.Builder builder = new Notification.Builder(this)
+                                                    .SetSmallIcon(Resource.Drawable.Icon)
+                                                    .SetContentTitle("ArgumentNullExpection")
+                                                    .SetContentText(ex.Message);
+                                NotificationManager nm = GetSystemService(NotificationService) as NotificationManager;
+                                nm.Notify(9000, builder.Build());
+                            }
+                        }
+                        catch (InvalidOperationException ex)
+                        {
+                            Notification.Builder builder = new Notification.Builder(this)
+                                                    .SetSmallIcon(Resource.Drawable.Icon)
+                                                    .SetContentTitle("InvalidoperationExpection")
+                                                    .SetContentText(ex.Message);
+                            NotificationManager nm = GetSystemService(NotificationService) as NotificationManager;
+                            nm.Notify(9000, builder.Build());
+                        }
+                        catch (SocketException ex)
+                        {
+                            if (ex.ErrorCode == 10022)
+                            {
+                               // Let's ignore this for now, though it seems that one of the sockets that was added into the lists was deleted and resulted in an Invalid Argument exception
+                            }
+                        }
+                    }
+
+                    busyReading = false;
                 }
             }
+
+            restarting = false;
+        }
+
+        //  Close the socket that connects to the server with the provided server ID
+        public void CloseSocket(int id)
+        {
+            foreach (var server in connections)
+            {
+                if (server.ID == id)
+                {
+                    //  Found the server, so lets close it
+                    server.socket.Close();
+                    break;  // Lets end the loop here as don't need to search rest of the list
+                }
+            }
+        }
+
+        public void UpdateServerID(Server server)
+        {
+            foreach (var s in connections)
+            {
+                IPEndPoint ep = (IPEndPoint)s.socket.RemoteEndPoint;
+                IPAddress ipAddress = Dns.GetHostEntry(server.IPAddress).AddressList[0];
+                IPEndPoint ip = new IPEndPoint(ipAddress, server.Port);
+                if (ep.Address.Equals(ipAddress) && ep.Port == server.Port)
+                {
+                    //  Found the server, so lets close it
+                    s.ID = server.ID;
+                    break;  // Lets end the loop here as don't need to search rest of the list
+                }
+            }
+        }
+
+        //  Find the server object that has the provided socket
+        SocketInfo FindServer(Socket s)
+        {
+            foreach (var server in connections)
+            {
+                if (server.socket == s)
+                {
+                    return server;
+                }
+            }
+
+            // Didn't find a server associated with the socket, so lets return an empty SocketInfo object
+            return new SocketInfo(null, -1);
         }
 
         public override IBinder OnBind(Intent intent)

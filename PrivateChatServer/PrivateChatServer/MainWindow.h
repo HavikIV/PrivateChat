@@ -566,8 +566,20 @@ private: System::Void StartListening()
 			ioctlsocket(client, FIONBIO, &iMode);
 
 			//	TODO: BUFFER MANIPLUATION: NEED TO EXTRACT THE PHONE NUMBER AND CLIENT'S NAME SO CAN PASS THEM IN THE CLIENT OBJECT PROPERLY
-			//	USE MEMCPY TO EXTRACT THE NESSECCARY INFORMATION
-			Client^ c = gcnew Client(client, gcnew String(buffer), gcnew String(buffer));
+			//	USE strncpy_s TO EXTRACT THE NESSECCARY INFORMATION
+
+			char phone[11];
+			memset(phone, 0, 11);	//	Set phone to all 0's
+			strncpy_s(phone, buffer, 10);	//	Extract the phone number from buffer and place it into phone
+			
+			// Remove the phone number from the buffer so that only the client's name will be left in it
+			memmove(buffer, buffer + 11, bytes - 11);
+
+			// Making sure we don't read the any of the garbage left in the buffer after the memmove call
+			buffer[bytes - 11] = '\0'; // This will place a single null char to indicate the end of the message; This is faster as array access if O(1) time and no loop iteration needed
+			//memset(buffer + (bytes - 11), '\0', (sizeof(char) * bytes)); // This will place null chars after the message; This is a bit slower has it has to iterate through a loop
+
+			Client^ c = gcnew Client(client, gcnew String(buffer), gcnew String(phone));
 
 			//	Lets added the socket to the list of connections
 			if (connections.Count == 0)
@@ -582,24 +594,36 @@ private: System::Void StartListening()
 			}
 			else
 			{
-				for each (List<Client^>^ list  in connections)
+
+				//	Lets see if this connection was added previously and now only the socket needs to be updated
+				Client^ old = FindClient(std::string(phone));
+
+				if (old->phoneNo != "" && old->sock == INVALID_SOCKET)
 				{
-					if (list->Count < 64)
+					//	Lets update the previously added connection with the new socket
+					old->sock = c->sock;
+				}
+				else
+				{
+					for each (List<Client^>^ list  in connections)
 					{
-						list->Add(c);
-						break;	//	Break out of the for each loop
-					}
+						if (list->Count < 64)
+						{
+							list->Add(c);
+							break;	//	Break out of the for each loop
+						}
 
-					//	Checked every list and they are full, so need to create a new one
-					if (connections[connections.Count - 1] == list)
-					{
-						//	Create a new list and add the socket to it
-						connections.Add(gcnew List<Client^>());
-						connections[connections.Count - 1]->Add(c);
+						//	Checked every list and they are full, so need to create a new one
+						if (connections[connections.Count - 1] == list)
+						{
+							//	Create a new list and add the socket to it
+							connections.Add(gcnew List<Client^>());
+							connections[connections.Count - 1]->Add(c);
 
-						//	Need to start a new thread that will handle all of the clients in this list
-						Thread^ thread = gcnew Thread(gcnew ParameterizedThreadStart(this, &MainWindow::HandleClients));
-						thread->Start(connections[connections.Count - 1]);
+							//	Need to start a new thread that will handle all of the clients in this list
+							Thread^ thread = gcnew Thread(gcnew ParameterizedThreadStart(this, &MainWindow::HandleClients));
+							thread->Start(connections[connections.Count - 1]);
+						}
 					}
 				}
 			}
@@ -692,7 +716,7 @@ private: System::Void HandleClients(Object^ obj)
 		fd_set readFDs, writeFDs, exceptFDs;
 
 		//	Move the clients in to the appropriate FD_SETS for the select() method
-		SetupFDSets(&readFDs, &writeFDs, &exceptFDs, list);
+		SetupFDSets(readFDs, writeFDs, exceptFDs, list);
 
 		//	Need to tell the other threads know that they should wait for this thread to finish it's work first
 		shouldWait = true;
@@ -706,7 +730,7 @@ private: System::Void HandleClients(Object^ obj)
 				bool ok = true;
 
 				//	Check to see if there's any errors on the socket
-				if (FD_ISSET(c->sock, &writeFDs))
+				if (FD_ISSET(c->sock, &exceptFDs))
 				{
 					ok = false;
 					OutputLog("Something went wrong on the server");
@@ -741,6 +765,30 @@ private: System::Void HandleClients(Object^ obj)
 						FD_CLR(c->sock, &writeFDs);
 					}
 				}
+
+				if (!ok)
+				{
+					//	Something went wrong with the client's socket so lets deal with it here before moving on
+					int err;
+					int errLen = sizeof(err);
+					getsockopt(c->sock, SOL_SOCKET, SO_ERROR, (char*)&err, &errLen);
+
+					if (err != NO_ERROR)
+					{
+						//	Lets print out what the error was
+						OutputLog("Error code: " + WSAGetLastError());
+					}
+					else
+					{
+						//	Connection was closed on the client side, so lets inform the user
+						OutputLog("The connection was closed for socket: " + c->sock);
+
+					}
+
+					//	Lets close the socket
+					closesocket(c->sock);
+					c->sock = INVALID_SOCKET;	//	Setting the socket descriptor to INVALID_SOCKET to avoid running into to problems
+				}
 			}
 		}
 		else
@@ -771,7 +819,7 @@ private: System::Void HandleClients(Object^ obj)
 }
 
 //	This method will move the Client sockets into the appropriate fd_sets for the select() method
-private: System::Void SetupFDSets(fd_set *read, fd_set *write, fd_set *except, List<Client^>^ list)
+private: System::Void SetupFDSets(fd_set &read, fd_set &write, fd_set &except, List<Client^>^ list)
 {
 	//	FD_ZERO(*set) is a macro used to initialize the given set to NULL
 	FD_ZERO(&read);
@@ -781,22 +829,26 @@ private: System::Void SetupFDSets(fd_set *read, fd_set *write, fd_set *except, L
 	//	Lets place the client sockets into the proper fd_sets
 	for each (Client^ c in list)
 	{
-		//	Check if there's an space left in the buffer, if there is then pay attention for incoming messages
-		if (c->buffer->Length < DEFAULT_BUFLEN)
+		//	Check to make sure the socket is a valid before proceeding
+		if (c->sock != INVALID_SOCKET)
 		{
-			//	Place the socket in the read fd_set using FD_SET(s, *set)
-			FD_SET(c->sock, &read);
-		}
+			//	Check if there's an space left in the buffer, if there is then pay attention for incoming messages
+			if (c->recvbuflen < DEFAULT_BUFLEN)
+			{
+				//	Place the socket in the read fd_set using FD_SET(s, *set)
+				FD_SET(c->sock, &read);
+			}
 
-		//	Check to see if there's any messages in the buffer that need to be sent out
-		if (c->recvbuflen > 0)
-		{
-			//	Place the socket in the write fd_set using FD_SET(s, *set)
-			FD_SET(c->sock, &write);
-		}
+			//	Check to see if there's any messages in the buffer that need to be sent out
+			if (c->recvbuflen > 0)
+			{
+				//	Place the socket in the write fd_set using FD_SET(s, *set)
+				FD_SET(c->sock, &write);
+			}
 
-		//	If the client socket isn't either ready to read or send messages, then it goes into the except set
-		FD_SET(c->sock, &except);
+			//	If the client socket isn't either ready to read or send messages, then it goes into the except set
+			FD_SET(c->sock, &except);
+		}
 	}
 }
 
@@ -818,11 +870,17 @@ private: System::Boolean ReadMsg(Client^ c)
 	}
 	else if (bytes == SOCKET_ERROR)
 	{
-		OutputLog("Something went wrong while receiving a message. Error code: " + bytes);
 		int err;
 		int errlen = sizeof(err);
+
 		getsockopt(c->sock, SOL_SOCKET, SO_ERROR, (char*)&err, &errlen);
+
 		//	Check to see if the error was WSASHOULDBLOCK
+		if (err != WSAEWOULDBLOCK)
+		{
+			OutputLog("Something went wrong while receiving a message. Error code: " + err);
+		}
+
 		return (err == WSAEWOULDBLOCK);
 	}
 
@@ -844,12 +902,112 @@ private: System::Boolean SendMsg(Client^ c)
 	Char* p = x;
 	char* buffer = reinterpret_cast<char*>(p);
 
+	// Create a copy of the message so we can extract the recipient phone number(s) without altering the message
+	char* temp = new char[strlen(buffer) + 1];
+	strcpy(temp, buffer);
+	int tempLen = c->recvbuflen;
+
+
 	//	Find out who the message is intended for
+	int recipients = temp[0] - 48;	//	Number of recipients of the message (ASCII CHAR VALUE MINUS 48 WILL GIVE THE RIGHT INTEGER VALUE)
+	//	Shift the message down a byte
+	memmove(temp, temp + 2, tempLen - 2);
+	tempLen -= 2;	//	Update tempLen to reflect the extraction
+
+	//	Place the recipient's phone number in here, max group size is 5 ATM
+	std::string recipient[5];
+	for (int i = 0; i < recipients; i++)
+	{
+		char str[15];
+		memset(str, 0, 10);
+		strncpy_s(str, temp, 10);
+		recipient[i] = std::string(str);
+
+		// Remove the phone number from the buffer before the next iteration/moving on
+		memmove(temp, temp + 11, tempLen - 11);
+		tempLen -= 11;	//	Update recvbuflen to reflect the extraction
+	}
+
+	//	Since the all of the phone numbers have been extracted now only the message should be left in the buffer, so lets send out it out to the intended recipients
+
+	int mostBytesSent = 0;
 
 	//	Send out the message to the intended recipient(s)
+	for (int i = 0; i < recipients; i++)
+	{
+		// Lets find the intended recipient from the list of connections
+		Client^ r = FindClient(recipient[i]);
 
+		if (r->name != "")
+		{
+			//	Send out the message to the client
+			int bytes = send(r->sock, buffer, c->recvbuflen, 0);
+
+			if (bytes > mostBytesSent)
+			{
+				mostBytesSent = bytes;
+			}
+
+			//	Check for errors
+			if (bytes == SOCKET_ERROR)
+			{
+				int err;
+				int errLen = sizeof(err);
+
+				getsockopt(r->sock, SOL_SOCKET, SO_ERROR, (char*)&err, &errLen);
+
+				if (err != WSAEWOULDBLOCK)
+				{
+					OutputLog("send() failed with error code: " + err);
+				}
+
+				return (err == WSAEWOULDBLOCK);
+			}
+		}
+	}
+
+	//	Check to see if the entire message was sent out or not
+	if (mostBytesSent == c->recvbuflen)
+	{
+		//	Everything in the buffer was sent out to the recipient so need to clear out the sender's buffer and reset it recvbuflen back to 0
+		c->buffer = gcnew array<Char>(DEFAULT_BUFLEN);
+		c->recvbuflen = 0;
+	}
+	else
+	{
+		//	Since only a part of the message was sent out, need to remove the part that was sent out and update the sender's recvbuflen to reflect the change
+		char* b;
+		strcpy(b, buffer);
+		memmove(b, b + mostBytesSent, c->recvbuflen - mostBytesSent);
+
+		//	Convert from char* to array<wchar_t>^ and place the unsent message in the sender's buffer
+		System::Runtime::InteropServices::Marshal::Copy(IntPtr(&b), c->buffer, 0, c->recvbuflen - mostBytesSent);
+
+		c->recvbuflen -= mostBytesSent;
+	}
+
+	OutputLog("Message was sent out to the recipient(s).");
 
 	return true;
+}
+
+//	This method will search the entire list of connections for any client that matches the given phone number
+private: Client^ FindClient(std::string s)
+{
+	for each (List<Client^>^ l in connections)
+	{
+		for each (Client^ c in l)
+		{
+			if (c->phoneNo == gcnew String(s.c_str()))
+			{
+				//	Found the client so need to return it to the calling calling method
+				return c;
+			}
+		}
+	}
+
+	//	Didn't find a client with the given phone number, so will return an empty client
+	return gcnew Client(INVALID_SOCKET, gcnew String(""), gcnew String(""));
 }
 
 private: System::Void StopServer(System::Object^  sender, System::EventArgs^  e)

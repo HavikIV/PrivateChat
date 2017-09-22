@@ -39,12 +39,18 @@ namespace PrivateChat
             EditText et = FindViewById<EditText>(Resource.Id.phoneEt);
             string phone = et.Text;
 
+            // Grab the user's full name that was entered in the EditText
+            EditText nameET = FindViewById<EditText>(Resource.Id.nameEt);
+            string name = nameET.Text;
+
             // make sure the length of the string is 10 characters long
             if (phone.Length == 10)
             {
-                // Save the phone number
+                // Save the phone number and name
                 editor.PutString("phone", phone);
+                editor.PutString("name", name);
                 editor.Apply();
+
 
                 // Since the phone number has been saved, need to move the user on to the main activity
                 var intent = new Intent(this, typeof(MainActivity));

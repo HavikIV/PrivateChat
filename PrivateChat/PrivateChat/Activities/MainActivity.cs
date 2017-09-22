@@ -22,7 +22,7 @@ using PrivateChat.Adapters;
 
 namespace PrivateChat
 {
-    [Activity(Label = "PrivateChat", Icon = "@drawable/icon")]
+    [Activity(Label = "PrivateChat", Icon = "@drawable/Icon")]
     public class MainActivity : Activity, ActionMode.ICallback
     {
         ServerAdapter adapter;
@@ -105,6 +105,11 @@ namespace PrivateChat
             //Button load = FindViewById<Button>(Resource.Id.loadbtn);
             //load.Click += loadFromSharedPreferences;
             //adapter = new serverAdapter(this);
+
+            //  Lets connect to the service
+            serviceConnection = new SocketServiceConnection(this);
+            Intent service = new Intent(this, typeof(SocketService));
+            BindService(service, serviceConnection, Bind.AutoCreate);
         }
 
         public void connect(string path)
@@ -199,6 +204,9 @@ namespace PrivateChat
                 // Delete the server from the adapter
                 adapter.servers.RemoveAt(deletePosition);
                 adapter.NotifyDataSetChanged();
+
+                // Close the connection with the server (if there is one)
+                serviceConnection.Binder.Service.CloseSocket(ser.ID);
 
                 deletePosition = -1;
             }

@@ -71,6 +71,7 @@ containing a value of this type.
          */
         public static final int fab_material_blue_500=0x7f040000;
         public static final int gray=0x7f040002;
+        public static final int white=0x7f040003;
     }
     public static final class dimen {
         public static final int fab_elevation_lollipop=0x7f050004;
@@ -88,47 +89,51 @@ containing a value of this type.
         public static final int icon=0x7f020005;
         public static final int roundbutton=0x7f020006;
         public static final int splash=0x7f020007;
-        public static final int textbubble=0x7f020008;
+        public static final int splashicon=0x7f020008;
+        public static final int textbubble=0x7f020009;
     }
     public static final class id {
         public static final int GroupName=0x7f090005;
         public static final int LastMessage=0x7f090006;
         public static final int LastTimeStamp=0x7f090008;
         public static final int Message=0x7f09000f;
+        public static final int Space=0x7f090022;
         public static final int TimeStamp=0x7f090010;
-        public static final int Title=0x7f090027;
+        public static final int Title=0x7f09002a;
         public static final int TotalMessages=0x7f090007;
         public static final int Tv1=0x7f090019;
         public static final int Tv2=0x7f09001a;
         public static final int Tv3=0x7f09001b;
-        public static final int actionDelete=0x7f09002a;
-        public static final int actionDeleteConversation=0x7f090028;
-        public static final int actionEdit=0x7f090029;
+        public static final int actionDelete=0x7f09002d;
+        public static final int actionDeleteConversation=0x7f09002b;
+        public static final int actionEdit=0x7f09002c;
         public static final int cfab=0x7f090004;
         public static final int conversationList=0x7f090003;
         public static final int fab=0x7f09000a;
         public static final int infoTv1=0x7f09001f;
         public static final int infoTv2=0x7f090020;
+        public static final int infoTv3=0x7f090023;
         public static final int ipAddress1=0x7f090018;
         public static final int ipAddress2=0x7f090017;
         public static final int ipAddress3=0x7f090016;
         public static final int ipAddress4=0x7f090015;
         public static final int ipAddressTv=0x7f090012;
-        public static final int itemIPAddress=0x7f090024;
-        public static final int itemPortNumber=0x7f090026;
-        public static final int itemServerName=0x7f090023;
-        public static final int itemTv=0x7f090025;
+        public static final int itemIPAddress=0x7f090027;
+        public static final int itemPortNumber=0x7f090029;
+        public static final int itemServerName=0x7f090026;
+        public static final int itemTv=0x7f090028;
         public static final int messageEt=0x7f09000d;
         public static final int messagesList=0x7f09000e;
         public static final int mini=0x7f090000;
         public static final int name=0x7f090014;
+        public static final int nameEt=0x7f090024;
         public static final int nameTv=0x7f090011;
         public static final int normal=0x7f090001;
         public static final int phoneEt=0x7f090021;
         public static final int portNumber=0x7f09001c;
         public static final int portNumberTv=0x7f090013;
         public static final int relativeLayout1=0x7f090002;
-        public static final int saveBtn=0x7f090022;
+        public static final int saveBtn=0x7f090025;
         public static final int sendBtn=0x7f09000c;
         public static final int sendToEt=0x7f09000b;
         public static final int serverList=0x7f090009;

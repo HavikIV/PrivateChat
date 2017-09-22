@@ -8,14 +8,16 @@
   <!-- Name to give to the server -->
   <TextView
     android:text="Server Name:"
-    android:textAppearance="?android:attr/textAppearanceLarge"
+    android:textSize="28dp"
+    android:textColor="@android:color/black"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:id="@+id/nameTv" />
   <!-- IP address of the server -->
   <TextView
     android:text="IP Address:"
-    android:textAppearance="?android:attr/textAppearanceLarge"
+    android:textSize="28dp"
+    android:textColor="@android:color/black"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_below="@id/nameTv"
@@ -23,7 +25,8 @@
   <!-- Port number -->
   <TextView
     android:text="Port Number:"
-    android:textAppearance="?android:attr/textAppearanceLarge"
+    android:textSize="28dp"
+    android:textColor="@android:color/black"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_below="@id/ipAddressTv"
@@ -52,6 +55,7 @@
     android:layout_height="wrap_content"
     android:layout_below="@id/nameTv"
     android:layout_alignParentRight="true"
+    android:gravity="center_horizontal"
     android:id="@+id/ipAddress4" />
 
   <EditText
@@ -64,6 +68,7 @@
     android:layout_below="@id/nameTv"
     android:layout_toLeftOf="@id/ipAddress4"
     android:nextFocusDown="@+id/ipAddress4"
+    android:gravity="center_horizontal"
     android:id="@+id/ipAddress3" />
   
   <EditText
@@ -76,6 +81,7 @@
     android:layout_below="@id/nameTv"
     android:layout_toLeftOf="@id/ipAddress3"
     android:nextFocusDown="@+id/ipAddress3"
+    android:gravity="center_horizontal"
     android:id="@+id/ipAddress2" />
   
   <EditText
@@ -88,6 +94,7 @@
     android:layout_below="@id/nameTv"
     android:layout_toLeftOf="@id/ipAddress2"
     android:nextFocusDown="@+id/ipAddress2"
+    android:gravity="center_horizontal"
     android:id="@+id/ipAddress1" />
   <!-- Add the "." between the EditTexts-->
   <TextView
@@ -117,10 +124,13 @@
   <!-- Input for the port number for the server -->
   <EditText
     android:text=""
+    android:minEms="5"
+    android:maxLength="5"
     android:inputType="number"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_below="@id/ipAddressTv"
     android:layout_toRightOf="@id/portNumberTv"
+    android:gravity="center_horizontal"
     android:id="@+id/portNumber" />
 </RelativeLayout>

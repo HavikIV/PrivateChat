@@ -25,6 +25,9 @@ namespace PrivateChat
         private MessagesAdapter adapter;
         private SQLiteAsyncConnection connection;
         private SocketServiceConnection serviceConnection;
+        private bcReceiver bReceiver;
+
+        public static string ReloadAdapter = "reload_action";
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -114,6 +117,29 @@ namespace PrivateChat
             serviceConnection = new SocketServiceConnection(this);
             Intent service = new Intent(this, typeof(SocketService));
             BindService(service, serviceConnection, Bind.AutoCreate);
+
+            // Set up a broadcast receiver that will reload the messages from the database once it's notified by the Socket Service
+            bReceiver = new bcReceiver(this);
+
+            IntentFilter filter = new IntentFilter(ReloadAdapter);
+            RegisterReceiver(bReceiver, filter);
+        }
+
+        // This method is called whenever a new message is received and it needs to be displayed in the activity
+        public void ReloadMessages()
+        {
+            // Lets empty out the adapter first
+            adapter.messages.Clear();
+
+            // Grab all of the old messages from the database
+            var query = connection.Table<Messages>().Where(v => v.ServerID.Equals(ServerID) && v.ConversationID.Equals(ConversationID));
+            query.ToListAsync().ContinueWith(b => {
+                foreach (var m in b.Result)
+                {
+                    // Add each of the messages to the adapter to be displayed
+                    adapter.messages.Add(m);
+                }
+            }).Wait();
         }
 
         private void SendClick(object sender, EventArgs e)
@@ -131,6 +157,7 @@ namespace PrivateChat
             {
                 // Since the message string isn't empty, need to make sure that the user inputted a proper phone number
                 var sendTo = FindViewById<EditText>(Resource.Id.sendToEt);
+                string temp = sendTo.Text.Replace(" ", ""); // temp copy of the sendTo without any spaces
                 if (sendTo.Text == "")
                 {
                     // Let the user know that they didn't supply a phone to send the message to.
@@ -141,10 +168,10 @@ namespace PrivateChat
                     // Need to end the function call here
                     return;
                 }
-                else if (sendTo.Text.Length < 10 || sendTo.Text.Length > 10)
+                else if (sendTo.Text.Length < 10 || (temp.Length % 10 != 0))
                 {
                     // The phone number provided is either too short or too big to be a valid number, so let the user know
-                    Toast.MakeText(this, "Provided phone number is either too short or too big, please check and try again.", ToastLength.Long).Show();
+                    Toast.MakeText(this, "Provided phone number(s) is either too short or too big, please check and try again.", ToastLength.Long).Show();
 
                     // Pass the focus to the EditText for the user to input a valid phone number
                     sendTo.RequestFocus();
@@ -249,6 +276,9 @@ namespace PrivateChat
 
             // Unbind to the Service
             UnbindService(serviceConnection);
+
+            // Unregister the broadcast receiver
+            UnregisterReceiver(bReceiver);
         }
     }
 }
