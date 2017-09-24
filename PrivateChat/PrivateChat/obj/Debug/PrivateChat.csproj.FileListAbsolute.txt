@@ -56,7 +56,6 @@ E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\Pri
 E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\bin\Debug\Refractored.FloatingActionButton.xml
 E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\bin\Debug\Refractored.FloatingActionButton.dll.mdb
 E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\bin\Debug\SQLite-net.dll.mdb
-E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\obj\Debug\PrivateChat.csprojResolveAssemblyReference.cache
 E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\obj\Debug\PrivateChat.dll
 E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\obj\Debug\PrivateChat.pdb
 E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\obj\Debug\android\bin\PrivateChat.PrivateChat.apk
@@ -101,3 +100,4 @@ E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\Pri
 E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\obj\Debug\android\assets\PrivateChat.dll.mdb
 E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\obj\Debug\android\assets\Refractored.FloatingActionButton.dll.mdb
 E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\obj\Debug\android\assets\SQLite-net.dll.mdb
+E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\obj\Debug\PrivateChat.csprojResolveAssemblyReference.cache

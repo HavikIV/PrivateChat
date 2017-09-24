@@ -222,22 +222,12 @@ namespace PrivateChat
                                 {
                                     // The Host wasn't found
                                     //Toast.MakeText(this, "The host wasn't found in the DNS server.", ToastLength.Long).Show();
-                                    Notification.Builder builder = new Notification.Builder(this)
-                                        .SetSmallIcon(Resource.Drawable.Icon)
-                                        .SetContentTitle("ATTENTION")
-                                        .SetContentText("The host wasn't found in the DNS server. Server: " + server.Name);
-                                    NotificationManager nm = GetSystemService(NotificationService) as NotificationManager;
-                                    nm.Notify(9000, builder.Build());
+                                    DisplayNotification(9000, "ATTENTION", "The host wasn't found in the DNS server. Server: " + server.Name, null);
                                 }
                                 else
                                 {
                                     //Toast.MakeText(this, "Error code: " + ex.ErrorCode, ToastLength.Long).Show();
-                                    Notification.Builder builder = new Notification.Builder(this)
-                                        .SetSmallIcon(Resource.Drawable.Icon)
-                                        .SetContentTitle("ATTENTION")
-                                        .SetContentText("Error code: " + ex.ErrorCode);
-                                    NotificationManager nm = GetSystemService(NotificationService) as NotificationManager;
-                                    nm.Notify(9000, builder.Build());
+                                    DisplayNotification(9001, "ATTENTION", "Error code: " + ex.ErrorCode, null);
                                 }
                             }
                         }
@@ -281,12 +271,7 @@ namespace PrivateChat
             catch (Exception ex)
             {
                 // Something went wrong while registering the phone number, use a notification to inform the user of the error
-                Notification.Builder builder = new Notification.Builder(this)
-                    .SetSmallIcon(Resource.Drawable.Icon)
-                    .SetContentTitle("ATTENTION")
-                    .SetContentText("Error: " + ex);
-                NotificationManager nm = GetSystemService(NotificationService) as NotificationManager;
-                nm.Notify(9000, builder.Build());
+                DisplayNotification(9002, "ATTENTION", "Error: " + ex.Message, null);
             }
 
             // Wait for the BeginSend to be done
@@ -383,11 +368,12 @@ namespace PrivateChat
                 // Need to end the send request
                 int bytesSent = si.socket.EndSend(result);
 
-                // Check to see if all of the byes were sent
-                //if (bytesSent == si.sendBuffer.Length)
-                //{
-                //    //Toast.MakeText((Context)result.AsyncState, "The entire message was sent out to the server.", ToastLength.Long).Show();
-                //}
+                // Check to see if all of the bytes were sent
+                if (bytesSent == si.sendBuffer.Length)
+                {
+                    // Lets clear the buffer
+                    si.sendBuffer = new byte[512];
+                }
 
                 // Need to signal that everything was sent out and to resume execution of code
                 workDone.Set();
@@ -403,14 +389,25 @@ namespace PrivateChat
         {
             try
             {
+                // Grab the SocketInfo from the IAsyncResult variable's AsyncState
+                SocketInfo si = (SocketInfo)result.AsyncState;
                 // Grab the socket from the IAsyncResult variable's AsyncState
                 Socket s = (Socket)result.AsyncState;
 
                 // Need to end the read request
                 int bytes = s.EndReceive(result);
 
-                // Need to signal that everything was read and to resume execution of code
-                workDone.Set();
+                // Check to make sure the message was completely received
+                if (bytes > 0)
+                {
+                    // Lets try to receive more data and append it into the buffer offset by the number of bytes previously received
+                    s.BeginReceive(si.sendBuffer, bytes, si.sendBuffer.Length, 0, new AsyncCallback(Read), si);
+                }
+                else
+                {
+                    // Need to signal that everything was read and to resume execution of code
+                    workDone.Set();
+                }
             }
             catch (Exception ex)
             {
@@ -491,39 +488,40 @@ namespace PrivateChat
                             foreach (var s in error)
                             {
                                 // Close the connection
+                                s.Shutdown(SocketShutdown.Both);
                                 s.Close();
                             }
 
                             foreach (var s in read)
                             {
-                                byte[] buffer = new byte[512]; // empty buffer
+                                //byte[] buffer = new byte[512]; // empty buffer
 
-                                // Read the incoming message
-                                IAsyncResult result = s.BeginReceive(buffer, 0, buffer.Length, 0, new AsyncCallback(Read), s);
+                                // Lets grab the server info from the connections list so to pass it to the read callback method and need to save the message in the database
+                                var server = FindServer(s);
+
+                                // Read the incoming message, and pass the SocketInfo for the read callback method
+                                IAsyncResult result = s.BeginReceive(server.sendBuffer, 0, server.sendBuffer.Length, 0, new AsyncCallback(Read), server);
 
                                 // Wait the message to be finished being read
                                 workDone.WaitOne();
 
-                                // Need to save the message in the database
-                                var server = FindServer(s);
-
-                                int recipients = buffer[0] - 48; // '0' - 48 should give the integer value
+                                int recipients = server.sendBuffer[0] - 48; // '0' - 48 should give the integer value
 
                                 // Check to make sure we received something
                                 if (recipients > 0)
                                 {
                                     // We received a message so lets do some work
 
-                                    int arraySize = 10 * (recipients + 1) + recipients;
+                                    int arraySize = 10 * (recipients + 1) + recipients; // Size is the number of recipients of the message, plus the spaces between them, and the sender's phone number
                                     byte[] numbers = new byte[arraySize];
-                                    Buffer.BlockCopy(buffer, 2, numbers, 0, numbers.Length);
+                                    Buffer.BlockCopy(server.sendBuffer, 2, numbers, 0, numbers.Length);
 
                                     string groupName = System.Text.Encoding.Default.GetString(numbers); // Convert the array of bytes to a string of phone numbers
 
-                                    groupName.Replace(phoneNumber, ""); // remove the user's phone number, it's possible that it may create a double space so will need to remove it next
-                                    groupName.Replace("  ", " "); // Replace any double space with a single space
+                                    groupName = RemovePhoneNumber(phoneNumber, groupName); // remove the user's phone number, it's possible that it may create a double space so will need to remove it next
+                                    //groupName.Replace("  ", " "); // Replace any double space with a single space
 
-                                    Buffer.BlockCopy(buffer, numbers.Length + 2, buffer, 0, buffer.Length - (numbers.Length + 2)); // Remove everything but the message from the buffer
+                                    Buffer.BlockCopy(server.sendBuffer, numbers.Length + 2, server.sendBuffer, 0, server.sendBuffer.Length - (numbers.Length + 2)); // Remove everything but the message from the buffer
 
                                     int ConversationID = -1;
                                     var ts = DateTime.Now;
@@ -535,7 +533,7 @@ namespace PrivateChat
                                         var query = connection.Table<Conversation>().Where(v => v.ServerID.Equals(server.ID) && v.GroupName.Equals(groupName));
                                         query.FirstAsync().ContinueWith(t => {
                                             var conv = t.Result;
-                                            conv.LastMessage = System.Text.Encoding.Default.GetString(buffer);
+                                            conv.LastMessage = System.Text.Encoding.Default.GetString(server.sendBuffer);
                                             conv.LastTimeStamp = ts.ToString();
                                             conv.TotalMessages += 1;
                                             connection.UpdateAsync(conv);
@@ -549,7 +547,7 @@ namespace PrivateChat
                                         conversation.ServerID = server.ID;
                                         conversation.GroupName = groupName;
                                         conversation.TotalMessages += 1;
-                                        conversation.LastMessage = System.Text.Encoding.Default.GetString(buffer);
+                                        conversation.LastMessage = System.Text.Encoding.Default.GetString(server.sendBuffer);
                                         conversation.LastTimeStamp = ts.ToString();
 
                                         // Add Conversation to the database an update the ConversationID to the newly added Conversation
@@ -561,7 +559,7 @@ namespace PrivateChat
 
                                     // Lets add the message the Messages Table
                                     var mes = new Messages();
-                                    mes.Message = System.Text.Encoding.Default.GetString(buffer);
+                                    mes.Message = System.Text.Encoding.Default.GetString(server.sendBuffer);
                                     mes.Owner = groupName;
                                     mes.TimeStamp = ts.ToString();
                                     mes.ServerID = server.ID;
@@ -596,18 +594,10 @@ namespace PrivateChat
 
                                     // Obtain the PendingIntent for launching the task constructed by stack builder. The pending intent can be used only once.
                                     const int pendingIntentId = 0;
-                                    PendingIntent pendingIntent = stackBuilder.GetPendingIntent(pendingIntentId, PendingIntentFlags.OneShot);
+                                    PendingIntent pendingIntent = stackBuilder.GetPendingIntent(pendingIntentId, PendingIntentFlags.UpdateCurrent);
 
-                                    // Instantiate the builder and set notification elements, including the pending intent
-                                    
                                     // Send a notification that a new message was received
-                                    Notification.Builder builder = new Notification.Builder(this)
-                                                    .SetSmallIcon(Resource.Drawable.Icon)
-                                                    .SetContentIntent(pendingIntent)
-                                                    .SetContentTitle(groupName)
-                                                    .SetContentText(mes.Message);
-                                    NotificationManager nm = GetSystemService(NotificationService) as NotificationManager;
-                                    nm.Notify(9000, builder.Build());
+                                    DisplayNotification(9100, groupName, mes.Message, pendingIntent);
 
                                 }
                             }
@@ -618,22 +608,12 @@ namespace PrivateChat
                             {
                                 // Then this exception makes sense as it means that Select was given three null or empty lists
                                 // Otherwise this exception was thrown for a reason that I do not know.
-                                Notification.Builder builder = new Notification.Builder(this)
-                                                    .SetSmallIcon(Resource.Drawable.Icon)
-                                                    .SetContentTitle("ArgumentNullExpection")
-                                                    .SetContentText(ex.Message);
-                                NotificationManager nm = GetSystemService(NotificationService) as NotificationManager;
-                                nm.Notify(9000, builder.Build());
+                                DisplayNotification(9003, "ArgumentNullExpection", ex.Message, null);
                             }
                         }
                         catch (InvalidOperationException ex)
                         {
-                            Notification.Builder builder = new Notification.Builder(this)
-                                                    .SetSmallIcon(Resource.Drawable.Icon)
-                                                    .SetContentTitle("InvalidoperationExpection")
-                                                    .SetContentText(ex.Message);
-                            NotificationManager nm = GetSystemService(NotificationService) as NotificationManager;
-                            nm.Notify(9000, builder.Build());
+                            DisplayNotification(9004, "InvalidOperationException", ex.Message, null);
                         }
                         catch (SocketException ex)
                         {
@@ -665,6 +645,38 @@ namespace PrivateChat
             }
         }
 
+        // Removes all instances of the given phone number in the old string
+        // Returns a news string without the given phone number
+        // Created this method as the String.Replace(string old, string new) method wasn't working
+        public string RemovePhoneNumber(string phoneNumber, string old)
+        {
+            string newVal = "";
+            int i = 0;
+            while (i < old.Length)
+            {
+                string temp = "";
+                while (i == 0 || temp.Length != 10)
+                {
+                    temp += old[i];
+                    i++;
+                }
+
+                if (temp != phoneNumber)
+                {
+                    newVal += temp;
+                }
+
+                if (newVal.Length != 0 && i < old.Length)
+                {
+                    newVal += old[i];
+                }
+
+                i++;
+            }
+
+            return newVal;
+        }
+
         public void UpdateServerID(Server server)
         {
             foreach (var s in connections)
@@ -694,6 +706,26 @@ namespace PrivateChat
 
             // Didn't find a server associated with the socket, so lets return an empty SocketInfo object
             return new SocketInfo(null, -1);
+        }
+
+        // Display an error notification
+        // This method requires the Notification ID, title of the error,
+        // the full error message, and the action that should be done
+        private void DisplayNotification(int id, string title, string message, PendingIntent pendingIntent)
+        {
+            // Building a notification
+            Notification.Builder builder = new Notification.Builder(this)
+                .SetSmallIcon(Resource.Drawable.Icon)
+                .SetContentIntent(pendingIntent)
+                .SetContentTitle(title)
+                .SetContentText(message)
+                .SetAutoCancel(true);
+
+            // Get an instance of the notification manager so that the notification can be display
+            NotificationManager nm = GetSystemService(NotificationService) as NotificationManager;
+
+            // Issue the notification
+            nm.Notify(id, builder.Build());
         }
 
         public override IBinder OnBind(Intent intent)
