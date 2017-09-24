@@ -97,6 +97,12 @@ namespace PrivateChat
                 }
             };
 
+            // In case this is an already started conversation, lets move the focus straight the message EditText
+            if (!sendTo.Enabled)
+            {
+                message.RequestFocus(); // Try to grab the focus
+            }
+
             // Get the path to the database so that a connection can be established
             var docFolder = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
             var pathToDatabase = System.IO.Path.Combine(docFolder, "ServerDatabase.db");

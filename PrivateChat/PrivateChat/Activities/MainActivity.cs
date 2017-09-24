@@ -22,7 +22,7 @@ using PrivateChat.Adapters;
 
 namespace PrivateChat
 {
-    [Activity(Label = "PrivateChat", Icon = "@drawable/Icon")]
+    [Activity(Label = "@string/ApplicationName", Icon = "@drawable/Icon")]
     public class MainActivity : Activity, ActionMode.ICallback
     {
         ServerAdapter adapter;

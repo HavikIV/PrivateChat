@@ -74,7 +74,8 @@ namespace PrivateChat
             catch (SQLiteException ex)
             {
                 // There was a problem connecting to the database, so should let the User know that using a toast
-                Toast.MakeText(this, "There was a problem connecting to the database. Exception: " + ex.Message, ToastLength.Long).Show();
+                //Toast.MakeText(this, "There was a problem connecting to the database. Exception: " + ex.Message, ToastLength.Long).Show();
+                DisplayNotification(9005, "DatabaseException", "There was a problem connecting to the database. Exception: " + ex.Message, null);
             }
 
             // Before doing anything create a new List of Sockets
@@ -244,11 +245,15 @@ namespace PrivateChat
                 }
             }).Wait();
 
-            // Start a separate thread handle reading of all incoming messages
-            thread = new Thread(new ThreadStart(HandleSockets));
+            // Only start a new thread if it hasn't been started before
+            if (thread == null)
+            {
+                // Start a separate thread handle reading of all incoming messages
+                thread = new Thread(new ThreadStart(HandleSockets));
 
-            // Start the thread
-            thread.Start();
+                // Start the thread
+                thread.Start();
+            }
 
             return StartCommandResult.Sticky;
         }
@@ -626,6 +631,36 @@ namespace PrivateChat
 
                     busyReading = false;
                 }
+
+                // If there are no connections in the list then put the thread to sleep for 10 seconds and then check again
+                // in order to avoid wasting CPU cycles doing nothing
+                while (connections.Count == 0)
+                {
+                    // In case a socket was left in either the read or error list when the server was deleted
+                    // let's remove them from the lists before sleeping
+                    if (read.Count != 0 || error.Count != 0)
+                    {
+                        // Make sure that the sockets are properly closed first
+                        foreach (var s in error)
+                        {
+                            // Close the connection
+                            s.Shutdown(SocketShutdown.Both);
+                            s.Close();
+                        }
+
+                        foreach (var s in read)
+                        {
+                            // Close the connection
+                            s.Shutdown(SocketShutdown.Both);
+                            s.Close();
+                        }
+
+                        // Remove the sockets from the lists
+                        read.Clear();
+                        error.Clear();
+                    }
+                    Thread.Sleep(10000); // Sleep for 10 seconds
+                }
             }
 
             restarting = false;
@@ -638,8 +673,12 @@ namespace PrivateChat
             {
                 if (server.ID == id)
                 {
-                    //  Found the server, so lets close it
+                    //  Found the server, so lets close it after shutting down the stream first
+                    server.socket.Shutdown(SocketShutdown.Both);
                     server.socket.Close();
+
+                    // Now lets remove it from the list of connections so that the HandleSocket() doesn't try to do anything stupid with a closed socket
+                    connections.Remove(server);
                     break;  // Lets end the loop here as don't need to search rest of the list
                 }
             }
@@ -716,6 +755,7 @@ namespace PrivateChat
             // Building a notification
             Notification.Builder builder = new Notification.Builder(this)
                 .SetSmallIcon(Resource.Drawable.Icon)
+                .SetColor(0x010203)
                 .SetContentIntent(pendingIntent)
                 .SetContentTitle(title)
                 .SetContentText(message)

@@ -4,7 +4,7 @@
   <uses-sdk android:minSdkVersion="23" />
   <uses-permission android:name="android.permission.INTERNET" />
   <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-  <application android:theme="@android:style/Theme.DeviceDefault.Light" android:label="PrivateChat" android:icon="@drawable/icon" android:name="android.app.Application" android:allowBackup="true" android:debuggable="true">
+  <application android:theme="@android:style/Theme.DeviceDefault.Light" android:label="@string/ApplicationName" android:icon="@drawable/icon" android:name="android.app.Application" android:allowBackup="true" android:debuggable="true">
     <activity android:name="md52520702dc6f751a40a8e5f2fc3ba5c79.ConversationActivity" />
     <activity android:label="MessageActivity" android:name="md52520702dc6f751a40a8e5f2fc3ba5c79.MessageActivity" />
     <receiver android:enabled="true" android:name="md52520702dc6f751a40a8e5f2fc3ba5c79.bcReceiver">
@@ -12,7 +12,7 @@
         <action android:name="notify_action" />
       </intent-filter>
     </receiver>
-    <activity android:icon="@drawable/icon" android:label="PrivateChat" android:name="md52520702dc6f751a40a8e5f2fc3ba5c79.MainActivity" />
+    <activity android:icon="@drawable/icon" android:label="@string/ApplicationName" android:name="md52520702dc6f751a40a8e5f2fc3ba5c79.MainActivity" />
     <activity android:label="Register" android:noHistory="true" android:name="md52520702dc6f751a40a8e5f2fc3ba5c79.registerActivity" />
     <service android:name="md52520702dc6f751a40a8e5f2fc3ba5c79.SocketService" />
     <activity android:noHistory="true" android:theme="@style/SplashTheme" android:name="md52520702dc6f751a40a8e5f2fc3ba5c79.splashActivity">
@@ -30,11 +30,12 @@
       </intent-filter>
     </receiver>
   </application>
-  <!-- Set the theme for the splashActivity -->
-  <!--activity android:name=".splashActivity" android:theme="@style/SplashTheme">
+  <!-- Set up the hierarchy of the activities of the application -->
+  <activity android:name="PrivateChat.PrivateChat.MainActivity" android:label="@string/ApplicationName">
     <intent-filter>
       <action android:name="android.intent.action.MAIN" />
-      <category android:name="android.intent.category.LAUNCHER" />
     </intent-filter>
-  </activity-->&gt;
+  </activity>
+  <activity android:name="PrivateChat.PrivateChat.ConversationActivity" android:parentActivityName="PrivateChat.PrivateChat.MainActivity"></activity>
+  <activity android:name="PrivateChat.PrivateChat.MessagesActivity" android:parentActivityName="PrivateChat.PrivateChat.ConversationActivity"></activity>
 </manifest>
