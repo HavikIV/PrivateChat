@@ -152,6 +152,14 @@ namespace PrivateChat
         {
             bool LoadOLd = false; // This will be set to true if the Conversation already existed
 
+            if (!serviceConnection.Binder.Service.ServerIsConnected(ServerID))
+            {
+                // Since the server isn't connected, it isn't possible to send any messages so lets end the function call here,
+                // but first lets inform the user why we're ending the call here.
+                Toast.MakeText(this, "Please connect to the server first before trying to send any messages.", ToastLength.Long).Show();
+
+                return;
+            }
             // If the message is an empty string, don't do anything.
             var message = FindViewById<EditText>(Resource.Id.messageEt);
             if (string.IsNullOrEmpty(message.Text))

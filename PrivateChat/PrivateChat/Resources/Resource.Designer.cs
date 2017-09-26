@@ -125,6 +125,9 @@ namespace PrivateChat
 			// aapt resource value: 0x7f050000
 			public const int fab_size_normal = 2131034112;
 			
+			// aapt resource value: 0x7f050005
+			public const int increment = 2131034117;
+			
 			static Dimension()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -157,16 +160,19 @@ namespace PrivateChat
 			public const int Icon = 2130837509;
 			
 			// aapt resource value: 0x7f020006
-			public const int roundButton = 2130837510;
+			public const int mybubble = 2130837510;
 			
 			// aapt resource value: 0x7f020007
-			public const int splash = 2130837511;
+			public const int otherbubble = 2130837511;
 			
 			// aapt resource value: 0x7f020008
-			public const int splashIcon = 2130837512;
+			public const int roundButton = 2130837512;
 			
 			// aapt resource value: 0x7f020009
-			public const int TextBubble = 2130837513;
+			public const int splash = 2130837513;
+			
+			// aapt resource value: 0x7f02000a
+			public const int splashIcon = 2130837514;
 			
 			static Drawable()
 			{

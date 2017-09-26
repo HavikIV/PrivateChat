@@ -121,7 +121,7 @@ namespace PrivateChat
             {
                 connection = new SQLiteAsyncConnection(path);
                 connection.CreateTableAsync<Server>().Wait(); // Making sure that connection to the database is established before moving on
-                Toast.MakeText(this, "Server table created", ToastLength.Long).Show();
+                //Toast.MakeText(this, "Server table created", ToastLength.Long).Show();
             }
             catch (SQLite.SQLiteException ex)
             {

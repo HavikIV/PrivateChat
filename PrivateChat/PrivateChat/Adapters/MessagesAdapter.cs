@@ -69,13 +69,34 @@ namespace PrivateChat.Adapters
             var message = view.FindViewById<TextView>(Resource.Id.Message);
             var timeStamp = view.FindViewById<TextView>(Resource.Id.TimeStamp);
             message.Text = messageElement.Message;
-            timeStamp.Text = messageElement.TimeStamp;
+
+            // Change the string to a DateTime object for extraction
+            DateTime ts = DateTime.Parse(messageElement.TimeStamp);
+            DateTime today = DateTime.Now;  // today's full DateTime object
+
+            if (ts.Date == today.Date)
+            {
+                // Since it's the same day, only display the time the message was received (Hour:Minute AM/PM)
+                timeStamp.Text = ts.ToString("t");
+            }
+            else
+            {
+                // Since the message isn't from today, display the date it was received (Month day)
+                timeStamp.Text = ts.ToString("MMM d");
+            }
+
             if (messageElement.Owner != "ME")
             {
                 // Since the creator of the message isn't the user, need to set the items to align to the left side of the screen
                 var param = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WrapContent, ViewGroup.LayoutParams.WrapContent);
                 param.AddRule(LayoutRules.AlignParentLeft);
                 message.LayoutParameters = param;
+
+                message.SetBackgroundResource(Resource.Drawable.otherbubble);
+
+                //var imageView = view.FindViewById<ImageView>(Resource.Id.Bubble);
+                //imageView.LayoutParameters = param;
+                //imageView.ScaleX = 1; // Undo the flip that is done in the xml
 
                 var param2 = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WrapContent, ViewGroup.LayoutParams.WrapContent);
                 param.AddRule(LayoutRules.AlignParentLeft);

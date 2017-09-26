@@ -4,6 +4,6 @@
     <SelectedDevice>5.7" Marshmallow %286.0.0%29 XHDPI Phone</SelectedDevice>
     <DefaultDevice>5.7" Marshmallow %286.0.0%29 XHDPI Phone</DefaultDevice>
     <AndroidDesignerPreferredDevice>Nexus 5X</AndroidDesignerPreferredDevice>
-    <AndroidDesignerPreferredTheme>SplashTheme</AndroidDesignerPreferredTheme>
+    <AndroidDesignerPreferredTheme>Theme.DeviceDefault.Light.NoActionBar</AndroidDesignerPreferredTheme>
   </PropertyGroup>
 </Project>

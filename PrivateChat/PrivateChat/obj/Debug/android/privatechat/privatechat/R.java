@@ -79,6 +79,7 @@ containing a value of this type.
         public static final int fab_shadow_size=0x7f050002;
         public static final int fab_size_mini=0x7f050001;
         public static final int fab_size_normal=0x7f050000;
+        public static final int increment=0x7f050005;
     }
     public static final class drawable {
         public static final int fab_shadow=0x7f020000;
@@ -87,10 +88,11 @@ containing a value of this type.
         public static final int ic_delete=0x7f020003;
         public static final int ic_edit=0x7f020004;
         public static final int icon=0x7f020005;
-        public static final int roundbutton=0x7f020006;
-        public static final int splash=0x7f020007;
-        public static final int splashicon=0x7f020008;
-        public static final int textbubble=0x7f020009;
+        public static final int mybubble=0x7f020006;
+        public static final int otherbubble=0x7f020007;
+        public static final int roundbutton=0x7f020008;
+        public static final int splash=0x7f020009;
+        public static final int splashicon=0x7f02000a;
     }
     public static final class id {
         public static final int GroupName=0x7f090005;

@@ -8,10 +8,12 @@
   <TextView
     android:text=""
     android:textAppearance="?android:attr/textAppearanceMedium"
-    android:maxLines="1"
+    android:maxWidth="375dp"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_alignParentRight="true"
+    android:layout_margin="5sp"
+    android:background="@drawable/myBubble"
     android:id="@+id/Message" />
   <!-- Add a TextView for the TimeStamp of the message, will default to the right side of the screen -->
   <TextView
@@ -23,5 +25,17 @@
     android:layout_alignParentRight="true"
     android:layout_below="@id/Message"
     android:id="@+id/TimeStamp" />
+  <!-- Add an ImageView that will be used to show the text bubble -->
+  <!--ImageView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignTop="@id/Message"
+    android:layout_alignBottom="@id/Message"
+    android:layout_alignLeft="@+id/Message"
+    android:layout_alignRight="@+id/Message"
+    android:scaleX="-1"
+    android:scaleType="fitXY"
+    android:src="@drawable/textbubble"
+    android:id="@+id/Bubble" /-->
 
 </RelativeLayout>

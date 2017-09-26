@@ -127,11 +127,6 @@ namespace PrivateChat
                 // Not a valid IP address
                 Toast.MakeText(_context, "The IP address entered isn't a valid IP address. Please check again and try again.", ToastLength.Long).Show();
             }
-            else if (!UniqueServerName(name.Text))
-            {
-                // Not a unique name for the server
-                Toast.MakeText(_context, "The Name entered is already in use. Please try again.", ToastLength.Long).Show();
-            }
             else
             {
                 // All of the entries were entered by the User, i.e. none were left empty

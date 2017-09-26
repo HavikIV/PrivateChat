@@ -77,7 +77,6 @@ E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\Pri
 E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\obj\Debug\res\layout\conversationlistitem.xml
 E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\obj\Debug\res\menu\conversationactionbar.xml
 E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\obj\Debug\res\layout\messageslistitem.xml
-E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\obj\Debug\res\drawable\textbubble.png
 E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\obj\Debug\res\drawable\splashicon.png
 E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\obj\Debug\res\drawable-hdpi\icon.png
 E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\obj\Debug\res\drawable-mdpi\icon.png
@@ -101,3 +100,14 @@ E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\Pri
 E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\obj\Debug\android\assets\Refractored.FloatingActionButton.dll.mdb
 E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\obj\Debug\android\assets\SQLite-net.dll.mdb
 E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\obj\Debug\PrivateChat.csprojResolveAssemblyReference.cache
+E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\obj\Debug\res\values\dimens.xml
+E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\obj\Debug\res\drawable-hdpi\mybubble.9.png
+E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\obj\Debug\res\drawable-hdpi\otherbubble.9.png
+E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\obj\Debug\res\drawable-mdpi\mybubble.9.png
+E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\obj\Debug\res\drawable-mdpi\otherbubble.9.png
+E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\obj\Debug\res\drawable-xhdpi\mybubble.9.png
+E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\obj\Debug\res\drawable-xhdpi\otherbubble.9.png
+E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\obj\Debug\res\drawable-xxhdpi\mybubble.9.png
+E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\obj\Debug\res\drawable-xxhdpi\otherbubble.9.png
+E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\obj\Debug\res\drawable-xxxhdpi\mybubble.9.png
+E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\obj\Debug\res\drawable-xxxhdpi\otherbubble.9.png

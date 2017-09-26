@@ -205,7 +205,24 @@ namespace PrivateChat
                                     IAsyncResult result = socket.BeginConnect(ipEndpoint, new AsyncCallback(Connect), si);
 
                                     // Wait for the connection to be made
-                                    workDone.WaitOne();
+                                    workDone.WaitOne(1000, true); // Wait for a maximum of 1 second before moving on
+
+                                    // Check to make sure the socket does connect to the server before moving on
+                                    if (!si.socket.Connected)
+                                    {
+                                        // Let's do some clean up
+                                        //socket.Shutdown(SocketShutdown.Both); // Can't so this when the socket hasn't even connected yet
+                                        socket.Close();
+
+                                        // Making sure that workDone does get set
+                                        workDone.Set();
+
+                                        // throw an exception to display a notifiatio to inform the user of the failure to connect to server
+                                        //throw new Exception("Failed to connect");
+
+                                        DisplayNotification(server.ID, "CONNECTION ERROR", "Failed to connect to server: " + server.Name, null);
+                                        continue; // Let's move on the to the next iteration of the loop
+                                    }
 
                                     // Since the connection was successful, need to register the User's phone number on it
                                     registerUser(si);
@@ -313,7 +330,7 @@ namespace PrivateChat
             IAsyncResult result = socket.BeginConnect(ipEndpoint, new AsyncCallback(Connect), si);
 
             // wait for the Connection to be established or fail
-            workDone.WaitOne();
+            workDone.WaitOne(1000, true);    // Wait for a second
 
             // Check to see if the attempt was successful or not
             if (si.socket.Connected)
@@ -340,6 +357,17 @@ namespace PrivateChat
                 // Since the connection was successful need to inform the caller
                 return true;
             }
+            else
+            {
+                // Do some clean up on the socket
+                //socket.Shutdown(SocketShutdown.Both);
+                socket.Close();
+
+                shouldWaitForAdd = false;
+
+                workDone.Set();
+            }
+
 
             return false;   // Returns false by default
         }
@@ -349,15 +377,20 @@ namespace PrivateChat
         // This function should be only be called whenever the service is started or whenever the testing a server.
         public static void Connect(IAsyncResult result)
         {
+
             // Grab the socket from the IAsyncResult variable's AsyncState
             SocketInfo si = (SocketInfo)result.AsyncState;
-           // Socket socket = (Socket)result.AsyncState;
+            // Socket socket = (Socket)result.AsyncState;
 
-            // Need to end the request of Connecting as it was successful as it reach this point
-            si.socket.EndConnect(result);
+            try
+            {
+                // Need to end the request of Connecting as it was successful as it reach this point
+                si.socket.EndConnect(result);
 
-            // Need to reset the wait handle so the calling function can continue executing
-            workDone.Set();
+                // Need to reset the wait handle so the calling function can continue executing
+                workDone.Set();
+            }
+            catch (Exception) { /* Do Nothing */ }
         }
 
         // This function will be passed to a BeginSend() as an AsyncCallback
@@ -388,6 +421,20 @@ namespace PrivateChat
                 // Something went wrong, so let the user know, I think this work (the context part anyways)
                 //Toast.MakeText((Context)result.AsyncState, "Couldn't send out the message, exception: " + ex, ToastLength.Long).Show();
             }
+        }
+
+        // This method will determine if any of the connected servers have an ID that matches the given ID.
+        // If the given ID matches with a server, then let the caller know that it's connected and can send a message
+        public bool ServerIsConnected(int serverID)
+        {
+            foreach (var server in connections)
+            {
+                if (server.ID == serverID)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public static void Read(IAsyncResult result)
