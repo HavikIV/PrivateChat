@@ -9,7 +9,7 @@ The server application is fairly simple to use and understand. First of all, the
 
 **Caution:** In most cases, this IP Address is dynamically allocated to each of your ISP's customers. By dynamically allocated, I mean that this IP address isn't permantently assigned to you, it can change after the alloated time is over (businesses on the other hand will tend to have static IP addresses). Most of the times, modems are generally good at renewing their IP address in a timely manner so that they will retain the same IP address for long periods of time. 
 
-The **Local IP Address** is the IP address of your computer in your local network. In most homes and businesses today, there are WiFi routers in use so you have to find out what is your computer's IP Address that the router has assign it and input it in the Textbox indicated by **Local IP Address:** inserver application's . In the case that all connections will only be made through the local network, then this is the IP address that should be given out.
+The **Local IP Address** is the IP address of your computer in your local network. In most homes and businesses today, there are WiFi routers in use so you have to find out what is your computer's IP Address that the router has assign it and input it in the Textbox indicated by **Local IP Address:** on the server application. In the case that all connections will only be made through the local network, then this is the IP address that should be given out.
 
 One method of obtaining the IP address on a Windows PC is the following:
 
@@ -30,5 +30,7 @@ Type in the IP address exactly as you see it in the command prompt as that is th
 The **Port Number** is used to identify which process that the computer should forward any incoming messages through the internet. A port number can be any number between 1-65535. It's best to assign one that isn't being used at the moment by the computer which can be checked by using the command **netstat -an - p tcp** in the administrator command prompt. The port numbers are listed after the **":"** (ex. 0.0.0.0:80, port number is 80). You should only check the port numbers for IP address that you will input into the server application.
 
 ![cmd4](/Readmeimgs/cmd4.png)
+
+Once both the **Local IP Address** and **Port Number** is inputted, click on the Start button to run the server. You can Stop the server at any given moment. The box below the two buttons is where all of the logs will be will displayed while the server is running.
 
 ## PrivateChat App:
