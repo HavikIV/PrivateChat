@@ -278,8 +278,8 @@ namespace PrivateChatServer {
 			this->Controls->Add(this->lblPublic);
 			this->Controls->Add(this->btnStop);
 			this->Controls->Add(this->btnStart);
-			this->Name = L"MainWindow";
-			this->Text = L"MainWindow";
+			this->Name = L"PrivateChatServer";
+			this->Text = L"PrivateChat";
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -602,6 +602,7 @@ private: System::Void StartListening()
 				{
 					//	Lets update the previously added connection with the new socket
 					old->sock = c->sock;
+					OutputLog("Updated the socket for " + c->name);
 				}
 				else
 				{
@@ -721,8 +722,10 @@ private: System::Void HandleClients(Object^ obj)
 		//	Need to tell the other threads know that they should wait for this thread to finish it's work first
 		shouldWait = true;
 
+		bool empty = allEmpty(readFDs, writeFDs, exceptFDs);
+
 		//	Call the select() method to start handling the work to be done for each of the clients
-		if (select(0, &readFDs, &writeFDs, &exceptFDs, 0) > 0)
+		if (select(0, &readFDs, &writeFDs, &exceptFDs, 0) > 0 && !empty)
 		{
 			//	Iterate through each of the clients to determine what needs to be done for each of them
 			for each (Client^ c in list)
@@ -793,7 +796,12 @@ private: System::Void HandleClients(Object^ obj)
 		}
 		else
 		{
-			OutputLog("select() failed with error code: " + WSAGetLastError());
+			// Since not all three of the fd_sets were empty when select() was called, unexpected error occurred so output the log.
+			// An error is expected when all three sets are empty when passed to select so don't need to output a log.
+			if (!empty)
+			{
+				OutputLog("select() failed with error code: " + WSAGetLastError());
+			}
 		}
 
 		//	Since this thread is finished doing it's work for this iteration of the while loop, inform the other threads that they can continue
@@ -816,6 +824,11 @@ private: System::Void HandleClients(Object^ obj)
 	list->Clear();
 	OutputLog("Cleared all of the clients in the list.");
 	connections.Remove(list);
+}
+
+private: bool allEmpty(fd_set &read, fd_set &write, fd_set &except)
+{
+	return ((read.fd_count == 0) && (write.fd_count == 0) && (except.fd_count == 0));
 }
 
 //	This method will move the Client sockets into the appropriate fd_sets for the select() method
