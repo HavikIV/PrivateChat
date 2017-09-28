@@ -45,8 +45,10 @@ Once the registeration is finished, the App is opened to the MainActivity which 
 You can give the server any name you wish, it's a name that only you know the server by. Enter each of the four octets of the server's IP Address and the Port Number before clicking the connect button.
 ![AddServer](/Readmeimgs/AddServer.png)
 
-This Activity will display all of the saved conversations that the user is part of on the selected server. A conversation can be started by clicking on the FAB in the lower right hand corner
+This Activity will display all of the saved conversations that the user is part of on the selected server. A conversation can be started by clicking on the FAB in the lower right hand corner.
+
 ![Conversations](/Readmeimgs/Conversations.png)
 
 In the textbox at the top, the user needs to input the full phone number of who to send the message to. Currently the server only supports up 5 recipients with each of their phone numbers separated by a space.
+
 ![NewMessage](/Readmeimgs/NewMessage.png)
