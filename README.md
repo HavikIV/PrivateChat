@@ -34,3 +34,19 @@ The **Port Number** is used to identify which process that the computer should f
 Once both the **Local IP Address** and **Port Number** is inputted, click on the Start button to run the server. You can Stop the server at any given moment. The box below the two buttons is where all of the logs will be will displayed while the server is running.
 
 ## PrivateChat App:
+The PrivateChat App first requires the User to register their 10 digit phone number and full name. At the moment the phone number is used as a unique key for each user. In the case that of User B tried to connect with a phone number that User A has already registered as their own, User B's attempt will be rejected.
+
+![Register](/Readmeimgs/Register.png)
+
+Once the registeration is finished, the App is opened to the MainActivity which is where the user is able to add Servers that they wish to be connected to. In order to add a server, just click on the FAB in the lower right hand corner and it should open a dialog to enter the server's information
+
+![Main](/Readmeimgs/Main.png)
+
+You can give the server any name you wish, it's a name that only you know the server by. Enter each of the four octets of the server's IP Address and the Port Number before clicking the connect button.
+![AddServer](/Readmeimgs/AddServer.png)
+
+This Activity will display all of the saved conversations that the user is part of on the selected server. A conversation can be started by clicking on the FAB in the lower right hand corner
+![Conversations](/Readmeimgs/Conversations.png)
+
+In the textbox at the top, the user needs to input the full phone number of who to send the message to. Currently the server only supports up 5 recipients with each of their phone numbers separated by a space.
+![NewMessage](/Readmeimgs/NewMessage.png)

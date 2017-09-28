@@ -600,9 +600,18 @@ private: System::Void StartListening()
 
 				if (old->phoneNo != "" && old->sock == INVALID_SOCKET)
 				{
-					//	Lets update the previously added connection with the new socket
-					old->sock = c->sock;
-					OutputLog("Updated the socket for " + c->name);
+					if (old->name == c->name)
+					{
+						//	Lets update the previously added connection with the new socket
+						old->sock = c->sock;
+						OutputLog("Updated the socket for " + c->name);
+					}
+					else
+					{
+						// Since it's not the same user, we're going to reject this connection
+						closesocket(c->sock);
+						OutputLog("Connection rejected due to a different user trying to use an already registered phone number.");
+					}
 				}
 				else
 				{

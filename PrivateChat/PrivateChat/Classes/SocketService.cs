@@ -330,7 +330,7 @@ namespace PrivateChat
             IAsyncResult result = socket.BeginConnect(ipEndpoint, new AsyncCallback(Connect), si);
 
             // wait for the Connection to be established or fail
-            workDone.WaitOne(1000, true);    // Wait for a second
+            workDone.WaitOne(2000, true);    // Wait for two seconds (should be enough time for the server to reject the connection if phone number already in use by another user
 
             // Check to see if the attempt was successful or not
             if (si.socket.Connected)
@@ -386,6 +386,8 @@ namespace PrivateChat
             {
                 // Need to end the request of Connecting as it was successful as it reach this point
                 si.socket.EndConnect(result);
+
+                Thread.Sleep(1500); // Allow enough time for the connection to be rejected in case the phone number is already in use
 
                 // Need to reset the wait handle so the calling function can continue executing
                 workDone.Set();
