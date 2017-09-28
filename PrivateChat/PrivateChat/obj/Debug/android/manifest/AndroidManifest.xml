@@ -6,7 +6,7 @@
   <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
   <application android:theme="@android:style/Theme.DeviceDefault.Light" android:label="@string/ApplicationName" android:icon="@drawable/icon" android:name="android.app.Application" android:allowBackup="true" android:debuggable="true">
     <activity android:name="md52520702dc6f751a40a8e5f2fc3ba5c79.ConversationActivity" />
-    <activity android:label="MessageActivity" android:name="md52520702dc6f751a40a8e5f2fc3ba5c79.MessageActivity" />
+    <activity android:label="New Message" android:name="md52520702dc6f751a40a8e5f2fc3ba5c79.MessageActivity" />
     <receiver android:enabled="true" android:name="md52520702dc6f751a40a8e5f2fc3ba5c79.bcReceiver">
       <intent-filter>
         <action android:name="notify_action" />

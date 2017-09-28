@@ -17,6 +17,7 @@ using SQLite;
 
 using PrivateChat.Tables;
 using PrivateChat.Adapters;
+using Android.Content.Res;
 
 namespace PrivateChat
 {
@@ -29,6 +30,16 @@ namespace PrivateChat
         private string mode;
         private SQLiteAsyncConnection connection;
         private SocketServiceConnection serviceConnection;
+        //private int _p;
+
+        // Default constructor
+        public NewServerDialog()
+        {
+            // Bind to SocketService
+            serviceConnection = new SocketServiceConnection((MainActivity)_context);
+            Intent service = new Intent(_context, typeof(SocketService));
+            _context.BindService(service, serviceConnection, Bind.AutoCreate);
+        }
 
         // constructor
         public NewServerDialog(Context context, ref ListView list, ref ServerAdapter ad, SQLiteAsyncConnection conn)
@@ -53,6 +64,7 @@ namespace PrivateChat
             _adapter = ad;
             _server = _adapter.servers.ElementAt(p);
             mode = s;
+            //_p = p;
 
             // Bind to SocketService
             serviceConnection = new SocketServiceConnection((MainActivity)_context);
@@ -261,6 +273,24 @@ namespace PrivateChat
                 }
             }
         }
+
+        //public override void OnConfigurationChanged(Configuration newConfig)
+        //{
+        //    base.OnConfigurationChanged(newConfig);
+
+        //    // Since the orientation changed, need to recreate the dialog
+        //    if (mode != "ADD")
+        //    {
+        //        var dialog = new NewServerDialog(_context, ref _list, ref _adapter, "Edit", _p);
+        //        dialog.Show(FragmentManager, "server");
+        //    }
+        //    else
+        //    {
+        //        var dialog = new NewServerDialog(_context, ref _list, ref _adapter, connection);
+        //        dialog.Show(FragmentManager, "server");
+        //    }
+            
+        //}
 
         // This function will take view of the dialog, and from there it will check if the provided
         // IP Address is valid or not.

@@ -451,17 +451,20 @@ namespace PrivateChat
                 // Need to end the read request
                 int bytes = s.EndReceive(result);
 
-                // Check to make sure the message was completely received
-                if (bytes > 0)
-                {
-                    // Lets try to receive more data and append it into the buffer offset by the number of bytes previously received
-                    s.BeginReceive(si.sendBuffer, bytes, si.sendBuffer.Length, 0, new AsyncCallback(Read), si);
-                }
-                else
-                {
-                    // Need to signal that everything was read and to resume execution of code
-                    workDone.Set();
-                }
+                // Need to signal that everything was read and to resume execution of code
+                workDone.Set();
+
+                //// Check to make sure the message was completely received
+                //if (bytes > 0)
+                //{
+                //    // Lets try to receive more data and append it into the buffer offset by the number of bytes previously received
+                //    s.BeginReceive(si.sendBuffer, bytes, si.sendBuffer.Length, 0, new AsyncCallback(Read), si);
+                //}
+                //else
+                //{
+                //    // Need to signal that everything was read and to resume execution of code
+                //    workDone.Set();
+                //}
             }
             catch (Exception ex)
             {

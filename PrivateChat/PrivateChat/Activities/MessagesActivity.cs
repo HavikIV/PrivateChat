@@ -16,7 +16,7 @@ using PrivateChat.Adapters;
 
 namespace PrivateChat
 {
-    [Activity(Label = "MessageActivity")]
+    [Activity(Label = "New Message")]
     public class MessageActivity : Activity
     {
         private int ServerID;
@@ -50,6 +50,10 @@ namespace PrivateChat
                 // Since a PhoneNumber was passed, need to disable the sendTo EditText and place the phone number in it to be displayed;
                 sendTo.Enabled = false;
                 sendTo.Text = PhoneNumber;
+                sendTo.Visibility = ViewStates.Invisible; // Lets make the EditView Invisible as the phone number(s) will be displayed in the title of the Activity
+
+                // Set the Title of the Activity using the passed PhoneNumber
+                this.Title = PhoneNumber;
             }
 
             // Add a FocusChange for the EditText for clearing out the default text
@@ -115,6 +119,15 @@ namespace PrivateChat
 
             var list = FindViewById<ListView>(Resource.Id.messagesList);
             list.Adapter = adapter;
+
+            if (sendTo.Visibility == ViewStates.Invisible)
+            {
+                // Move the top edge of the listView to the top of the Activity as the sendTo editView is invisible
+                var param = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MatchParent, ViewGroup.LayoutParams.MatchParent);
+                param.AddRule(LayoutRules.AlignParentTop);
+                param.AddRule(LayoutRules.Above, Resource.Id.messageEt);
+                list.LayoutParameters = param;
+            }
 
             var send = FindViewById<Button>(Resource.Id.sendBtn);
             send.Click += SendClick;
@@ -197,7 +210,23 @@ namespace PrivateChat
                 // store the Conversation in the ConversationTable and the Message in the MessageTable along with the ServerID and ConversationID.
 
                 // Lets disable the sendTo EditText has the user should not be able to change who to send the message out to anymore.
-                sendTo.Enabled = false;
+                if (sendTo.Visibility != ViewStates.Invisible)
+                {
+                    // Lets disable the sendTo EditText has the user should not be able to change who to send the message out to anymore.
+                    sendTo.Enabled = false;
+                    sendTo.Visibility = ViewStates.Invisible;
+
+                    // Set the Title of the Activity using the passed PhoneNumber
+                    this.Title = sendTo.Text;
+
+                    var list = FindViewById<ListView>(Resource.Id.messagesList);
+
+                    // Move the top edge of the listView to the top of the Activity as the sendTo editView is invisible
+                    var param = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MatchParent, ViewGroup.LayoutParams.MatchParent);
+                    param.AddRule(LayoutRules.AlignParentTop);
+                    param.AddRule(LayoutRules.Above, Resource.Id.messageEt);
+                    list.LayoutParameters = param;
+                }
 
                 // Get the TimeStamp right now
                 var ts = DateTime.Now;

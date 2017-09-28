@@ -953,6 +953,7 @@ private: System::Boolean SendMsg(Client^ c)
 	//	Since the all of the phone numbers have been extracted now only the message should be left in the buffer, so lets send out it out to the intended recipients
 
 	int mostBytesSent = 0;
+	bool nonRegisterdUser = false;
 
 	//	Send out the message to the intended recipient(s)
 	for (int i = 0; i < recipients; i++)
@@ -986,6 +987,10 @@ private: System::Boolean SendMsg(Client^ c)
 				return (err == WSAEWOULDBLOCK);
 			}
 		}
+		else
+		{
+			nonRegisterdUser = true;
+		}
 	}
 
 	//	Check to see if the entire message was sent out or not
@@ -995,10 +1000,20 @@ private: System::Boolean SendMsg(Client^ c)
 		c->buffer = gcnew array<Char>(DEFAULT_BUFLEN);
 		c->recvbuflen = 0;
 	}
+	else if (mostBytesSent == 0 && (nonRegisterdUser && (recipients == 1)))
+	{
+		// Since the only recipient isn't registered on the server, no longer need to the message to be stored or even try to send it out
+		c->buffer = gcnew array<Char>(DEFAULT_BUFLEN);
+		c->recvbuflen = 0;
+
+		OutputLog("Received a message for a NonRegisteredUser.");
+		
+		return true;
+	}
 	else
 	{
 		//	Since only a part of the message was sent out, need to remove the part that was sent out and update the sender's recvbuflen to reflect the change
-		char* b;
+		char* b = new char[strlen(buffer) + 1];;
 		strcpy(b, buffer);
 		memmove(b, b + mostBytesSent, c->recvbuflen - mostBytesSent);
 

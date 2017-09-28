@@ -48,7 +48,7 @@
   <!-- Add the EditTexts in Reverse order for nextFocusDown to work properly -->
   <EditText
     android:text=""
-    android:minEms="3"
+    android:minEms="2"
     android:maxLength="3"
     android:inputType="number"
     android:layout_width="wrap_content"
@@ -60,7 +60,7 @@
 
   <EditText
     android:text=""
-    android:minEms="3"
+    android:minEms="2"
     android:maxLength="3"
     android:inputType="number"
     android:layout_width="wrap_content"
@@ -73,7 +73,7 @@
   
   <EditText
     android:text=""
-    android:minEms="3"
+    android:minEms="2"
     android:maxLength="3"
     android:inputType="number"
     android:layout_width="wrap_content"
@@ -86,7 +86,7 @@
   
   <EditText
     android:text=""
-    android:minEms="3"
+    android:minEms="2"
     android:maxLength="3"
     android:inputType="number"
     android:layout_width="wrap_content"
@@ -102,35 +102,39 @@
     android:textAppearance="?android:attr/textAppearanceLarge"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_below="@id/nameTv"
-    android:layout_toRightOf="@id/ipAddress1"
+    android:layout_alignBottom="@id/ipAddress1"
+    android:layout_toLeftOf="@id/ipAddress2"
+    android:paddingBottom="3dp"
     android:id="@+id/Tv1" />
   <TextView
     android:text="."
     android:textAppearance="?android:attr/textAppearanceLarge"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_below="@id/nameTv"
-    android:layout_toRightOf="@id/ipAddress2"
+    android:layout_alignBottom="@id/ipAddress1"
+    android:layout_toLeftOf="@id/ipAddress3"
+    android:paddingBottom="3dp"
     android:id="@+id/Tv2" />
   <TextView
     android:text="."
     android:textAppearance="?android:attr/textAppearanceLarge"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_below="@id/nameTv"
-    android:layout_toRightOf="@id/ipAddress3"
+    android:layout_alignBottom="@id/ipAddress1"
+    android:layout_toLeftOf="@id/ipAddress4"
+    android:paddingBottom="3dp"
     android:id="@+id/Tv3" />
   <!-- Input for the port number for the server -->
   <EditText
     android:text=""
-    android:minEms="5"
+    android:minEms="4"
     android:maxLength="5"
     android:inputType="number"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_below="@id/ipAddressTv"
     android:layout_toRightOf="@id/portNumberTv"
+    android:layout_alignLeft="@id/ipAddress1"
     android:gravity="center_horizontal"
     android:id="@+id/portNumber" />
 </RelativeLayout>

@@ -2,7 +2,7 @@
 <xs:schema xmlns:android="http://schemas.android.com/apk/res/android" attributeFormDefault="qualified" targetNamespace="http://schemas.android.com/apk/res/android" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:annotation>
     <xs:documentation>v23</xs:documentation>
-    <xs:documentation>9/25/2017 6:13:23 PM</xs:documentation>
+    <xs:documentation>9/27/2017 5:47:05 PM</xs:documentation>
   </xs:annotation>
   <xs:attribute name="accessibilityLiveRegion">
     <xs:annotation>
@@ -791,10 +791,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
             <xs:enumeration value="@android:color/black" />
@@ -1225,6 +1226,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -1368,6 +1370,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -1446,10 +1449,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -2138,10 +2142,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -2516,10 +2521,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
             <xs:enumeration value="@android:color/black" />
@@ -2837,10 +2843,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -3079,6 +3086,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -3124,6 +3132,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -3169,6 +3178,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -3214,6 +3224,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -3492,10 +3503,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -3817,10 +3829,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -4117,6 +4130,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -4163,10 +4177,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -4447,10 +4462,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -4708,10 +4724,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -4991,6 +5008,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -5036,6 +5054,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -5081,6 +5100,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -5126,6 +5146,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -5307,10 +5328,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -5740,10 +5762,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -6135,10 +6158,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -6482,6 +6506,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -6527,6 +6552,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -6595,10 +6621,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
             <xs:enumeration value="@android:color/black" />
@@ -6920,10 +6947,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
             <xs:enumeration value="@android:color/black" />
@@ -7245,10 +7273,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
             <xs:enumeration value="@android:color/black" />
@@ -7565,6 +7594,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -7615,10 +7645,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
             <xs:enumeration value="@android:color/black" />
@@ -7940,10 +7971,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
             <xs:enumeration value="@android:color/black" />
@@ -8379,10 +8411,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
             <xs:enumeration value="@android:color/black" />
@@ -8756,10 +8789,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -9000,6 +9034,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -9050,10 +9085,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
             <xs:enumeration value="@android:color/black" />
@@ -9372,6 +9408,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -9498,10 +9535,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -9780,6 +9818,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -9920,10 +9959,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -10334,6 +10374,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -10460,10 +10501,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -10937,10 +10979,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
             <xs:enumeration value="@android:color/black" />
@@ -11366,46 +11409,6 @@
       </xs:union>
     </xs:simpleType>
   </xs:attribute>
-  <xs:attribute name="forceHasOverlappingRendering">
-    <xs:annotation>
-      <xs:documentation>Whether this view has elements that may overlap when drawn. See android.view.View.forceHasOverlappingRendering(boolean).</xs:documentation>
-    </xs:annotation>
-    <xs:simpleType>
-      <xs:union memberTypes="xs:string">
-        <xs:simpleType>
-          <xs:restriction base="xs:string">
-            <xs:enumeration value="false" />
-            <xs:enumeration value="true" />
-            <xs:enumeration value="?android:attr/alertDialogCenterButtons" />
-            <xs:enumeration value="?android:attr/backgroundDimEnabled" />
-            <xs:enumeration value="?android:attr/isLightTheme" />
-            <xs:enumeration value="?android:attr/panelMenuIsCompact" />
-            <xs:enumeration value="?android:attr/windowActionBar" />
-            <xs:enumeration value="?android:attr/windowActionBarOverlay" />
-            <xs:enumeration value="?android:attr/windowActionModeOverlay" />
-            <xs:enumeration value="?android:attr/windowActivityTransitions" />
-            <xs:enumeration value="?android:attr/windowAllowEnterTransitionOverlap" />
-            <xs:enumeration value="?android:attr/windowAllowReturnTransitionOverlap" />
-            <xs:enumeration value="?android:attr/windowCloseOnTouchOutside" />
-            <xs:enumeration value="?android:attr/windowContentTransitions" />
-            <xs:enumeration value="?android:attr/windowDisablePreview" />
-            <xs:enumeration value="?android:attr/windowEnableSplitTouch" />
-            <xs:enumeration value="?android:attr/windowFullscreen" />
-            <xs:enumeration value="?android:attr/windowIsFloating" />
-            <xs:enumeration value="?android:attr/windowIsTranslucent" />
-            <xs:enumeration value="?android:attr/windowNoDisplay" />
-            <xs:enumeration value="?android:attr/windowNoTitle" />
-            <xs:enumeration value="?android:attr/windowOverscan" />
-            <xs:enumeration value="?android:attr/windowSharedElementsUseOverlay" />
-            <xs:enumeration value="?android:attr/windowShowWallpaper" />
-            <xs:enumeration value="?android:attr/windowSwipeToDismiss" />
-            <xs:enumeration value="?android:attr/windowTranslucentNavigation" />
-            <xs:enumeration value="?android:attr/windowTranslucentStatus" />
-          </xs:restriction>
-        </xs:simpleType>
-      </xs:union>
-    </xs:simpleType>
-  </xs:attribute>
   <xs:attribute name="foreground">
     <xs:annotation>
       <xs:documentation>Defines the drawable to draw over the content. This can be used as an overlay. The foreground drawable participates in the padding of the content if the gravity is set to fill.</xs:documentation>
@@ -11424,10 +11427,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
             <xs:enumeration value="@android:color/black" />
@@ -12047,10 +12051,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -12290,10 +12295,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -12533,10 +12539,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -12776,10 +12783,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -13019,10 +13027,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -13262,10 +13271,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -13505,10 +13515,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -13748,10 +13759,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -14189,10 +14201,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -14459,10 +14472,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -14702,10 +14716,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -14945,10 +14960,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -15188,10 +15204,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -15471,10 +15488,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -15718,10 +15736,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
             <xs:enumeration value="@android:color/black" />
@@ -16039,10 +16058,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -16322,10 +16342,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -16660,10 +16681,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -16903,10 +16925,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -17145,6 +17168,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -17271,6 +17295,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -17493,10 +17518,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -17846,10 +17872,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -18184,10 +18211,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -18598,6 +18626,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -18643,6 +18672,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -18688,6 +18718,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -18733,6 +18764,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -18779,10 +18811,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -19108,10 +19141,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -19350,6 +19384,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -19395,6 +19430,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -19440,6 +19476,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -19485,6 +19522,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -19531,10 +19569,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -19894,10 +19933,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -20153,10 +20193,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -21859,6 +21900,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -21904,6 +21946,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -21949,6 +21992,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -21994,6 +22038,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -22039,6 +22084,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -22084,6 +22130,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -22129,6 +22176,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -22174,6 +22222,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -22693,6 +22742,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -22797,10 +22847,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -23069,6 +23120,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -23171,10 +23223,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
             <xs:enumeration value="@android:color/black" />
@@ -23661,6 +23714,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -23765,6 +23819,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -23846,6 +23901,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -24030,6 +24086,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -24093,6 +24150,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -24195,10 +24253,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -24450,10 +24509,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -24734,10 +24794,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -25017,10 +25078,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -25260,10 +25322,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -25503,10 +25566,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -25746,10 +25810,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -25989,10 +26054,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -26721,10 +26787,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -26985,10 +27052,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
             <xs:enumeration value="@android:color/black" />
@@ -27310,10 +27378,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
             <xs:enumeration value="@android:color/black" />
@@ -27646,6 +27715,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -27691,6 +27761,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -27736,6 +27807,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -27781,6 +27853,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -27826,6 +27899,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -27871,6 +27945,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -27916,6 +27991,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -28045,41 +28121,6 @@
       </xs:union>
     </xs:simpleType>
   </xs:attribute>
-  <xs:attribute name="pointerIcon">
-    <xs:annotation>
-      <xs:documentation></xs:documentation>
-    </xs:annotation>
-    <xs:simpleType>
-      <xs:union memberTypes="xs:string">
-        <xs:simpleType>
-          <xs:restriction base="xs:string">
-            <xs:enumeration value="alias" />
-            <xs:enumeration value="all_scroll" />
-            <xs:enumeration value="arrow" />
-            <xs:enumeration value="cell" />
-            <xs:enumeration value="context_menu" />
-            <xs:enumeration value="copy" />
-            <xs:enumeration value="crosshair" />
-            <xs:enumeration value="grab" />
-            <xs:enumeration value="grabbing" />
-            <xs:enumeration value="hand" />
-            <xs:enumeration value="help" />
-            <xs:enumeration value="horizontal_double_arrow" />
-            <xs:enumeration value="no_drop" />
-            <xs:enumeration value="none" />
-            <xs:enumeration value="text" />
-            <xs:enumeration value="top_left_diagonal_double_arrow" />
-            <xs:enumeration value="top_right_diagonal_double_arrow" />
-            <xs:enumeration value="vertical_double_arrow" />
-            <xs:enumeration value="vertical_text" />
-            <xs:enumeration value="wait" />
-            <xs:enumeration value="zoom_in" />
-            <xs:enumeration value="zoom_out" />
-          </xs:restriction>
-        </xs:simpleType>
-      </xs:union>
-    </xs:simpleType>
-  </xs:attribute>
   <xs:attribute name="popupBackground">
     <xs:annotation>
       <xs:documentation></xs:documentation>
@@ -28098,10 +28139,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
             <xs:enumeration value="@android:color/black" />
@@ -28418,6 +28460,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -28464,10 +28507,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -28892,10 +28936,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -29249,10 +29294,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -29492,10 +29538,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -30225,6 +30272,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -30288,10 +30336,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -30531,10 +30580,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -30774,10 +30824,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -31017,10 +31068,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -31359,6 +31411,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -31404,6 +31457,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -31450,10 +31504,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -31693,10 +31748,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -32108,10 +32164,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -32355,10 +32412,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
             <xs:enumeration value="@android:color/black" />
@@ -32676,10 +32734,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -32918,6 +32977,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -32963,6 +33023,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -33380,10 +33441,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
             <xs:enumeration value="@android:color/black" />
@@ -33740,6 +33802,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -33925,10 +33988,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
             <xs:enumeration value="@android:color/black" />
@@ -34304,10 +34368,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -35501,10 +35566,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -35785,10 +35851,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -36123,10 +36190,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -36365,6 +36433,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -36410,6 +36479,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -36456,10 +36526,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -36699,10 +36770,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -36982,10 +37054,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -37225,10 +37298,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -37615,10 +37689,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -37862,10 +37937,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
             <xs:enumeration value="@android:color/black" />
@@ -38187,10 +38263,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
             <xs:enumeration value="@android:color/black" />
@@ -38512,10 +38589,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
             <xs:enumeration value="@android:color/black" />
@@ -38837,10 +38915,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
             <xs:enumeration value="@android:color/black" />
@@ -39158,10 +39237,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -39427,10 +39507,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -39670,10 +39751,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -39913,10 +39995,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -40156,10 +40239,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -40399,10 +40483,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -40816,10 +40901,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -41059,10 +41145,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -41302,10 +41389,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -41544,6 +41632,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -42490,10 +42579,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -42732,6 +42822,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -42777,6 +42868,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -43140,6 +43232,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -43185,6 +43278,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -43230,6 +43324,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -43275,6 +43370,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -43320,6 +43416,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -43366,10 +43463,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -43703,6 +43801,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -43789,10 +43888,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -44161,6 +44261,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -44206,6 +44307,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -44332,6 +44434,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -44377,6 +44480,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -44422,6 +44526,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -44584,10 +44689,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
             <xs:enumeration value="@android:color/black" />
@@ -45012,6 +45118,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -45058,10 +45165,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -45317,10 +45425,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -45560,10 +45669,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -45807,10 +45917,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
             <xs:enumeration value="@android:color/black" />
@@ -46132,10 +46243,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:color/background_dark" />
             <xs:enumeration value="@android:color/background_light" />
             <xs:enumeration value="@android:color/black" />
@@ -46464,6 +46576,7 @@
             <xs:enumeration value="@dimen/fab_shadow_size" />
             <xs:enumeration value="@dimen/fab_size_mini" />
             <xs:enumeration value="@dimen/fab_size_normal" />
+            <xs:enumeration value="@dimen/increment" />
             <xs:enumeration value="@android:dimen/app_icon_size" />
             <xs:enumeration value="@android:dimen/dialog_min_width_major" />
             <xs:enumeration value="@android:dimen/dialog_min_width_minor" />
@@ -46510,10 +46623,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
@@ -46753,10 +46867,11 @@
             <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/icon" />
+            <xs:enumeration value="@drawable/mybubble" />
+            <xs:enumeration value="@drawable/otherbubble" />
             <xs:enumeration value="@drawable/roundbutton" />
             <xs:enumeration value="@drawable/splash" />
             <xs:enumeration value="@drawable/splashicon" />
-            <xs:enumeration value="@drawable/textbubble" />
             <xs:enumeration value="@android:drawable/alert_dark_frame" />
             <xs:enumeration value="@android:drawable/alert_light_frame" />
             <xs:enumeration value="@android:drawable/arrow_down_float" />
