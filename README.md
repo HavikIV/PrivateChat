@@ -12,7 +12,7 @@ The server application is fairly simple to use and understand. First of all, the
 
 The **Local IP Address** is the IP address of your computer in your local network. In most homes and businesses today, there are WiFi routers in use so you have to find out what is your computer's IP Address that the router has assign it and input it in the Textbox indicated by **Local IP Address:** on the server application. In the case that all connections will only be made through the local network, then this is the IP address that should be given out.
 
-Can download the server application from [here] (/PrivateChatServer/Ready/PrivateChatServer.zip)
+Can download the server application from [here](/PrivateChatServer/Ready/PrivateChatServer.zip)
 
 One method of obtaining the IP address on a Windows PC is the following:
 
