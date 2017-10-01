@@ -75,7 +75,7 @@ namespace PrivateChat.Adapters
         // using the key "Servers"
         private void SaveServers()
         {
-            ISharedPreferences prefs = activity.GetSharedPreferences("Privatechat.PrivateChat", FileCreationMode.Private);
+            ISharedPreferences prefs = activity.GetSharedPreferences("com.Privatechat.PrivateChat", FileCreationMode.Private);
             ISharedPreferencesEditor editor = prefs.Edit();
 
             // Serialize the items in the list of servers into a string

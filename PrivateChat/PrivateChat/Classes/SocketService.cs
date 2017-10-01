@@ -280,7 +280,7 @@ namespace PrivateChat
             //  This method is used for registering the User to the server through the provided socket.
 
             //  Send the server the user's phone number.
-            ISharedPreferences prefs = this.GetSharedPreferences("PrivateChat.PrivateChat", FileCreationMode.Private);
+            ISharedPreferences prefs = this.GetSharedPreferences("com.PrivateChat.PrivateChat", FileCreationMode.Private);
             string phoneNumber = prefs.GetString("phone", "default");
             string fullname = prefs.GetString("name", "default");
             s.sendBuffer = Encoding.ASCII.GetBytes(phoneNumber + " " + fullname);
@@ -490,7 +490,7 @@ namespace PrivateChat
                     temp.Replace(" ", "");  // remove all spaces from the string of contacts
                     int recipients = temp.Length / 10;  // number of recipients
 
-                    ISharedPreferences prefs = this.GetSharedPreferences("PrivateChat.PrivateChat", FileCreationMode.Private);
+                    ISharedPreferences prefs = this.GetSharedPreferences("com.PrivateChat.PrivateChat", FileCreationMode.Private);
                     string phoneNumber = prefs.GetString("phone", "default");   // The user's phone number
 
                     // Place the message in the buffer (<recipients> [phoneNumber(s)] message)
@@ -510,7 +510,7 @@ namespace PrivateChat
         // if so, it will do the appropriate work.
         private void HandleSockets()
         {
-            ISharedPreferences prefs = this.GetSharedPreferences("PrivateChat.PrivateChat", FileCreationMode.Private);
+            ISharedPreferences prefs = this.GetSharedPreferences("com.PrivateChat.PrivateChat", FileCreationMode.Private);
 
             // This infinite loop will continue calling the Select() to handle the sockets
             while (!restarting)
@@ -626,7 +626,7 @@ namespace PrivateChat
                                     connection.InsertAsync(mes);
 
                                     // Let's send a broadcast to tell the MessageActivity (if it's open) to reload the adapter as a new message was added
-                                    Intent intent = new Intent("PrivateChat.PrivateChat");
+                                    Intent intent = new Intent("com.PrivateChat.PrivateChat");
                                     intent.SetAction(MessageActivity.ReloadAdapter); // Set the action to reload the messages into the adapter
                                     SendBroadcast(intent);  // Send the broadcast
 

@@ -22,7 +22,7 @@ namespace PrivateChat
             // Create your application here
 
             // Check to see if the phone number has been saved or not
-            ISharedPreferences prefs = this.GetSharedPreferences("PrivateChat.PrivateChat", FileCreationMode.Private);
+            ISharedPreferences prefs = this.GetSharedPreferences("com.PrivateChat.PrivateChat", FileCreationMode.Private);
             string phone = prefs.GetString("phone", "default");
             // if phone number has been saved open the MainActivity else open the registerActvitiy
             Intent intent;

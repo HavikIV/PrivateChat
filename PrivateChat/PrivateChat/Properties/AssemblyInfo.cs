@@ -28,3 +28,10 @@ using Android.App;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
+
+// Disabling debugging
+#if DEBUG
+    [assembly: Application(Debuggable=true)]
+#else
+    [assembly: Application(Debuggable=false)]
+#endif

@@ -32,7 +32,7 @@ namespace PrivateChat
         private void savePhone(object sender, EventArgs e)
         {
             // Get the shared preferences
-            ISharedPreferences prefs = this.GetSharedPreferences("PrivateChat.PrivateChat", FileCreationMode.Private);
+            ISharedPreferences prefs = this.GetSharedPreferences("com.PrivateChat.PrivateChat", FileCreationMode.Private);
             ISharedPreferencesEditor editor = prefs.Edit();
 
             // Grab the phone number that was entered in the EditText

@@ -43,8 +43,6 @@ e:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\obj
 e:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\obj\Debug\res\menu\conversationactionbar.xml
 E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\bin\Debug\PrivateChat.dll
 E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\bin\Debug\PrivateChat.pdb
-E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\bin\Debug\PrivateChat.PrivateChat.apk
-E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\bin\Debug\PrivateChat.PrivateChat-Signed.apk
 E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\bin\Debug\Newtonsoft.Json.dll
 E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\bin\Debug\Refractored.FloatingActionButton.dll
 E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\bin\Debug\SQLite-net.dll
@@ -58,7 +56,6 @@ E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\Pri
 E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\bin\Debug\SQLite-net.dll.mdb
 E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\obj\Debug\PrivateChat.dll
 E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\obj\Debug\PrivateChat.pdb
-E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\obj\Debug\android\bin\PrivateChat.PrivateChat.apk
 E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\obj\Debug\res\layout\newserverdialog.xml
 E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\obj\Debug\res\layout\registerphone.xml
 E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\obj\Debug\res\layout\conversation.xml
@@ -111,3 +108,6 @@ E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\Pri
 E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\obj\Debug\res\drawable-xxhdpi\otherbubble.9.png
 E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\obj\Debug\res\drawable-xxxhdpi\mybubble.9.png
 E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\obj\Debug\res\drawable-xxxhdpi\otherbubble.9.png
+E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\bin\Debug\com.PrivateChat.PrivateChat.apk
+E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\bin\Debug\com.PrivateChat.PrivateChat-Signed.apk
+E:\Users\Havik\Documents\Visual Studio 2015\Projects\PrivateChat\PrivateChat\PrivateChat\obj\Debug\android\bin\com.PrivateChat.PrivateChat.apk
